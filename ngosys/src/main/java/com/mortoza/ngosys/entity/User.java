@@ -33,6 +33,10 @@ public class User {
     @JoinColumn(name = "role_id",nullable = false)
     private Role  role;
 
+    @ManyToOne
+    @JoinColumn(name = "ngo_id",nullable = false)
+    private Ngo  ngo;
+
     public Long getId() {
         return id;
     }
