@@ -14,7 +14,7 @@ public class Deposit {
     @Column(name = "deposit_brance",unique = true,nullable = false)
     private String deposit_brance;
 
-    @Column(name = "deposit_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date deposit_date;
 
     @Column(name = "deposit_amount", nullable = false)

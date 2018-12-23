@@ -32,7 +32,7 @@ public class Member {
     @Column(name = "m_admit_fee",nullable = false)
     private String m_admit_fee;
 
-    @Column(name = "regi_date",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date regi_date;
 
     @ManyToOne

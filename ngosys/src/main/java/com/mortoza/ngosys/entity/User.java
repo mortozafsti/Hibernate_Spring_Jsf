@@ -26,7 +26,7 @@ public class User {
     @Column(name = "lastName",unique = true)
     private String lastName;
 
-    @Column(name = "regiDate",unique = true)
+    @Temporal(TemporalType.DATE)
     private Date regiDate;
 
     @ManyToOne

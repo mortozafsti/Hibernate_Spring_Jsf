@@ -31,7 +31,7 @@ public class Ngo {
     @Column(name = "ngo_service",unique = true,nullable = false)
     private String ngo_service;
 
-    @Column(name = "regi_date",unique = true,nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date n_regi_date;
 
     public Long getId() {
