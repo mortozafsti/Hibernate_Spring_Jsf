@@ -36,7 +36,11 @@ public class Member {
     private Date regi_date;
 
     @ManyToOne
-    @JoinColumn(name = "n_id",nullable = false)
+    @JoinColumn(name = "ngo_id",nullable = false)
+    private Ngo ngo;
+
+    @ManyToOne
+    @JoinColumn(name = "nominee_id",nullable = false)
     private Nominee nominee;
 
     public Long getId() {
@@ -109,6 +113,14 @@ public class Member {
 
     public void setRegi_date(Date regi_date) {
         this.regi_date = regi_date;
+    }
+
+    public Ngo getNgo() {
+        return ngo;
+    }
+
+    public void setNgo(Ngo ngo) {
+        this.ngo = ngo;
     }
 
     public Nominee getNominee() {

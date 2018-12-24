@@ -36,7 +36,7 @@ public class LoanSummary {
     private double number_of_due_Kisti;
 
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "m_id",nullable = false)
     private Member member;
 
