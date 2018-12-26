@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Ngo System</title>
+    <meta name="viewpoint" content="width-device-width,initial-scale 1.shirink-to-fit=no">
+    <meta http-equiv="content-security-policy">
+    <link rel="shortcut icon" href=""/>
+
+    <link rel="stylesheet" href="/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" href="/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" href="/modules/flag-icon-css/css/flag-icon.min.css">
+
+      <link rel="stylesheet" href="/css/style.css"/>
+      <link rel="stylesheet" href="/css/demo.css"/>
+      <link rel="stylesheet" href="/css/custom.css"/>
+
+
+  </head>
+  <body>
+  <div th:replace="~{fragments/navbar.html :: main-navbar}"></div>
+  <div layout:fragment="custom-content">
+      content will go here
+  </div>
+  <div th:replace="~{fragments/footer.html :: copyright}"></div>
+
+  <script  src="/js/app.js" th:href="@{/css/app.js}"></script>
+  <script  src="/js/custom.js" th:href="@{/css/custom.js}"></script>
+  <script src="/js/demo.js" th:href="@{/css/demo.js}"></script>
+  <script  src="/js/sa-functions.js" th:href="@{/css/sa-functions.js}"></script>
+  <script  src="/js/scripts.js" th:href="@{/css/scripts.js}"></script>
+  </body>
+  </html>

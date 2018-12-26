@@ -11,8 +11,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/rr.jsf")
-    public String displayTest(){
-        return "test";
-    }
+
+
 }
