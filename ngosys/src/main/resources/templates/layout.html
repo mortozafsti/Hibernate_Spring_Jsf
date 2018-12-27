@@ -10,30 +10,85 @@
     <meta http-equiv="content-security-policy">
     <link rel="shortcut icon" href=""/>
 
-    <link rel="stylesheet" href="/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/modules/bootstrap/css/bootstrap.min.css" th:href="@{/modules/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/modules/ionicons/css/ionicons.min.css" th:href="@{/modules/ionicons/css/ionicons.min.css}">
+    <link rel="stylesheet" href="/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" th:href="@{/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css}">
 
-    <link rel="stylesheet" href="/modules/summernote/summernote-lite.css">
-    <link rel="stylesheet" href="/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/modules/summernote/summernote-lite.css" th:href="@{/modules/summernote/summernote-lite.css}">
+    <link rel="stylesheet" href="/modules/flag-icon-css/css/flag-icon.min.css" th:href="@{/modules/flag-icon-css/css/flag-icon.min.css}">
 
-      <link rel="stylesheet" href="/css/style.css"/>
-      <link rel="stylesheet" href="/css/demo.css"/>
-      <link rel="stylesheet" href="/css/custom.css"/>
+      <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}"/>
+      <link rel="stylesheet" href="/css/demo.css" th:href="@{/css/demo.css}" />
+      <link rel="stylesheet" href="/css/custom.css" th:href="@{/css/custom.css}" />
 
 
   </head>
   <body>
+  <div id="app"  >
   <div th:replace="~{fragments/navbar.html :: main-navbar}"></div>
+
+  <div th:replace="~{fragments/msidebar.html :: main-sidebar}"></div>
+  <div th:replace="~{fragments/mcontent.html :: main-content}"></div>
   <div layout:fragment="custom-content">
       content will go here
   </div>
-  <div th:replace="~{fragments/footer.html :: copyright}"></div>
+  <div th:replace="~{fragments/footer.html :: main-footer}"></div>
 
-  <script  src="/js/app.js" th:href="@{/css/app.js}"></script>
-  <script  src="/js/custom.js" th:href="@{/css/custom.js}"></script>
-  <script src="/js/demo.js" th:href="@{/css/demo.js}"></script>
-  <script  src="/js/sa-functions.js" th:href="@{/css/sa-functions.js}"></script>
-  <script  src="/js/scripts.js" th:href="@{/css/scripts.js}"></script>
+  </div>
+
+
+
+
+
+  <script src="/modules/jquery.min.js" th:src="@{/modules/jquery.min.js}"></script>
+  <script src="/modules/popper.js" th:src="@{/modules/popper.js}"></script>
+  <script src="/modules/tooltip.js" th:src="@{/modules/tooltip.js}"></script>
+  <script src="/modules/bootstrap/js/bootstrap.min.js" th:src="@{/modules/bootstrap/js/bootstrap.min.js}"></script>
+  <script src="/modules/nicescroll/jquery.nicescroll.min.js" th:src="@{/modules/nicescroll/jquery.nicescroll.min.js}"></script>
+  <script src="/modules/scroll-up-bar/dist/scroll-up-bar.min.js" th:src="@{/modules/scroll-up-bar/dist/scroll-up-bar.min.js}"></script>
+  <script src="/js/sa-functions.js" th:src="@{/js/sa-functions.js}"></script>
+
+  <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              datasets: [{
+                  label: 'Statistics',
+                  data: [460, 458, 330, 502, 430, 610, 488],
+                  borderWidth: 2,
+                  backgroundColor: 'rgb(87,75,144)',
+                  borderColor: 'rgb(87,75,144)',
+                  borderWidth: 2.5,
+                  pointBackgroundColor: '#ffffff',
+                  pointRadius: 4
+              }]
+          },
+          options: {
+              legend: {
+                  display: false
+              },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true,
+                          stepSize: 150
+                      }
+                  }],
+                  xAxes: [{
+                      gridLines: {
+                          display: false
+                      }
+                  }]
+              },
+          }
+      });
+  </script>
+
+
+  <script  src="/js/custom.js" th:src="@{/js/custom.js}"></script>
+  <script src="/js/demo.js" th:src="@{/js/demo.js}"></script>
+  <script  src="/js/scripts.js" th:src="@{/js/scripts.js}"></script>
   </body>
   </html>
