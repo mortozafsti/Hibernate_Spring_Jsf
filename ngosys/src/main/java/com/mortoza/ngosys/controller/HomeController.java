@@ -12,9 +12,14 @@ public class HomeController {
     }
 
 
-    @GetMapping(value = "/role-add.jsf")
+    @GetMapping(value = "/add-role.jsf")
     public String displayRoleAdd(){
         return "add-role";
+    }
+
+    @GetMapping(value = "/add-ngo.jsf")
+    public String displayNgoAdd(){
+        return "add-ngo";
     }
 
 }
