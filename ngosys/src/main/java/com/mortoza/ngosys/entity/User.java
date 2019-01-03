@@ -34,7 +34,7 @@ public class User {
     private Role  role;
 
     @ManyToOne
-    @JoinColumn(name = "ngo_id",nullable = false)
+    @JoinColumn(name = "ngo_id")
     private Ngo  ngo;
 
     public Long getId() {
