@@ -22,4 +22,14 @@ public class HomeController {
         return "add-ngo";
     }
 
+    @GetMapping(value = "/add-nominee.jsf")
+    public String displayNomineeAdd(){
+        return "add-nominee";
+    }
+
+
+    @GetMapping(value = "/add-member.jsf")
+    public String displayMemberAdd(){
+        return "add-member";
+    }
 }
