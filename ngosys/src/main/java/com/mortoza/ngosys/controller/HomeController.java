@@ -17,4 +17,9 @@ public class HomeController {
         return "add-role";
     }
 
+    @GetMapping(value = "/add-user.jsf")
+    public String displayUserAdd(){
+        return "add-user";
+    }
+
 }
