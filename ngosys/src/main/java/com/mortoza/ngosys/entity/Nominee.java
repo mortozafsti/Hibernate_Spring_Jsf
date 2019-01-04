@@ -20,6 +20,9 @@ public class Nominee {
     @Column(name = "n_mobile",nullable = false)
     private String n_mobile;
 
+    @Column(name = "n_age",nullable = false)
+    private int age;
+
     @Temporal(TemporalType.DATE)
     private Date n_dob;
 
@@ -94,5 +97,13 @@ public class Nominee {
 
     public void setN_relation(String n_relation) {
         this.n_relation = n_relation;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

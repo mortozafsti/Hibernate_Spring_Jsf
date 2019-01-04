@@ -16,31 +16,29 @@
             Ngo System
          </div>
          <div class="card card-primary">
-            <div class="card-header"><h4>User List</h4></div>
+            <div class="card-header"><h4>Ngo List</h4></div>
             <div class="card-body">
                <table>
                   <tr>
-                     <th>U_Id</th>
-                     <th>U_Name</th>
-                     <th>U_Email</th>
-                     <th>U_Mobile</th>
-                     <th>F_Name</th>
-                     <th>L_Name</th>
-                     <th>R_Date</th>
-                     <th>Role_Id</th>
-                     <th>Ngo_Id</th>
+                     <th>N_Id</th>
+                     <th>N_Name</th>
+                     <th>N_Owner</th>
+                     <th>N_Mobile</th>
+                     <th>N_Email</th>
+                     <th>Address</th>
+                     <th>Service</th>
+                     <th>Regi_Date</th>
 
                   </tr>
                   <tr th:each="u : ${list}">
                      <td th:text="${u.id}"></td>
-                     <td th:text="${u.userName}"></td>
-                     <td th:text="${u.email}"></td>
+                     <td th:text="${u.name}"></td>
+                     <td th:text="${u.owner}"></td>
                      <td th:text="${u.mobile}"></td>
-                     <td th:text="${u.firstName}"></td>
-                     <td th:text="${u.lastName}"></td>
-                     <td th:text="${u.regiDate}"></td>
-                     <td th:text="${u.role.id}"></td>
-                     <td th:text="${u.ngo.id}"></td>
+                     <td th:text="${u.email}"></td>
+                     <td th:text="${u.address}"></td>
+                     <td th:text="${u.ngo_service}"></td>
+                     <td th:text="${u.n_regi_date}"></td>
                   </tr>
                </table>
             </div>

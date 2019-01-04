@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
-@RequestMapping(value = "/templates")
+@RequestMapping(value = "/user/")
 public class NgoController {
 
     @Autowired
@@ -41,4 +41,9 @@ public class NgoController {
         return "add-ngo";
     }
 
+    @GetMapping(value = "ngo-list.jsf")
+    public String displayList(Model model){
+        model.addAttribute("list",repo.findAll());
+        return "ngo-list";
+    }
 }

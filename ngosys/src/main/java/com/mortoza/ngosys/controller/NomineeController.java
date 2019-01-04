@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/templates")
+@RequestMapping(value = "/user/")
 public class NomineeController {
 
     @Autowired
@@ -37,6 +37,12 @@ public class NomineeController {
         }
 
         return "add-nominee";
+    }
+
+    @GetMapping(value = "nominee-list.jsf")
+    public String displayList(Model model){
+        model.addAttribute("list",repo.findAll());
+        return "nominee-list";
     }
 
 }

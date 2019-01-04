@@ -16,31 +16,16 @@
             Ngo System
          </div>
          <div class="card card-primary">
-            <div class="card-header"><h4>User List</h4></div>
+            <div class="card-header"><h4>Role List</h4></div>
             <div class="card-body">
                <table>
                   <tr>
-                     <th>U_Id</th>
-                     <th>U_Name</th>
-                     <th>U_Email</th>
-                     <th>U_Mobile</th>
-                     <th>F_Name</th>
-                     <th>L_Name</th>
-                     <th>R_Date</th>
-                     <th>Role_Id</th>
-                     <th>Ngo_Id</th>
-
+                     <th>Role Id</th>
+                     <th>Role Name</th>
                   </tr>
                   <tr th:each="u : ${list}">
                      <td th:text="${u.id}"></td>
-                     <td th:text="${u.userName}"></td>
-                     <td th:text="${u.email}"></td>
-                     <td th:text="${u.mobile}"></td>
-                     <td th:text="${u.firstName}"></td>
-                     <td th:text="${u.lastName}"></td>
-                     <td th:text="${u.regiDate}"></td>
-                     <td th:text="${u.role.id}"></td>
-                     <td th:text="${u.ngo.id}"></td>
+                     <td th:text="${u.roleName}"></td>
                   </tr>
                </table>
             </div>

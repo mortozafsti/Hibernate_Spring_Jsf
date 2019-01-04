@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+   <title>Dashboard &mdash; Ngo</title>
+</head>
+
+<body>
+
+<div class="main-content" layout:fragment="custom-content">
+   <div class="row">
+      <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+         <div class="login-brand">
+            Ngo System
+         </div>
+         <div class="card card-primary">
+            <div class="card-header"><h4>Member List</h4></div>
+            <div class="card-body">
+               <table>
+                  <tr>
+                     <th>M_ID</th>
+                     <th>M_Name</th>
+                     <th>M_Code</th>
+                     <th>M_Gender</th>
+                     <th>M_Mobile</th>
+                     <th>M_Address</th>
+                     <th>M_Nid</th>
+                     <th>Admit_Fee</th>
+                     <th>R_Date</th>
+                     <!--<th>Ngo_Id</th>-->
+                     <!--<th>NO_ID</th>-->
+
+                  </tr>
+                  <tr th:each="u : ${list}">
+                     <td th:text="${u.id}"></td>
+                     <td th:text="${u.m_name}"></td>
+                     <td th:text="${u.m_code}"></td>
+                     <td th:text="${u.m_gender}"></td>
+                     <td th:text="${u.m_mobile}"></td>
+                     <td th:text="${u.m_address}"></td>
+                     <td th:text="${u.m_nid}"></td>
+                     <td th:text="${u.m_admit_fee}"></td>
+                     <td th:text="${u.regi_date}"></td>
+                     <!--<td th:text="${u.ngo.id}"></td>-->
+                     <!--<td th:text="${u.nominee.id}"></td>-->
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>
+</body>
+</html>

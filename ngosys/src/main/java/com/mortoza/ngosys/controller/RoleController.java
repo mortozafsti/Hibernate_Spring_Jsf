@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/templates")
+@RequestMapping(value = "/user/")
 public class RoleController {
 
     @Autowired
@@ -36,6 +36,12 @@ public class RoleController {
         }
 
         return "add-role";
+    }
+
+    @GetMapping(value = "role-list.jsf")
+    public String displayList(Model model){
+        model.addAttribute("list",repo.findAll());
+        return "role-list";
     }
 
 }

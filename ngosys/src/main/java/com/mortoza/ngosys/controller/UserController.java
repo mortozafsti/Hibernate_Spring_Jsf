@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/templates/")
+@RequestMapping(value = "/user/")
 public class UserController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class UserController {
         return "add-user";
     }
 
-    @GetMapping(value = "list.jsf")
+    @GetMapping(value = "user-list.jsf")
     public String displayList(Model model){
         model.addAttribute("list",repo.findAll());
         return "user-list";
