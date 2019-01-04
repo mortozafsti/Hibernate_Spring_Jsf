@@ -33,7 +33,7 @@ public class UserController {
         if (obj != null){
             repo.save(obj);
             model.addAttribute("successMesg","success");
-            model.addAttribute("obj", new Role());
+            model.addAttribute("obj", new User());
         }
 
         return "add-user";

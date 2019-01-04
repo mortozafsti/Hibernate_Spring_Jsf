@@ -1,6 +1,7 @@
 package com.mortoza.ngosys.entity;
 
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -28,10 +29,11 @@ public class Ngo {
     @Column(name = "address",unique = true,nullable = false)
     private String address;
 
-    @Column(name = "ngo_service",unique = true,nullable = false)
+    @Column(name = "ngo_service",unique = true)
     private String ngo_service;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date n_regi_date;
 
     public Long getId() {
