@@ -32,7 +32,7 @@ public class NgoController {
     @PostMapping(value = "add-ngo.jsf")
     public String saveNgo(@Valid Ngo obj, BindingResult result, Model model){
         if (obj != null){
-            obj.setN_regi_date(new Date());
+            //obj.setN_regi_date(new Date());
             repo.save(obj);
             model.addAttribute("successMesg","success");
             model.addAttribute("obj", new Ngo());
