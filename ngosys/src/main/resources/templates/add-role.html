@@ -18,19 +18,16 @@
          <div class="card card-primary">
             <div class="card-header"><h4>Add Role</h4></div>
             <div class="card-body">
-               <form method="post">
+               <form method="post" th:object="${obj}" th:action="@{/templates/add-role.jsf}">
                   <div class="row">
-                     <div class="form-group col-12">
-                        <label for="role_id">Role Id</label>
-                        <input id="role_id" type="text" class="form-control" name="role_id" autofocus>
-                     </div>
+
                      <div class="form-group col-12">
                         <label for="role_name">Role Name</label>
-                        <input id="role_name" type="text" class="form-control" name="role_name">
+                        <input id="role_name" type="text" class="form-control"  th:field="*{roleName}" required placeholder="Enter Role Name">
                      </div>
                   </div>
                   <div class="form-group">
-                     <button type="submit" class="btn btn-primary btn-block">
+                     <button class="btn btn-primary btn-block">
                         Register
                      </button>
                   </div>
