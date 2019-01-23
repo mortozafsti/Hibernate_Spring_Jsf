@@ -33,7 +33,6 @@ public class Ngo {
     private String ngo_service;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date n_regi_date;
 
     public Long getId() {
