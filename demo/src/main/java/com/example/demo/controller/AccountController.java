@@ -16,7 +16,7 @@ public class AccountController {
     private Accountrepo repo;
 
     @GetMapping(value = "/account-ist")
-    public List<Account> getAccountList(){
+    public List<Account> getAccountList() {
 
         return repo.findAll();
     }

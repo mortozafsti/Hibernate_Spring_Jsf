@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table( name = "deposit")
+@Table(name = "deposit")
 public class Deposit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "deposit_brance",unique = true,nullable = false)
+    @Column(name = "deposit_brance", unique = true, nullable = false)
     private String deposit_brance;
 
     @Temporal(TemporalType.DATE)
@@ -21,7 +21,7 @@ public class Deposit {
     private Long amount;
 
     @ManyToOne
-    @JoinColumn(name = "m_id",nullable = false)
+    @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
     public Long getId() {

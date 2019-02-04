@@ -4,66 +4,74 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
-   <title>Dashboard &mdash; Ngo</title>
+    <title>Dashboard &mdash; Ngo</title>
 </head>
 
 <body>
 
 <div class="main-content" layout:fragment="custom-content">
-   <div class="row">
-      <div class="col-lg-8 col-md-12 col-12 col-sm-12">
-         <div class="login-brand">
-            Ngo System
-         </div>
-         <div class="card card-primary">
-            <div class="card-header"><h4>Add Nominee</h4></div>
-            <div class="card-body">
-               <form method="post" th:object="${obj}" th:action="@{/templates/add-nominee.jsf}">
-                  <div class="row">
-                     <div class="form-group col-12">
-                        <label for="nominee_name">Nominee Name</label>
-                        <input id="nominee_name" type="text" class="form-control" th:field="*{n_name}" required placeholder="Enter the Nominee name" name="nominee_name">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_age">Nominee Age</label>
-                        <input id="nominee_age" type="text" class="form-control" th:field="*{n_dob}" required placeholder="Enter the Nominee Age" name="nominee_age">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_address">Nominee Address</label>
-                        <input id="nominee_address" type="text" class="form-control" th:field="*{n_address}" required placeholder="Enter the Nominee Address" name="nominee_address">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_mobile">Nominee Mobile</label>
-                        <input id="nominee_mobile" type="text" class="form-control" th:field="*{n_mobile}" required placeholder="Enter the Nominee Mobile" name="nominee_mobile">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_dob">Nominee Date of Birth</label>
-                        <input id="nominee_dob" type="text" class="form-control" th:field="*{n_dob}" required placeholder="Enter the Nominee Date Of Birth" name="nominee_dob">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_nid">Nominee NID</label>
-                        <input id="nominee_nid" type="text" class="form-control" th:field="*{n_nid}" required placeholder="Enter the Nominee NID" name="nominee_nid">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_gender">Nominee Gender</label>
-                        <input id="nominee_gender" type="text" class="form-control" th:field="*{n_gender}" required placeholder="Enter the Nominee Gender" name="nominee_gender">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="nominee_relation">Nominee Relation</label>
-                        <input id="nominee_relation" type="text" class="form-control" th:field="*{n_relation}" required placeholder="Enter the Nominee Relation" name="nominee_relation">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <button type="submit" class="btn btn-primary btn-block">
-                        Add Nominee
-                     </button>
-                  </div>
-               </form>
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="login-brand">
+                Ngo System
             </div>
-         </div>
-      </div>
+            <div class="card card-primary">
+                <div class="card-header"><h4>Add Nominee</h4></div>
+                <div class="card-body">
+                    <form method="post" th:object="${obj}" th:action="@{/templates/add-nominee.jsf}">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="nominee_name">Nominee Name</label>
+                                <input id="nominee_name" type="text" class="form-control" th:field="*{n_name}" required
+                                       placeholder="Enter the Nominee name" name="nominee_name">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_age">Nominee Age</label>
+                                <input id="nominee_age" type="text" class="form-control" th:field="*{n_dob}" required
+                                       placeholder="Enter the Nominee Age" name="nominee_age">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_address">Nominee Address</label>
+                                <input id="nominee_address" type="text" class="form-control" th:field="*{n_address}"
+                                       required placeholder="Enter the Nominee Address" name="nominee_address">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_mobile">Nominee Mobile</label>
+                                <input id="nominee_mobile" type="text" class="form-control" th:field="*{n_mobile}"
+                                       required placeholder="Enter the Nominee Mobile" name="nominee_mobile">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_dob">Nominee Date of Birth</label>
+                                <input id="nominee_dob" type="text" class="form-control" th:field="*{n_dob}" required
+                                       placeholder="Enter the Nominee Date Of Birth" name="nominee_dob">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_nid">Nominee NID</label>
+                                <input id="nominee_nid" type="text" class="form-control" th:field="*{n_nid}" required
+                                       placeholder="Enter the Nominee NID" name="nominee_nid">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_gender">Nominee Gender</label>
+                                <input id="nominee_gender" type="text" class="form-control" th:field="*{n_gender}"
+                                       required placeholder="Enter the Nominee Gender" name="nominee_gender">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="nominee_relation">Nominee Relation</label>
+                                <input id="nominee_relation" type="text" class="form-control" th:field="*{n_relation}"
+                                       required placeholder="Enter the Nominee Relation" name="nominee_relation">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Add Nominee
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-   </div>
+    </div>
 </div>
 </body>
 </html>

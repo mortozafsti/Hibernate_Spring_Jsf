@@ -21,17 +21,17 @@ public class RoleController {
     private RoleRepo repo;
 
     @GetMapping(value = "add-role.jsf")
-    public String displayRole(Model model){
-        model.addAttribute("obj",new Role());
+    public String displayRole(Model model) {
+        model.addAttribute("obj", new Role());
         return "add-role";
     }
 
 
     @PostMapping(value = "add-role.jsf")
-    public String saveRole(@Valid Role obj, BindingResult result, Model model){
-        if (obj != null){
+    public String saveRole(@Valid Role obj, BindingResult result, Model model) {
+        if (obj != null) {
             repo.save(obj);
-            model.addAttribute("successMesg","success");
+            model.addAttribute("successMesg", "success");
             model.addAttribute("obj", new Role());
         }
 
@@ -39,8 +39,8 @@ public class RoleController {
     }
 
     @GetMapping(value = "role-list.jsf")
-    public String displayList(Model model){
-        model.addAttribute("list",repo.findAll());
+    public String displayList(Model model) {
+        model.addAttribute("list", repo.findAll());
         return "role-list";
     }
 

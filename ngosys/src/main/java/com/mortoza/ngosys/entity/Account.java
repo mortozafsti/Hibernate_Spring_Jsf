@@ -9,13 +9,13 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
     @Column(nullable = false)
-    private  String accountHolderName;
+    private String accountHolderName;
 
     @Column(nullable = false)
-    private  Long accountNumber;
+    private Long accountNumber;
     @Column(nullable = false)
 
     private double primaryDepositAmount;
@@ -23,11 +23,11 @@ public class Account {
     private double balanceAmount;
 
     private String email;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String mobile;
     @Column(nullable = false)
     private String address;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String nid;
     @Column(nullable = false)
     private String profession;
@@ -37,6 +37,6 @@ public class Account {
     private Date openingDate;
 
     @ManyToOne
-    @JoinColumn(name = "acc_type_id",nullable = false)
+    @JoinColumn(name = "acc_type_id", nullable = false)
     private AccountType accountType;
 }

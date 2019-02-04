@@ -4,51 +4,51 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
-   <title>Dashboard &mdash; Ngo</title>
+    <title>Dashboard &mdash; Ngo</title>
 </head>
 
 <body>
 
 <div class="main-content" layout:fragment="custom-content">
-   <div class="row">
-      <div class="col-lg-8 col-md-12 col-12 col-sm-12">
-         <div class="login-brand">
-            Ngo System
-         </div>
-         <div class="card card-primary">
-            <div class="card-header"><h4>Nominee List</h4></div>
-            <div class="card-body">
-               <table>
-                  <tr>
-                     <th>Id</th>
-                     <th>N_Name</th>
-                     <th>N_Age</th>
-                     <th>N_Email</th>
-                     <th>N_Mobile</th>
-                     <th>N_Address</th>
-                     <th>N_Gender</th>
-                     <th>N_Relation</th>
-                     <th>N_Nid</th>
-                     <th>N_DOB</th>
-
-                  </tr>
-                  <tr th:each="u : ${list}">
-                     <td th:text="${u.id}"></td>
-                     <td th:text="${u.n_name}"></td>
-                     <td th:text="${u.age}"></td>
-                     <td th:text="${u.n_mobile}"></td>
-                     <td th:text="${u.n_address}"></td>
-                     <td th:text="${u.n_gender}"></td>
-                     <td th:text="${u.n_relation}"></td>
-                     <td th:text="${u.n_nid}"></td>
-                     <td th:text="${u.n_dob}"></td>
-                  </tr>
-               </table>
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="login-brand">
+                Ngo System
             </div>
-         </div>
-      </div>
+            <div class="card card-primary">
+                <div class="card-header"><h4>Nominee List</h4></div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>N_Name</th>
+                            <th>N_Age</th>
+                            <th>N_Email</th>
+                            <th>N_Mobile</th>
+                            <th>N_Address</th>
+                            <th>N_Gender</th>
+                            <th>N_Relation</th>
+                            <th>N_Nid</th>
+                            <th>N_DOB</th>
 
-   </div>
+                        </tr>
+                        <tr th:each="u : ${list}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.n_name}"></td>
+                            <td th:text="${u.age}"></td>
+                            <td th:text="${u.n_mobile}"></td>
+                            <td th:text="${u.n_address}"></td>
+                            <td th:text="${u.n_gender}"></td>
+                            <td th:text="${u.n_relation}"></td>
+                            <td th:text="${u.n_nid}"></td>
+                            <td th:text="${u.n_dob}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>

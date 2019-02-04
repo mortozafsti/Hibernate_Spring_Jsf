@@ -4,30 +4,30 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table( name = "loan")
+@Table(name = "loan")
 public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "l_brance",nullable = false)
+    @Column(name = "l_brance", nullable = false)
     private String l_brance;
 
-    @Column(name = "l_date",nullable = false)
+    @Column(name = "l_date", nullable = false)
     private Date l_date;
 
-    @Column(name = "l_amount",nullable = false)
+    @Column(name = "l_amount", nullable = false)
     private String l_amount;
 
-    @Column(name = "l_kisti",nullable = false)
+    @Column(name = "l_kisti", nullable = false)
     private String l_kisti;
 
-    @Column(name = "l_payable_kisti",nullable = false)
+    @Column(name = "l_payable_kisti", nullable = false)
     private String l_payable_kisti;
 
     @ManyToOne
-    @JoinColumn(name = "m_id",nullable = false)
+    @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
     public Long getId() {

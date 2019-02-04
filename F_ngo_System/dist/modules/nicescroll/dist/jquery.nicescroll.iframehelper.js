@@ -8,7 +8,7 @@
 --
 */
 
-(function (document,window) {
+(function (document, window) {
 
     var body = document.body;
     var parent = window.parent;
@@ -102,4 +102,4 @@
 
     }
 
-})(document,window);
+})(document, window);

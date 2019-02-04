@@ -11,28 +11,28 @@ public class Nominee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "n_name",nullable = false)
+    @Column(name = "n_name", nullable = false)
     private String n_name;
 
-    @Column(name = "n_address",nullable = false)
+    @Column(name = "n_address", nullable = false)
     private String n_address;
 
-    @Column(name = "n_mobile",nullable = false)
+    @Column(name = "n_mobile", nullable = false)
     private String n_mobile;
 
-    @Column(name = "n_age",nullable = false)
+    @Column(name = "n_age", nullable = false)
     private int age;
 
     @Temporal(TemporalType.DATE)
     private Date n_dob;
 
-    @Column(name = "n_nid",nullable = false)
+    @Column(name = "n_nid", nullable = false)
     private String n_nid;
 
-    @Column(name = "n_gender",nullable = false)
+    @Column(name = "n_gender", nullable = false)
     private String n_gender;
 
-    @Column(name = "n_relation",nullable = false)
+    @Column(name = "n_relation", nullable = false)
     private String n_relation;
 
     public Long getId() {

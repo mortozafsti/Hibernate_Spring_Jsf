@@ -4,38 +4,38 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table( name = "user")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    @Column(name = "user_name",unique = true,nullable = false)
+    @Column(name = "user_name", unique = true, nullable = false)
     private String userName;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "mobile",unique = true)
+    @Column(name = "mobile", unique = true)
     private String mobile;
 
-    @Column(name = "firstName",unique = true)
+    @Column(name = "firstName", unique = true)
     private String firstName;
 
-    @Column(name = "lastName",unique = true)
+    @Column(name = "lastName", unique = true)
     private String lastName;
 
     @Temporal(TemporalType.DATE)
     private Date regiDate;
 
     @ManyToOne
-    @JoinColumn(name = "role_id",nullable = false)
-    private Role  role;
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
     @ManyToOne
     @JoinColumn(name = "ngo_id")
-    private Ngo  ngo;
+    private Ngo ngo;
 
     public Long getId() {
         return id;

@@ -4,26 +4,26 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table( name = "loansummary")
+@Table(name = "loansummary")
 public class LoanSummary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "loan_brance",unique = true, nullable = false)
+    @Column(name = "loan_brance", unique = true, nullable = false)
     private String loan_brance;
 
     @Temporal(TemporalType.DATE)
     private Date loan_date;
 
-    @Column(name = "loan_amount",nullable = false)
+    @Column(name = "loan_amount", nullable = false)
     private double loan_amount;
 
     @Column(name = "number_of_T_loan_amount", nullable = false)
     private double number_of_loan_amount;
 
-    @Column(name = "number_of_cllected_amount",nullable = false)
+    @Column(name = "number_of_cllected_amount", nullable = false)
     private double number_of_cllected_amount;
 
     @Column(name = "number_of_due_amount", nullable = false)
@@ -37,7 +37,7 @@ public class LoanSummary {
 
 
     @OneToOne
-    @JoinColumn(name = "m_id",nullable = false)
+    @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
     public Long getId() {

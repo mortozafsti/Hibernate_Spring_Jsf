@@ -7,34 +7,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping(value = "/")
-    public String displayHomr(){
+    public String displayHomr() {
         return "index";
     }
 
 
     @GetMapping(value = "/add-role.jsf")
-    public String displayRoleAdd(){
+    public String displayRoleAdd() {
         return "add-role";
     }
 
     @GetMapping(value = "/add-user.jsf")
-    public String displayUserAdd(){
+    public String displayUserAdd() {
         return "add-user";
     }
 
     @GetMapping(value = "/add-ngo.jsf")
-    public String displayNgoAdd(){
+    public String displayNgoAdd() {
         return "add-ngo";
     }
 
     @GetMapping(value = "/add-nominee.jsf")
-    public String displayNomineeAdd(){
+    public String displayNomineeAdd() {
         return "add-nominee";
     }
 
 
     @GetMapping(value = "/add-member.jsf")
-    public String displayMemberAdd(){
+    public String displayMemberAdd() {
         return "add-member";
     }
 }

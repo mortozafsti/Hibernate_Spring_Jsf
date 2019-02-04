@@ -22,17 +22,17 @@ public class NomineeController {
     private NomineeRepo repo;
 
     @GetMapping(value = "add-nominee.jsf")
-    public String displayNgo(Model model){
-        model.addAttribute("obj",new Nominee());
+    public String displayNgo(Model model) {
+        model.addAttribute("obj", new Nominee());
         return "add-nominee";
     }
 
 
     @PostMapping(value = "add-nominee.jsf")
-    public String saveNgo(@Valid Nominee obj, BindingResult result, Model model){
-        if (obj != null){
+    public String saveNgo(@Valid Nominee obj, BindingResult result, Model model) {
+        if (obj != null) {
             repo.save(obj);
-            model.addAttribute("successMesg","success");
+            model.addAttribute("successMesg", "success");
             model.addAttribute("obj", new Nominee());
         }
 
@@ -40,8 +40,8 @@ public class NomineeController {
     }
 
     @GetMapping(value = "nominee-list.jsf")
-    public String displayList(Model model){
-        model.addAttribute("list",repo.findAll());
+    public String displayList(Model model) {
+        model.addAttribute("list", repo.findAll());
         return "nominee-list";
     }
 

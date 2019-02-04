@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table( name = "member")
+@Table(name = "member")
 public class Member {
 
     @Id
@@ -14,33 +14,33 @@ public class Member {
     @Column(name = "m_name", nullable = false)
     private String m_name;
 
-    @Column(name = "m_code",unique = true,nullable = false)
+    @Column(name = "m_code", unique = true, nullable = false)
     private String m_code;
 
-    @Column(name = "m_gender",nullable = false)
+    @Column(name = "m_gender", nullable = false)
     private String m_gender;
 
-    @Column(name = "m_mobile",nullable = false)
+    @Column(name = "m_mobile", nullable = false)
     private String m_mobile;
 
-    @Column(name = "m_address",nullable = false)
+    @Column(name = "m_address", nullable = false)
     private String m_address;
 
-    @Column(name = "m_nid",unique = true,nullable = false)
+    @Column(name = "m_nid", unique = true, nullable = false)
     private String m_nid;
 
-    @Column(name = "m_admit_fee",nullable = false)
+    @Column(name = "m_admit_fee", nullable = false)
     private String m_admit_fee;
 
     @Temporal(TemporalType.DATE)
     private Date regi_date;
 
     @ManyToOne
-    @JoinColumn(name = "ngo_id",nullable = false)
+    @JoinColumn(name = "ngo_id", nullable = false)
     private Ngo ngo;
 
     @ManyToOne
-    @JoinColumn(name = "nominee_id",nullable = false)
+    @JoinColumn(name = "nominee_id", nullable = false)
     private Nominee nominee;
 
     public Long getId() {

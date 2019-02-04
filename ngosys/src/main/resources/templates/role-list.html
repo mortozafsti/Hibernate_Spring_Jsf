@@ -4,35 +4,35 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
-   <title>Dashboard &mdash; Ngo</title>
+    <title>Dashboard &mdash; Ngo</title>
 </head>
 
 <body>
 
 <div class="main-content" layout:fragment="custom-content">
-   <div class="row">
-      <div class="col-lg-8 col-md-12 col-12 col-sm-12">
-         <div class="login-brand">
-            Ngo System
-         </div>
-         <div class="card card-primary">
-            <div class="card-header"><h4>Role List</h4></div>
-            <div class="card-body">
-               <table>
-                  <tr>
-                     <th>Role Id</th>
-                     <th>Role Name</th>
-                  </tr>
-                  <tr th:each="u : ${list}">
-                     <td th:text="${u.id}"></td>
-                     <td th:text="${u.roleName}"></td>
-                  </tr>
-               </table>
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="login-brand">
+                Ngo System
             </div>
-         </div>
-      </div>
+            <div class="card card-primary">
+                <div class="card-header"><h4>Role List</h4></div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <th>Role Id</th>
+                            <th>Role Name</th>
+                        </tr>
+                        <tr th:each="u : ${list}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.roleName}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-   </div>
+    </div>
 </div>
 </body>
 </html>

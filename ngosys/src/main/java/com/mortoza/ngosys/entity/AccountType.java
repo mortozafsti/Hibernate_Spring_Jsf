@@ -8,9 +8,9 @@ public class AccountType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    @Column(name = "type_name",nullable = false,unique = true)
+    @Column(name = "type_name", nullable = false, unique = true)
     private String type;
 
     public Long getId() {

@@ -22,17 +22,17 @@ public class MemberController {
     private MemberRepo repo;
 
     @GetMapping(value = "add-member.jsf")
-    public String displayMember(Model model){
-        model.addAttribute("obj",new Member());
+    public String displayMember(Model model) {
+        model.addAttribute("obj", new Member());
         return "add-member";
     }
 
 
     @PostMapping(value = "add-member.jsf")
-    public String saveMember(@Valid Member obj, BindingResult result, Model model){
-        if (obj != null){
+    public String saveMember(@Valid Member obj, BindingResult result, Model model) {
+        if (obj != null) {
             repo.save(obj);
-            model.addAttribute("successMesg","success");
+            model.addAttribute("successMesg", "success");
             model.addAttribute("obj", new Member());
         }
 
@@ -40,8 +40,8 @@ public class MemberController {
     }
 
     @GetMapping(value = "member-list.jsf")
-    public String displayList(Model model){
-        model.addAttribute("list",repo.findAll());
+    public String displayList(Model model) {
+        model.addAttribute("list", repo.findAll());
         return "member-list";
     }
 

@@ -22,17 +22,17 @@ public class UserController {
     private UserRepo repo;
 
     @GetMapping(value = "add-user.jsf")
-    public String displayRole(Model model){
-        model.addAttribute("obj",new User());
+    public String displayRole(Model model) {
+        model.addAttribute("obj", new User());
         return "add-user";
     }
 
 
     @PostMapping(value = "add-user.jsf")
-    public String saveRole(@Valid User obj, BindingResult result, Model model){
-        if (obj != null){
+    public String saveRole(@Valid User obj, BindingResult result, Model model) {
+        if (obj != null) {
             repo.save(obj);
-            model.addAttribute("successMesg","success");
+            model.addAttribute("successMesg", "success");
             model.addAttribute("obj", new User());
         }
 
@@ -40,8 +40,8 @@ public class UserController {
     }
 
     @GetMapping(value = "user-list.jsf")
-    public String displayList(Model model){
-        model.addAttribute("list",repo.findAll());
+    public String displayList(Model model) {
+        model.addAttribute("list", repo.findAll());
         return "user-list";
     }
 

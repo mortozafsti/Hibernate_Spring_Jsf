@@ -4,70 +4,79 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
-   <title>Dashboard &mdash; Ngo</title>
+    <title>Dashboard &mdash; Ngo</title>
 </head>
 
 <body>
 
 <div class="main-content" layout:fragment="custom-content">
-   <div class="row">
-      <div class="col-lg-8 col-md-12 col-12 col-sm-12">
-         <div class="login-brand">
-            Ngo System
-         </div>
-         <div class="card card-primary">
-            <div class="card-header"><h4>Add User</h4></div>
-            <div class="card-body">
-               <form method="post" th:object="${obj}" th:action="@{/user/add-user.jsf}">
-                  <div class="row">
-                     <div class="form-group col-12">
-                        <label for="user_id">User Id</label>
-                        <input id="user_id" type="text" class="form-control" th:field="*{id}" name="user_id" autofocus>
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="users_name">User Name</label>
-                        <input id="users_name" type="text" class="form-control" th:field="*{userName}" name="user_name">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_name">User Email</label>
-                        <input id="user_name" type="text" class="form-control" th:field="*{email}" name="user_name">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_mobile">User Mobile</label>
-                        <input id="user_mobile" type="text" class="form-control" th:field="*{mobile}" name="user_mobile">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_firstname">User FirstName</label>
-                        <input id="user_firstname" type="text" class="form-control" th:field="*{firstName}" name="user_firstname">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_lastname">User LastName</label>
-                        <input id="user_lastname" type="text" class="form-control" th:field="*{lastName}" name="user_lastname">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_regidate">Registration Date</label>
-                        <input id="user_regidate" type="text" class="form-control" th:field="*{regiDate}" name="user_regidate">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_roleid">Role Id</label>
-                        <input id="user_roleid" type="text" class="form-control" th:field="*{role}" name="user_roleid">
-                     </div>
-                     <div class="form-group col-12">
-                        <label for="user_ngoid">Ngo Id</label>
-                        <input id="user_ngoid" type="text" class="form-control" th:field="*{ngo}" name="user_ngoid">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <button type="submit" class="btn btn-primary btn-block">
-                        Add User
-                     </button>
-                  </div>
-               </form>
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="login-brand">
+                Ngo System
             </div>
-         </div>
-      </div>
+            <div class="card card-primary">
+                <div class="card-header"><h4>Add User</h4></div>
+                <div class="card-body">
+                    <form method="post" th:object="${obj}" th:action="@{/user/add-user.jsf}">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="user_id">User Id</label>
+                                <input id="user_id" type="text" class="form-control" th:field="*{id}" name="user_id"
+                                       autofocus>
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="users_name">User Name</label>
+                                <input id="users_name" type="text" class="form-control" th:field="*{userName}"
+                                       name="user_name">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_name">User Email</label>
+                                <input id="user_name" type="text" class="form-control" th:field="*{email}"
+                                       name="user_name">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_mobile">User Mobile</label>
+                                <input id="user_mobile" type="text" class="form-control" th:field="*{mobile}"
+                                       name="user_mobile">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_firstname">User FirstName</label>
+                                <input id="user_firstname" type="text" class="form-control" th:field="*{firstName}"
+                                       name="user_firstname">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_lastname">User LastName</label>
+                                <input id="user_lastname" type="text" class="form-control" th:field="*{lastName}"
+                                       name="user_lastname">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_regidate">Registration Date</label>
+                                <input id="user_regidate" type="text" class="form-control" th:field="*{regiDate}"
+                                       name="user_regidate">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_roleid">Role Id</label>
+                                <input id="user_roleid" type="text" class="form-control" th:field="*{role}"
+                                       name="user_roleid">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="user_ngoid">Ngo Id</label>
+                                <input id="user_ngoid" type="text" class="form-control" th:field="*{ngo}"
+                                       name="user_ngoid">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Add User
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-   </div>
+    </div>
 </div>
 </body>
 </html>
