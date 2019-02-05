@@ -7,11 +7,21 @@
     <bean id="sbean" init-method="init" class="com.example.beanlifecycle.entity.SimpleBean">
         <property name="name" value="G M Mortoza Ahmed"/>
         <property name="age" value="99"/>
+        <property name="otherBean" ref="ot"/>
     </bean>
 
     <bean id="sbean1" init-method="init" class="com.example.beanlifecycle.entity.SimpleBean">
-
         <property name="age" value="99"/>
+        <property name="otherBean" ref="ot2"/>
+    </bean>
+
+    <bean id="ot"   class="com.example.beanlifecycle.entity.otherBean">
+        <property name="depId" value="99"/>
+        <property name="depName" value="Software"/>
+    </bean>
+    <bean id="ot2"   class="com.example.beanlifecycle.entity.otherBean">
+        <property name="depId" value="99"/>
+
     </bean>
 
 </beans>

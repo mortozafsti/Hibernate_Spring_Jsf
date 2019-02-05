@@ -1,6 +1,7 @@
 package com.example.beanlifecycle.Test;
 
 import com.example.beanlifecycle.entity.SimpleBean;
+import com.example.beanlifecycle.entity.otherBean;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.NodeType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,6 +16,7 @@ public class Testlifecycle {
 
         SimpleBean simpleBean1 = (SimpleBean) context.getBean("sbean1");
         System.out.println(simpleBean1);
+
 
     }
 }
