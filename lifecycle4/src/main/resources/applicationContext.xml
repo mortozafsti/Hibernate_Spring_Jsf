@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="emp" class="com.example.lifecycle4.entity.Employee"/>
+    <bean name="myAwareServices" class="com.example.lifecycle4.entity.MyAwareService"/>
+</beans>
