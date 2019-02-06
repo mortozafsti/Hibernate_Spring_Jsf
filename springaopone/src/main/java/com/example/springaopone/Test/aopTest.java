@@ -1,5 +1,6 @@
 package com.example.springaopone.Test;
 
+import com.example.springaopone.entity.DoBeforeMethod;
 import com.example.springaopone.entity.Employee;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,8 +11,8 @@ public class aopTest {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-aop.xml");
 
-        Employee employee = (Employee) context.getBean("employeeBean");
-        employee.getName();
+        DoBeforeMethod employee = context.getBean("DobeforeMethodBean", DoBeforeMethod.class);
+        System.out.println(employee.getEmployee().getName());
 
 
 //        System.out.println("---------------------");

@@ -9,14 +9,22 @@ import java.lang.reflect.Method;
 
 @Aspect
 @Component
-public class DoBeforeMethod implements MethodBeforeAdvice {
+public class DoBeforeMethod{
 
 
     @Before("execution(public String getName())")
-    @Override
-    public void before(Method method, Object[] args, Object target) throws Throwable {
+    public void before() {
 
         System.out.println("This is DoBeforeMethod");
 
+    }
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
