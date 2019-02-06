@@ -11,9 +11,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class testallexample {
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(testallexample.class,args);
+        ApplicationContext context = SpringApplication.run(testallexample.class,args);
 
-        Employee employee =(Employee) context.getBean(Employee.class);
+        Employee employee = context.getBean(Employee.class);
         employee.showDetails();
     }
 }
