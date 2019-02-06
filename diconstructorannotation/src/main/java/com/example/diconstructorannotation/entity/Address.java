@@ -7,13 +7,18 @@ public class Address {
     private String country;
 
     public Address(String state, String city, String country) {
-        super();
+//        super();
         this.state = state;
         this.city = city;
         this.country = country;
     }
 
-    public String toString(){
-        return state +" "+city+" "+country;
+    @Override
+    public String toString() {
+        return "Address{" +
+                "state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }

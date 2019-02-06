@@ -1,5 +1,6 @@
 package com.example.diconstructorannotation.Test;
 
+import com.example.diconstructorannotation.entity.Address;
 import com.example.diconstructorannotation.entity.Employee;
 import com.example.diconstructorannotation.entity.EmployeeConfig;
 import org.springframework.context.ApplicationContext;
@@ -10,6 +11,9 @@ public class testdicons {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(EmployeeConfig.class);
         Employee emp = (Employee) context.getBean(Employee.class);
-        emp.show();
+        emp.showInfo();
+
+        Address sss = (Address) context.getBean(Address.class);
+        System.out.println(sss.toString());
     }
 }
