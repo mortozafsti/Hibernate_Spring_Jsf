@@ -9,6 +9,15 @@
 <body>
 
         <h3>Hello G M Mortoza Ahmed</h3>
+        <span style="color: green" th:text="${msg}"></span>
+        <form th:object="${user}" th:action="@{/}" th:method="POST">
+
+            UserName:<input th:field="*{name}"/><br/>
+            PassWord:<input th:field="*{password}"/><br/>
+
+            <button type="submit">Save</button>
+
+        </form>
 
 </body>
 </html>
