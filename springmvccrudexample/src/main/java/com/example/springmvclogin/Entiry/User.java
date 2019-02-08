@@ -19,12 +19,14 @@ public class User {
     public User() {
     }
 
+    public User(Long id) {
+        this.id = id;
+    }
     public User(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
     }
-
     public Long getId() {
         return id;
     }

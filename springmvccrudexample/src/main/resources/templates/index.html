@@ -1,46 +1,52 @@
 <!--<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>-->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org">
     <title>Title Mortoza</title>
     <style>
         .mm{
             margin-left: 50px;
             background-color: darkgrey;
+            margin-right: 300px;
         }
     </style>
 </head>
 <body>
 <h3>This is Student Registration Form And Show the Data</h3>
+<span style="background-color: darkorchid" th:text="${msg}"></span>
 
-<form class="mm" method="post">
+<form class="mm" th:object="${user}" th:action="@{/}" th:method="post">
     Id:<input type="text" name="id"/><br/>
     Name:<input type="text" name="name"/><br/>
     PassWord:<input type="text" name="password"/><br/>
     Email:<input type="email" name="email"/><br/>
     <button type="submit">Save</button>
 </form>
+
 <br/><br/><br/><br/>
-<h3>Showing The Data:</h3>
 <table>
     <tr>
-        <th>Id</th>
+        <th>ID</th>
         <th>Name</th>
         <th>PassWord</th>
         <th>Email</th>
         <th>Action</th>
     </tr>
-    <!--<c:forEach var="list" items="${lists}">-->
-        <tr th>
-            <td>${lists.id}</td>
-            <td>${lists.name}</td>
-            <td>${lists.password}</td>
-            <td>${lists.email}</td>
-            <td colspan="2">
+        <tr th:each="list :${lists.content}">
 
+            <td th:text="${list.id}"></td>
+            <td th:text="${list.email}"></td>
+            <td th:text="${list.name}"></td>
+            <td th:text="${list.password}"></td>
+            <td colspan="3">
+                <a>View</a>
+                <a>Delete</a>
+                <a>Edit</a>
             </td>
-        <!--</tr>-->
-    <!--</c:forEach>-->
+        </tr>
 </table>
+
 </body>
 </html>
