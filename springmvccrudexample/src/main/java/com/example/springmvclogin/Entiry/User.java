@@ -1,9 +1,9 @@
 package com.example.springmvclogin.Entiry;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "user")
 public class User {
@@ -12,8 +12,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @NotNull
+//    @Size(min = 2,max = 10)
     private String name;
+
+//    @NotNull(message = "Enter Your PassWord")
     private String password;
+
+//    @NotNull(message = "Enter Your Email")
     private String email;
 
     public User() {

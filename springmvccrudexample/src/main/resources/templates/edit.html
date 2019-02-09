@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>This is Student Registration Form And Show the Data</h3>
+<span style="background-color: darkorchid" th:text="${msg}"></span>
+
+<form class="mm" action="#" th:object="${user}" th:action="@{/edit/} + ${id}" th:method="post">
+    <table>
+        <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+        </tr>
+        <tr>
+            <td>PassWord:</td>
+            <td><input type="text" th:field="*{password}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{email}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+        </tr>
+    </table>
+    <button type="submit">Update</button>
+</form>
+<a th:href="@{/}">Home Page</a>
+</body>
+</html>

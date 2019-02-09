@@ -4,6 +4,8 @@ import com.example.springmvclogin.Entiry.User;
 import com.example.springmvclogin.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,37 +17,46 @@ public class HomeController {
     @Autowired
     private UserRepo userRepo;
 
+    @GetMapping("/add")
+    public String add(User user){
+        return "add";
+    }
+
     @GetMapping(value = "/")
-    public ModelAndView index(){
-        ModelAndView mv = new ModelAndView();
-//        mv.addObject("title","Spring MVC! MortozaBD Inc.");
-        mv.addObject("user", new User());
-        mv.setViewName("index");
-        return mv;
+    public String index(Model model){
+        model.addAttribute("lists",this.userRepo.findAll());
+        return "index";
     }
 
-    @RequestMapping(value = "/")
-    public ModelAndView doShow(){
-        ModelAndView model = new ModelAndView("index");
-        model.addObject("lists",userRepo.findAll());
-        return model;
-    }
-    @PostMapping(value = "/")
-    public ModelAndView doSave(@Valid User user){
-        ModelAndView model = new ModelAndView();
-        if (user != null){
-            this.userRepo.save(user);
-            model.addObject("msg","Data Saved Successfully");
-            model.addObject("user",new User());
+    @PostMapping(value = "/add")
+    public String doSave(@Valid User user,BindingResult bindingResult,Model model){
+        if (bindingResult.hasErrors()){
+            return "add";
         }
-        model.setViewName("index");
-        return model;
+        this.userRepo.save(user);
+        model.addAttribute("user", new User());
+        return "add";
+    }
+    @PostMapping(value = "/edit/{id}")
+    public String doEdit(@Valid User user,BindingResult bindingResult,Model model,@PathVariable("id") Long id){
+        if (bindingResult.hasErrors()){
+            return "edit";
+        }
+        this.userRepo.save(user);
+        model.addAttribute("user", new User());
+        return "redirect:/";
+    }
+    @GetMapping(value = "/edit/{id}")
+    public String deitView(Model model,@PathVariable("id") Long id){
+        model.addAttribute("user",this.userRepo.getOne(id));
+        return "edit";
+    }
+    @GetMapping(value = "/del/{id}")
+    public String doDelete(Model model,@PathVariable("id") Long id){
+        if (id != null){
+            this.userRepo.deleteById(id);
+        }
+        return "redirect:/";
     }
 
-//    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
-//    public ModelAndView doView(@PathVariable("id") Long id){
-//        ModelAndView model = new ModelAndView("view");
-//        model.addObject("lists", userRepo.findOne());
-//        return model;
-//    }
 }
