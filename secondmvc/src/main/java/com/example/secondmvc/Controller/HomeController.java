@@ -30,7 +30,6 @@ public class HomeController {
 
    @PostMapping(value = "/")
     public ModelAndView add(@Valid User user){
-
         ModelAndView mv = new ModelAndView();
 //        mv.addObject("title","Spring MVC! MortozaBD Inc.");
         if (user.getName() != null){

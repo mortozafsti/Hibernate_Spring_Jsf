@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mm{
+            margin-left: 80px;
+        }
+        .nn{
+            margin-left: 80px;
+        }
+        .pp{
+            margin-left: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="pp">Student registration Form</h3>
+    <span class="nn" th:text="${msg}"></span>
+    <form action="#" th:action="@{/edit/} + ${id}" th:object="${student}" th:method="POST" class="mm">
+            <table>
+                <input type="hidden" th:field="*{id}" th:value="${student.id}"/>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                    <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" th:field="*{age}"/></td>
+                    <td th:class="err" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        Male<input type="radio" value="Male" th:field="*{gender}"/>
+                        FeMale<input type="radio" value="FeMale" th:field="*{gender}"/>
+                    </td>
+                    <td th:class="err" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></td>
+                </tr>
+                <tr>
+                    <td>Course_Complete:</td>
+                    <td>
+                        SSC<input type="checkbox" value="SSC" th:field="*{c_complete}"/>
+                        HSC<input type="checkbox" value="HSC" th:field="*{c_complete}"/>
+                        Diploma<input type="checkbox" value="Diploma" th:field="*{c_complete}"/>
+                        MBA<input type="checkbox" value="MBA" th:field="*{c_complete}"/>
+                    </td>
+                    <td th:class="err" th:if="${#fields.hasErrors('c_complete')}" th:errors="*{c_complete}"></td>
+                </tr>
+                <tr>
+                    <td>Course_Complete:</td>
+                    <td>
+                        <select th:field="*{round}">
+                            <option value="">Select he Round</option>
+                            <option value="36">Round-36</option>
+                            <option value="37">Round-37</option>
+                            <option value="38">Round-38</option>
+                            <option value="39">Round-39</option>
+                        </select>
+                    </td>
+                    <td th:class="err" th:if="${#fields.hasErrors('round')}" th:errors="*{round}"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" th:field="*{email}"/></td>
+                    <td th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+                </tr>
+            </table>
+        <button type="submit">Save</button>
+    </form>
+<a th:href="@{/}">Go To Home Page</a>
+</body>
+</html>
