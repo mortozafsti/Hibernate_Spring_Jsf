@@ -12,14 +12,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @NotNull
-//    @Size(min = 2,max = 10)
+    @NotNull
+    @Size(min = 2,max = 10)
     private String name;
 
-//    @NotNull(message = "Enter Your PassWord")
+    @NotNull
     private String password;
 
-//    @NotNull(message = "Enter Your Email")
+    @NotNull
     private String email;
 
     public User() {

@@ -44,7 +44,7 @@ public class HomeController {
         }
         this.studentRepo.save(student);
         model.addAttribute("student", new Student());
-        model.addAttribute("msg","Data Delete Successfully");
+        model.addAttribute("msg","Data Edit Successfully");
         return "redirect:/";
     }
     @GetMapping("/result")
