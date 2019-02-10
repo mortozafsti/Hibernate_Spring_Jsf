@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <form action="#" th:object="${student}" th:action="@{/add}" th:method="POST">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                    <td th:if="${#fields.hasErrors()}" th:errors="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        Male<input type="radio" th:field="*{gender}" th:value="Male"/>
+                        Female<input type="radio" th:field="*{gender}" th:value="FeMale"/>
+                    </td>
+                    <td th:if="${#fields.hasErrors()}" th:errors="*{gender}"></td>
+                </tr>
+            </table>
+            <button type="submit">Save</button>
+        </form>
+</body>
+</html>

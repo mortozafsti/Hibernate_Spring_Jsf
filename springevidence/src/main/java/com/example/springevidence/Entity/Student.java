@@ -3,7 +3,10 @@ package com.example.springevidence.Entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity(name = "studentone")
@@ -14,24 +17,25 @@ public class Student {
     private Long id;
 
     @NotNull
+    @Size(min = 2,max = 6,message = "Name at Least 2 Char")
     private String name;
 
-    @NotNull
+    @NotBlank(message = "Enter Your Email")
     private String email;
 
-    @NotNull
+    @NotBlank(message = "Enter Your Phone")
     private String phone;
 
-    @NotNull
+    @Min(value = 18,message = "You age is required")
     private String age;
 
-    @NotNull
+    @NotBlank(message = "Enter Your Gender")
     private String gender;
 
-    @NotNull
+    @NotBlank(message = "Enter Your Course")
     private String c_course;
 
-    @NotNull
+    @NotBlank(message = "Enter Your Round")
     private String round;
 
     @Temporal(TemporalType.DATE)

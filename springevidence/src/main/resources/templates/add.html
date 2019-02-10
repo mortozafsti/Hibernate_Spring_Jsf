@@ -43,18 +43,21 @@
                     <div class="col-lg-5">
                         <input id="email2" type="email" th:field="*{email}" class="form-control" placeholder="Email"/>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="phone3" class="col-sm-1 col-form-label">Phone:</label>
                     <div class="col-lg-5">
                         <input id="phone3" type="text" th:field="*{phone}" class="form-control" placeholder="Phone"/>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="age4" class="col-sm-1 col-form-label">Age:</label>
                     <div class="col-lg-5">
                         <input id="age4" type="text" th:field="*{age}" class="form-control" placeholder="Age"/>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="gender8" class="col-sm-1 col-form-label">Gender:</label>
@@ -70,6 +73,7 @@
                             <!--</label>-->
                         </div>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="course9" class="col-sm-1 col-form-label">C_Course:</label>
@@ -81,6 +85,7 @@
                             </label>
                         </div>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('c_course')}" th:errors="*{c_course}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="round7" class="col-sm-1 col-form-label">Round:</label>
@@ -94,12 +99,14 @@
                             <option value="41">Round-41</option>
                         </select>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('round')}" th:errors="*{round}"></label></div>
                 </div>
                 <div class="form-group row">
                     <label for="date77" class="col-sm-1 col-form-label">Date:</label>
                     <div class="col-lg-5">
                         <input type="date" th:field="*{regiDate}" class="form-control" id="date77"/>
                     </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>

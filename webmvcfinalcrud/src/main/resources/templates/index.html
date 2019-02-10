@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+            </tr>
+            <tr th:each="list :${lists}">
+                <td th:text="${list.id}"></td>
+                <td th:text="${list.name}"></td>
+                <td th:text="${list.gender}"></td>
+                <td><a th:href="@{'/edit/'+${list.id}}">Edit</a></td>
+                <td><a th:href="@{'/del/'+${list.id}}">Del</a></td>
+            </tr>
+        </table>
+</body>
+</html>
