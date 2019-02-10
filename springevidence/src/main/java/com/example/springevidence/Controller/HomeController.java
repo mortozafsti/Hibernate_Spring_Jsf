@@ -37,6 +37,8 @@ public class HomeController {
         model.addAttribute("student", new Student());
         return "add";
     }
+
+
     @PostMapping(value = "/edit/{id}")
     public String edit(@Valid Student student, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
         if (bindingResult.hasErrors()){
