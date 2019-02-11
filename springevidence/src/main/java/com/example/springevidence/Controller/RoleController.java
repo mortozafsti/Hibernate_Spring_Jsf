@@ -32,11 +32,24 @@ public class RoleController {
     public String roleSave(@Valid Role role, BindingResult bindingResult,Model model){
         if (bindingResult.hasErrors()){
             return "roleAdd";
-        }
-            this.rolerepo.save(role);
-            model.addAttribute("role", new Role());
+        }else {
+            if (role != null){
+                Role role1 = this.rolerepo.findByRolename(role.getRolename());
+                if (role1 != null){
+                    model.addAttribute("exitMsg","RoleName is Already Exist");
+                }else {
+                    this.rolerepo.save(role);
+                    model.addAttribute("role", new Role());
+                    model.addAttribute("syccessMsg","A Success");
+                }
+            }
 
+        }
         return "roleAdd";
     }
+//    @GetMapping(value = "/del/{id}")
+//    public String add(Role role){
+//        return "roleAdd";
+//    }
 
 }

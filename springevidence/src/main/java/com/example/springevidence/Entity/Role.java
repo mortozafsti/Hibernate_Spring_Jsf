@@ -1,6 +1,9 @@
 package com.example.springevidence.Entity;
 
+import net.bytebuddy.implementation.bind.annotation.Empty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,8 +15,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(message = "Enter Your Role Name")
+    @NotEmpty(message = "Enter Your Role Name")
+    @Column(unique = true)
     private String rolename;
 
     public Role() {
