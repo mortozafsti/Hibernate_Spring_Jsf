@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-        <form action="#" th:object="${student}" th:action="@{/add}" th:method="POST" class="mm">
+        <form action="#" th:object="${student}" th:action="@{/add}" th:method="POST" class="mm" enctype="multipart/form-data">
             <div class="">
                 <div role="navigation">
                     <div class="navbar navbar-inverse">
@@ -107,6 +107,14 @@
                         <input type="date" th:field="*{regiDate}" class="form-control" id="date77"/>
                     </div>
                     <div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>
+                </div>
+                <!--///file-->
+                <div class="form-group row">
+                    <label for="image" class="col-sm-1 col-form-label">Uplode Image:</label>
+                    <div class="col-lg-5">
+                        <input type="file" name="file" class="form-control" id="image"/>
+                    </div>
+                    <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>-->
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>

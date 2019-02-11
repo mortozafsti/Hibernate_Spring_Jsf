@@ -62,6 +62,7 @@
         <th>C_Course</th>
         <th>Round</th>
         <th>Regi_Date</th>
+        <th>Uplode Image</th>
         <th colspan="2">Action</th>
     </tr>
     <tr th:each="u :${lists}">
@@ -74,8 +75,10 @@
         <td th:text="${u.c_course}"></td>
         <td th:text="${u.round}"></td>
         <td th:text="${u.regiDate}"></td>
+        <td><img th:src="@{${u.filePath}}" width="90" height="90"/></td>
         <td><a th:href="@{'/edit/'+${u.id}}">Edit</a></td>
         <td><a th:href="@{'/del/'+${u.id}}">Del</a></td>
+
     </tr>
 </table>
 </body>

@@ -17,7 +17,7 @@ public class Student {
     private Long id;
 
     @NotNull
-    @Size(min = 2,max = 6,message = "Name at Least 2 Char")
+    @Size(min = 2,max = 30,message = "Name at Least 2 Char")
     private String name;
 
     @NotBlank(message = "Enter Your Email")
@@ -42,10 +42,15 @@ public class Student {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date regiDate;
 
+    private Long fileSize;
+    private String fileName;
+    private String filePath;
+    private String fileExtention;
+
     public Student() {
     }
 
-    public Student(@NotNull String name, @NotNull String email, @NotNull String phone, @NotNull String age, @NotNull String gender, @NotNull String c_course, @NotNull String round, Date regiDate) {
+    public Student(@NotNull @Size(min = 2, max = 6, message = "Name at Least 2 Char") String name, @NotBlank(message = "Enter Your Email") String email, @NotBlank(message = "Enter Your Phone") String phone, @Min(value = 18, message = "You age is required") String age, @NotBlank(message = "Enter Your Gender") String gender, @NotBlank(message = "Enter Your Course") String c_course, @NotBlank(message = "Enter Your Round") String round, Date regiDate, Long fileSize, String fileName, String filePath, String fileExtention) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -54,6 +59,10 @@ public class Student {
         this.c_course = c_course;
         this.round = round;
         this.regiDate = regiDate;
+        this.fileSize = fileSize;
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.fileExtention = fileExtention;
     }
 
     public Long getId() {
@@ -126,5 +135,37 @@ public class Student {
 
     public void setRegiDate(Date regiDate) {
         this.regiDate = regiDate;
+    }
+
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFileExtention() {
+        return fileExtention;
+    }
+
+    public void setFileExtention(String fileExtention) {
+        this.fileExtention = fileExtention;
     }
 }
