@@ -19,10 +19,6 @@ public class Role {
     public Role() {
     }
 
-    public Role(String rolename) {
-        this.rolename = rolename;
-    }
-
     public Long getId() {
         return id;
     }
@@ -38,5 +34,4 @@ public class Role {
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
-
 }

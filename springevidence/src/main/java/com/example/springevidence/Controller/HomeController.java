@@ -34,6 +34,7 @@ public class HomeController {
     public String add(Student student){
         return "add";
     }
+
     @GetMapping(value = "/")
     public String index(Model model){
         model.addAttribute("lists", this.studentRepo.findAll());
@@ -54,6 +55,7 @@ public class HomeController {
             student.setFilePath("image/" +  "new-" + file.getOriginalFilename());
             student.setFileExtention(file.getContentType());
 
+            student.setRegiDate(new Date());
             this.studentRepo.save(student);
             model.addAttribute("student", new Student());
 
@@ -68,10 +70,12 @@ public class HomeController {
 
     @PostMapping(value = "/edit/{id}")
     public String edit(@Valid Student student, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
+        Student student1 = this.studentRepo.getOne(id);
         if (bindingResult.hasErrors()){
             return "edit";
         }
-        student.setRegiDate(new Date());
+        student.setRegiDate(student1.getRegiDate());
+
         this.studentRepo.save(student);
         model.addAttribute("student", new Student());
         return "redirect:/";
