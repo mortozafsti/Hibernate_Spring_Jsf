@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+        .mm{
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="row" th:class="mm">
+    <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+        <div class="login-brand">
+            Ngo System
+        </div>
+        <button class=" btn btn-info"><a th:href="@{/ngo}">Home Page</a></button>
+        <div class="card card-primary">
+            <div class="card-header"><h4>Add New Ngo</h4></div>
+            <div class="card-body">
+                <form action="#" th:object="${ngo}" th:action="@{/ngoAdd}" th:method="POST">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="ngo_id">Ngo Id</label>
+                            <input id="ngo_id" type="text" th:field="*{id}" class="form-control" name="ngo_id" autofocus>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_name">Ngo Name</label>
+                            <input id="ngo_name" type="text" th:field="*{name}" class="form-control" name="ngo_name">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_w_name">Ngo Owner Name</label>
+                            <input id="ngo_w_name" type="text" th:field="*{ownersName}" class="form-control" name="ngo_w_name">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_email">Ngo Email</label>
+                            <input id="ngo_email" type="text" th:field="*{email}" class="form-control" name="ngo_email">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_mobile">Ngo Mobile</label>
+                            <input id="ngo_mobile" type="text" th:field="*{mobile}" class="form-control" name="ngo_mobile">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_address">Ngo Address</label>
+                            <input id="ngo_address" type="text" th:field="*{address}" class="form-control" name="ngo_address">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="ngo_service">Ngo Service</label>
+                            <input id="ngo_service" type="text" th:field="*{service}" class="form-control" name="ngo_service">
+                        </div>
+                        <div class="form-group row">
+                            <label for="bdate" class="col-sm-1 col-form-label">Regi_Date:</label>
+                            <div class="col-lg-5">
+                                <input type="date" th:field="*{regiDate}" class="form-control" id="bdate"/>
+                            </div>
+                            <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></label></div>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Add Ngo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

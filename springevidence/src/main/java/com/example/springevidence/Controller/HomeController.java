@@ -2,6 +2,7 @@ package com.example.springevidence.Controller;
 
 import com.example.springevidence.Entity.Student;
 import com.example.springevidence.Entity.imageOptimizer;
+import com.example.springevidence.Repo.Rolerepo;
 import com.example.springevidence.Repo.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,12 @@ public class HomeController {
     @Autowired
     private StudentRepo studentRepo;
 
+    @Autowired
+    private Rolerepo rolerepo;
+
     @GetMapping(value = "/add")
-    public String add(Student student){
+    public String add(Student student,Model model){
+        model.addAttribute("rolelists", this.rolerepo.findAll());
         return "add";
     }
 
@@ -60,6 +65,8 @@ public class HomeController {
             model.addAttribute("student", new Student());
 
             optimizer.optimizeImage(UPLOAD_FOLDER, file,0.3f,90,90);
+
+            model.addAttribute("rolelist", this.rolerepo.findAll());
         }catch (Exception e){
             e.printStackTrace();
         }

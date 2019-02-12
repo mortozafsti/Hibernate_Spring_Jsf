@@ -124,7 +124,7 @@
                 <div class="form-group row">
                     <label for="image" class="col-sm-1 col-form-label">Uplode Image:</label>
                     <div class="col-lg-5">
-                        <input type="file" name="file" class="form-control" id="image"/>
+                        <input type="file" name="file" th:field="*{fileExtention}" class="form-control" id="image"/>
                     </div>
                     <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>-->
                 </div>

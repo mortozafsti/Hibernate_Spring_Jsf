@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "studentone")
 public class Student {
@@ -55,6 +56,22 @@ public class Student {
     private String fileName;
     private String filePath;
     private String fileExtention;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "student_role",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> role;
+
+    public Set<Role> getRole() {
+        return role;
+    }
+
+    public void setRole(Set<Role> role) {
+        this.role = role;
+    }
 
     public Student() {
     }

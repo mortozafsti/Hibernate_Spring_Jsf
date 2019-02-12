@@ -5,10 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap.css" rel="stylesheet"/>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="../static/js/bootstrap.js"></script>
     <style>
         .mm{
             margin-left: 20px;
@@ -33,7 +29,7 @@
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
-                background-color: #999999;
+            background-color: #999999;
             color: white;
         }
     </style>
@@ -50,40 +46,32 @@
         </div>
     </div>
 </div>
-<button btn btn-primary><a th:href="@{/add}">Add NewUser</a></button>
-<button btn btn-primary><a th:href="@{/roleAdd}">Add Role</a></button>
+<button class=" btn btn-primary"><a th:href="@{/add}">Add NewUser</a></button>
+<button class=" btn btn-primary"><a th:href="@{/roleAdd}">Add Role</a></button>
 <button class=" btn btn-primary"><a th:href="@{/ngoAdd}">Add Ngo</a></button>
 <table id="customers">
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Owner_Name</th>
         <th>Email</th>
-        <th>Phone</th>
-        <th>Age</th>
-        <th>Birth_Date</th>
-        <th>Gender</th>
-        <th>C_Course</th>
-        <th>Round</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Service</th>
         <th>Regi_Date</th>
-        <th>Last_Modify</th>
-        <th>Uplode Image</th>
         <th colspan="2">Action</th>
     </tr>
-    <tr th:each="u :${lists}">
-        <td th:text="${u.id}"></td>
-        <td th:text="${u.name}"></td>
-        <td th:text="${u.email}"></td>
-        <td th:text="${u.phone}"></td>
-        <td th:text="${u.age}"></td>
-        <td th:text="${u.birthDate}"></td>
-        <td th:text="${u.gender}"></td>
-        <td th:text="${u.c_course}"></td>
-        <td th:text="${u.round}"></td>
-        <td th:text="${u.regiDate}"></td>
-        <td th:text="${u.lastMDate}"></td>
-        <td><img th:src="@{${u.filePath}}" width="90" height="90"/></td>
-        <td><a th:href="@{'/edit/'+${u.id}}">Edit</a></td>
-        <td><a th:href="@{'/del/'+${u.id}}">Del</a></td>
+    <tr th:each="n: ${ngolist}">
+        <td th:text="${n.id}"></td>
+        <td th:text="${n.name}"></td>
+        <td th:text="${n.ownersName}"></td>
+        <td th:text="${n.email}"></td>
+        <td th:text="${n.mobile}"></td>
+        <td th:text="${n.address}"></td>
+        <td th:text="${n.service}"></td>
+        <td th:text="${n.regiDate}"></td>
+        <td><a th:href="@{'/editn/'+${n.id}}">Edit</a></td>
+        <td><a th:href="@{'/deln/'+${n.id}}">Del</a></td>
 
     </tr>
 </table>

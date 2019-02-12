@@ -48,6 +48,32 @@ public class RoleController {
         }
         return "roleAdd";
     }
+
+    @GetMapping(value = "/roleedit/{id}")
+    public String editViewr(@PathVariable("id") Long id,Model model){
+        model.addAttribute("role",this.rolerepo.getOne(id));
+        return "roleEdit";
+    }
+
+    @PostMapping(value = "/roleedit/{id}")
+    public String roleEdit(@Valid Role role, BindingResult bindingResult,Model model,@PathVariable("id") Long id){
+        if (bindingResult.hasErrors()){
+            return "roleEdit";
+        }else {
+            if (role != null){
+                Role role1 = this.rolerepo.findByRolename(role.getRolename());
+                if (role1 != null){
+                    model.addAttribute("exitMsg","RoleName is Already Exist");
+                }else {
+                    this.rolerepo.save(role);
+                    model.addAttribute("role", new Role());
+                    model.addAttribute("syccessMsg","A Updated");
+                }
+            }
+
+        }
+        return "roleEdit";
+    }
     @GetMapping(value = "/delr/{id}")
     public String deleterole(Model model, @PathVariable("id") Long id){
         if (id != null){
