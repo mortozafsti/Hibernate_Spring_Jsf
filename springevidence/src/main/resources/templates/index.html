@@ -52,7 +52,7 @@
 </div>
 <button btn btn-primary><a th:href="@{/add}">Add NewUser</a></button>
 <button btn btn-primary><a th:href="@{/roleAdd}">Add Role</a></button>
-<button class=" btn btn-primary"><a th:href="@{/ngoAdd}">Add Ngo</a></button>
+<button btn btn-primary><a th:href="@{/ngoAdd}">Add Ngo</a></button>
 <table id="customers">
     <tr>
         <th>ID</th>
@@ -67,6 +67,7 @@
         <th>Regi_Date</th>
         <th>Last_Modify</th>
         <th>Uplode Image</th>
+        <th>Role Name</th>
         <th colspan="2">Action</th>
     </tr>
     <tr th:each="u :${lists}">
@@ -82,6 +83,9 @@
         <td th:text="${u.regiDate}"></td>
         <td th:text="${u.lastMDate}"></td>
         <td><img th:src="@{${u.filePath}}" width="90" height="90"/></td>
+        <td><span th:each="rr : ${u.role}">
+            <span th:text="${rr.rolename}"></span>
+        </span></td>
         <td><a th:href="@{'/edit/'+${u.id}}">Edit</a></td>
         <td><a th:href="@{'/del/'+${u.id}}">Del</a></td>
 

@@ -36,6 +36,7 @@ public class HomeController {
 
     @GetMapping(value = "/add")
     public String add(Student student,Model model){
+//        System.out.println(this.rolerepo.findAll().size());
         model.addAttribute("rolelists", this.rolerepo.findAll());
         return "add";
     }
