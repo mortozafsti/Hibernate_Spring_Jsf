@@ -67,7 +67,7 @@ public class HomeController {
 
             optimizer.optimizeImage(UPLOAD_FOLDER, file,0.3f,90,90);
 
-            model.addAttribute("rolelist", this.rolerepo.findAll());
+            model.addAttribute("rolelists", this.rolerepo.findAll());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -79,6 +79,7 @@ public class HomeController {
     @PostMapping(value = "/edit/{id}")
     public String edit(@Valid Student student, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
         Student student1 = this.studentRepo.getOne(id);
+
         if (bindingResult.hasErrors()){
             return "edit";
         }
@@ -86,11 +87,17 @@ public class HomeController {
 
         this.studentRepo.save(student);
         model.addAttribute("student", new Student());
+
+        model.addAttribute("rolelists", this.rolerepo.findAll());
         return "redirect:/";
     }
     @GetMapping(value = "/edit/{id}")
     public String editView(Model model, @PathVariable("id") Long id){
+
+        model.addAttribute("rolelists", this.rolerepo.findAll());
+
         model.addAttribute("student",this.studentRepo.getOne(id));
+
         return "edit";
     }
     @GetMapping(value = "/del/{id}")
