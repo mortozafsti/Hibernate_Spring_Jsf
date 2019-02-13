@@ -52,27 +52,29 @@
 <button class=" btn btn-primary"><a th:href="@{/nomineeAdd}">Add Nominee</a></button>
 <table id="customers">
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Owner_Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>Service</th>
-        <th>Regi_Date</th>
+        <th>N_ID</th>
+        <th>N_Name</th>
+        <th>N_Address</th>
+        <th>N_Mobile</th>
+        <th>N_Age</th>
+        <th>N_DoB</th>
+        <th>N_NID</th>
+        <th>N_Gender</th>
+        <th>N_Relation</th>
         <th colspan="2">Action</th>
     </tr>
-    <tr th:each="n: ${ngolist}">
-        <td th:text="${n.id}"></td>
-        <td th:text="${n.name}"></td>
-        <td th:text="${n.ownersName}"></td>
-        <td th:text="${n.email}"></td>
-        <td th:text="${n.mobile}"></td>
-        <td th:text="${n.address}"></td>
-        <td th:text="${n.service}"></td>
-        <td th:text="${n.regiDate}"></td>
-        <td><a th:href="@{'/editn/'+${n.id}}">Edit</a></td>
-        <td><a th:href="@{'/deln/'+${n.id}}">Del</a></td>
+    <tr th:each="nl: ${nomineelist}">
+        <td th:text="${nl.id}"></td>
+        <td th:text="${nl.n_name}"></td>
+        <td th:text="${nl.n_address}"></td>
+        <td th:text="${nl.n_mobile}"></td>
+        <td th:text="${nl.age}"></td>
+        <td th:text="${nl.n_dob}"></td>
+        <td th:text="${nl.n_nid}"></td>
+        <td th:text="${nl.n_gender}"></td>
+        <td th:text="${nl.n_relation}"></td>
+        <td><a th:href="@{'/editn/'+${nl.id}}">Edit</a></td>
+        <td><a th:href="@{'/deln/'+${nl.id}}">Del</a></td>
 
     </tr>
 </table>
