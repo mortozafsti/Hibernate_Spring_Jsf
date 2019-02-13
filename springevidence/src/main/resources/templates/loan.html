@@ -50,32 +50,31 @@
 <button class=" btn btn-primary"><a th:href="@{/roleAdd}">Add Role</a></button>
 <button class=" btn btn-primary"><a th:href="@{/ngoAdd}">Add Ngo</a></button>
 <button class=" btn btn-primary"><a th:href="@{/nomineeAdd}">Add Nominee</a></button>
-<button btn btn-primary><a th:href="@{/memberAdd}">Add Member</a></button>
+<button class=" btn btn-primary"><a th:href="@{/memberAdd}">Add Member</a></button>
 <button class=" btn btn-primary"><a th:href="@{/depositeAdd}">Add Deposite</a></button>
 <button btn btn-primary><a th:href="@{/loanAdd}">Add Loan</a></button>
 <table id="customers">
+    
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Owner_Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>Service</th>
-        <th>Regi_Date</th>
+        <th>L_Id</th>
+        <th>Loan_Branch</th>
+        <th>Loan_Date</th>
+        <th>Loan_Amount</th>
+        <th>Total_Loan_Kisti</th>
+        <th>Tl_Loan_Payable_Kisti</th>
+        <th>Member_Id</th>
         <th colspan="2">Action</th>
     </tr>
-    <tr th:each="n: ${ngolist}">
-        <td th:text="${n.id}"></td>
-        <td th:text="${n.name}"></td>
-        <td th:text="${n.ownersName}"></td>
-        <td th:text="${n.email}"></td>
-        <td th:text="${n.mobile}"></td>
-        <td th:text="${n.address}"></td>
-        <td th:text="${n.service}"></td>
-        <td th:text="${n.regiDate}"></td>
-        <td><a th:href="@{'/editn/'+${n.id}}">Edit</a></td>
-        <td><a th:href="@{'/deln/'+${n.id}}">Del</a></td>
+    <tr th:each="lon: ${loanlist}">
+        <td th:text="${lon.id}"></td>
+        <td th:text="${lon.l_brance}"></td>
+        <td th:text="${lon.l_date}"></td>
+        <td th:text="${lon.l_amount}"></td>
+        <td th:text="${lon.l_kisti}"></td>
+        <td th:text="${lon.l_payable_kisti}"></td>
+        <td th:text="${lon.member.id}"></td>
+        <td><a th:href="@{'/editl/'+${lon.id}}">Edit</a></td>
+        <td><a th:href="@{'/dell/'+${lon.id}}">Del</a></td>
 
     </tr>
 </table>

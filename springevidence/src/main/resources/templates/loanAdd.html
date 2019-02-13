@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.js"></script>
+    <script src="js/angular_route.js"></script>
+    <script src="js/ascript.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+        .mm{
+            padding: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border: 1px solid #222222;
+
+        }
+        .mmm{
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+        <div class="login-brand" th:class="mmm">
+            Ngo System
+        </div>
+        <div class="card card-primary">
+            <div class="card-header mmm"><h4>Add Loan</h4></div>
+            <button class=" btn btn-info mmm"><a th:href="@{/loan}">Home Page</a></button>
+            <div class="card-body">
+                <form action="#" th:object="${loan}" th:action="@{/loanAdd}" th:method="POST" class="mm">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="loan_branch">Loan_Branch</label>
+                            <input id="loan_branch" type="text" class="form-control" th:field="*{l_brance}" ng-model="l_brance"
+                                   name="loan_branch">
+                            <span ng-show="loanAdd.l_brance.$error.required">Loan Branch is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="loan_date">Loan_Date</label>
+                            <input id="loan_date" type="text" class="form-control" th:field="*{l_date}" ng-model="l_date"
+                                   name="loan_date">
+                            <span ng-show="loanAdd.l_date.$error.required">Loan Date is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="loan_amount">Loan_Amount</label>
+                            <input id="loan_amount" type="text" class="form-control" th:field="*{l_amount}" ng-model="l_amount"
+                                   name="loan_amount">
+                            <span ng-show="loanAdd.l_amount.$error.required">Loan Amount is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="loan_kisti">Total_Loan_Kisti</label>
+                            <input id="loan_kisti" type="text" class="form-control" th:field="*{l_kisti}" ng-model="l_kisti"
+                                   name="loan_kisti">
+                            <span ng-show="loanAdd.l_kisti.$error.required">T_Loan Kisti is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="pay_kisti">Loan_Payable_Kisti</label>
+                            <input id="pay_kisti" type="text" class="form-control" th:field="*{l_payable_kisti}" ng-model="l_payable_kisti"
+                                   name="pay_kisti">
+                            <span ng-show="loanAdd.l_payable_kisti.$error.required">Loan Payable Kisti is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_id">Member Id</label>
+                            <input id="member_id" type="text" class="form-control" th:field="*{member}" ng-model="member"
+                                   name="member_id">
+                            <span ng-show="depositeAdd.member.$error.required">Member Id is Required For Deposit</span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-6">
+                            <button type="submit" class="btn btn-primary btn-blockquote">
+                                Submit Loan
+                            </button>
+                        </div>
+                        <!--<div class="form-group col-6">-->
+                            <!--<button type="reset" class="btn btn-success btn-blockquote">-->
+                                <!--Reset Member-->
+                            <!--</button>-->
+                        <!--</div>-->
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

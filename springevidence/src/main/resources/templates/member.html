@@ -50,32 +50,38 @@
 <button class=" btn btn-primary"><a th:href="@{/roleAdd}">Add Role</a></button>
 <button class=" btn btn-primary"><a th:href="@{/ngoAdd}">Add Ngo</a></button>
 <button class=" btn btn-primary"><a th:href="@{/nomineeAdd}">Add Nominee</a></button>
-<button btn btn-primary><a th:href="@{/memberAdd}">Add Member</a></button>
+<button class=" btn btn-primary"><a th:href="@{/memberAdd}">Add Member</a></button>
 <button class=" btn btn-primary"><a th:href="@{/depositeAdd}">Add Deposite</a></button>
 <button btn btn-primary><a th:href="@{/loanAdd}">Add Loan</a></button>
 <table id="customers">
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Owner_Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>Service</th>
+        <th>M_ID</th>
+        <th>M_Name</th>
+        <th>m_Code</th>
+        <th>M_Gender</th>
+        <th>M_Mobile</th>
+        <th>M_Address</th>
+        <th>M_NID</th>
+        <th>M_Admit_Fee</th>
         <th>Regi_Date</th>
+        <th>Ngo_ID</th>
+        <th>Nominee_ID</th>
         <th colspan="2">Action</th>
     </tr>
-    <tr th:each="n: ${ngolist}">
-        <td th:text="${n.id}"></td>
-        <td th:text="${n.name}"></td>
-        <td th:text="${n.ownersName}"></td>
-        <td th:text="${n.email}"></td>
-        <td th:text="${n.mobile}"></td>
-        <td th:text="${n.address}"></td>
-        <td th:text="${n.service}"></td>
-        <td th:text="${n.regiDate}"></td>
-        <td><a th:href="@{'/editn/'+${n.id}}">Edit</a></td>
-        <td><a th:href="@{'/deln/'+${n.id}}">Del</a></td>
+    <tr th:each="m: ${memberlist}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.m_name}"></td>
+        <td th:text="${m.m_code}"></td>
+        <td th:text="${m.m_gender}"></td>
+        <td th:text="${m.m_mobile}"></td>
+        <td th:text="${m.m_address}"></td>
+        <td th:text="${m.m_nid}"></td>
+        <td th:text="${m.m_admit_fee}"></td>
+        <td th:text="${m.regi_date}"></td>
+        <td th:text="${m.ngo.id}"></td>
+        <td th:text="${m.nominee.id}"></td>
+        <td><a th:href="@{'/memberedit/'+${m.id}}">Edit</a></td>
+        <td><a th:href="@{'/delm/'+${m.id}}">Del</a></td>
 
     </tr>
 </table>

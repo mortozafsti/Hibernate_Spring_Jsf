@@ -13,7 +13,13 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet"/>
     <script src="js/bootstrap.min.js"></script>
-    <script src="../static/js/bootstrap.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+        .mmm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
@@ -24,7 +30,7 @@
         <div class="card-header"><h4>Add Nominee</h4></div>
         <button class=" btn btn-info"><a th:href="@{/nominee}">Home Page</a></button>
         <div class="card-body">
-            <form method="post" th:object="${nominee}" th:action="@{/nomineeAdd}" action="#">
+            <form method="post" th:object="${nominee}" th:action="@{/nomineeAdd}" action="#" class="mmm">
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="nominee_id">Nominee Id</label>
