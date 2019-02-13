@@ -23,7 +23,7 @@ import java.util.Date;
 @Controller
 public class HomeController {
 
-    private static String UPLOAD_FOLDER = "E:/Hibernate_Spring_Jsf/springevidence/src/main/resources/static/image/";
+    private static String UPLOAD_FOLDER = "src/main/resources/static/image/";
 
     @Autowired
     private imageOptimizer optimizer;
@@ -77,18 +77,42 @@ public class HomeController {
 
 
     @PostMapping(value = "/edit/{id}")
-    public String edit(@Valid Student student, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
+    public String edit(@Valid Student student, BindingResult bindingResult, Model model, @PathVariable("id") Long id,MultipartFile file){
         Student student1 = this.studentRepo.getOne(id);
 
         if (bindingResult.hasErrors()){
             return "edit";
         }
+
         student.setRegiDate(student1.getRegiDate());
+        try {
+            if (file.getOriginalFilename().length() > 0) {
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
+                Files.write(path, bytes);
 
-        this.studentRepo.save(student);
-        model.addAttribute("student", new Student());
+                student.setFileName("new-" + file.getOriginalFilename());
+                student.setFileSize(file.getSize());
+                student.setFilePath("image/" + "new-" + file.getOriginalFilename());
+                student.setFileExtention(file.getContentType());
+            }else{
+                student.setFileName(student1.getFileName());
+                student.setFilePath(student1.getFilePath());
+                student.setFileSize(student1.getFileSize());
+                student.setFileExtention(student1.getFileExtention());
+            }
 
-        model.addAttribute("rolelists", this.rolerepo.findAll());
+            this.studentRepo.save(student);
+            model.addAttribute("student", new Student());
+           if (file.getOriginalFilename().length() > 0){
+               optimizer.optimizeImage(UPLOAD_FOLDER, file,0.3f,90,90);
+           }
+
+            model.addAttribute("rolelists", this.rolerepo.findAll());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
     }
     @GetMapping(value = "/edit/{id}")

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="employeeBean" class="com.example.springaopone.Entity.Employee">
+        <property name="id" value="1243288"/>
+        <property name="name" value="G M Mortoza"/>
+    </bean>
+    <bean id="doBeforeMethodBean" class="com.example.springaopone.Entity.DoBeforeMethod"/>
+    <bean id="simpleServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="employeeBean"/>
+        <property name="interceptorNames">
+            <list>
+                <value>doBeforeMethodBean</value>
+            </list>
+        </property>
+    </bean>
+</beans>
