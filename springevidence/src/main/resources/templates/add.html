@@ -13,12 +13,19 @@
         .mm{
             margin-left: 20px;
             margin-right: 20px;
+            border: 1px solid #ce8483;
+            border-collapse: collapse;
+        }
+        .mmm{
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
     </style>
 </head>
 <body>
-        <form action="#" th:object="${student}" th:action="@{/add}" th:method="POST" class="mm" enctype="multipart/form-data">
+
+        <form action="#" th:object="${student}" th:action="@{/add}" th:method="POST" class="mmm" enctype="multipart/form-data">
             <div class="">
                 <div role="navigation">
                     <div class="navbar navbar-inverse">
@@ -32,7 +39,7 @@
                     </div>
                 </div>
                 <button btn btn-primary><a th:href="@{/}"> Home Page</a></button>
-
+                <table class="mm">
                 <div class="form-group row">
                     <label for="rolee" class="col-sm-1 col-form-label">Roles:</label>
                     <div class="col-lg-5">
@@ -127,7 +134,7 @@
                         <input type="file" name="file" class="form-control" id="image"/>
                     </div>
                     <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>-->
-                </div>
+                </div></table>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>

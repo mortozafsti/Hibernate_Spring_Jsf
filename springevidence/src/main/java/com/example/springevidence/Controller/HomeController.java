@@ -88,13 +88,13 @@ public class HomeController {
         this.studentRepo.save(student);
         model.addAttribute("student", new Student());
 
-        model.addAttribute("rolelists", this.rolerepo.findAll());
+//        model.addAttribute("rolelists", this.rolerepo.findAll());
         return "redirect:/";
     }
     @GetMapping(value = "/edit/{id}")
     public String editView(Model model, @PathVariable("id") Long id){
 
-        model.addAttribute("rolelists", this.rolerepo.findAll());
+//        model.addAttribute("rolelists", this.rolerepo.findAll());
 
         model.addAttribute("student",this.studentRepo.getOne(id));
 
