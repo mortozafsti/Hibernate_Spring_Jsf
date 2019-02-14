@@ -38,7 +38,7 @@
         <div class="card card-primary">
             <div class="card-header mmm"><h4>Add Loan</h4></div>
             <button class=" btn btn-info mmm"><a th:href="@{/loan}">Home Page</a></button>
-            <div class="card-body">
+            <div class="card-body" id="model" data-toggle="loanform">
                 <form action="#" th:object="${loan}" th:action="@{/loanAdd}" th:method="POST" class="mm">
                     <div class="row">
                         <div class="form-group col-12">
