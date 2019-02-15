@@ -14,17 +14,19 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<body id="page-top">
+<body>
 
     <div id="wrapper">
 
         <div th:replace="~{fragments/sidebar.html :: sidebar}"></div>
 
-        <!--<div th:replace="~{fragments/navbar.html :: navbar}">-->
-            <!--<div th:replace="~{fragments/maincontent.html :: main_content}"></div>-->
-        <!--</div>-->
+
         <div th:replace="~{fragments/main.html :: main}">
-            <!--<div th:replace="~{fragments/footer.html :: footer}"></div>-->
+
+            <div layout:fragment="cus_con">
+                <h3>Md Faizul Alam Khan</h3>
+            </div>
+
         </div>
 
 
