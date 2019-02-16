@@ -27,21 +27,21 @@ public class RoleController {
     }
 
 
-    @PostMapping(value = "add-role.jsf")
-    public String saveRole(@Valid Role obj, BindingResult result, Model model) {
-        if (obj != null) {
-            repo.save(obj);
-            model.addAttribute("successMesg", "success");
-            model.addAttribute("obj", new Role());
-        }
-
-        return "add-role";
-    }
-
-    @GetMapping(value = "role-list.jsf")
-    public String displayList(Model model) {
-        model.addAttribute("list", repo.findAll());
-        return "role-list";
-    }
+//    @PostMapping(value = "add-role.jsf")
+//    public String saveRole(@Valid Role obj, BindingResult result, Model model) {
+//        if (obj != null) {
+//            repo.save(obj);
+//            model.addAttribute("successMesg", "success");
+//            model.addAttribute("obj", new Role());
+//        }
+//
+//        return "add-role";
+//    }
+//
+//    @GetMapping(value = "role-list.jsf")
+//    public String displayList(Model model) {
+//        model.addAttribute("list", repo.findAll());
+//        return "role-list";
+//    }
 
 }

@@ -11,7 +11,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/add-role")
+    @GetMapping(value = "/add-rolee")
     public String displayRole() {
         return "add-role";
     }

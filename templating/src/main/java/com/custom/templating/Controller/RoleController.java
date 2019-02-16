@@ -6,16 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/role/")
 public class RoleController {
 
     @Autowired
     private RoleRepo roleRepo;
 
-//    @GetMapping(value = "add-role")
-//    public String addRole(Model model){
-//        model.addAttribute("obj", new Role());
-//        return "add-role";
-//    }
+    @GetMapping(value = "add-rolee")
+    public String addRole(Model model){
+        model.addAttribute("obj", new Role());
+        return "add-role";
+    }
 }
