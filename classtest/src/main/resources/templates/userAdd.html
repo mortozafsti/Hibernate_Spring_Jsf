@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h2>This User Form</h2>
+    <form action="#" th:object="${user}" th:action="@{/userr}" th:method="POST">
+
+        <table>
+            <tr>
+                <td>Roles:</td>
+                <td>
+                    <select th:field="*{role}" multiple>
+                        <option th:each="rol :${rolelistHome}" th:value="${rol.id}">
+                            <span th:text="${rol.roleName}"></span>
+                        </option>
+                    </select>
+                </td>
+                <!--<td th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></td>-->
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+                <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>-->
+            </tr>
+            <tr>
+                <td>Mobile:</td>
+                <td><input type="text" th:field="*{mobile}"/></td>
+                <!--<td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></td>-->
+            </tr>
+        </table>
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+</html>

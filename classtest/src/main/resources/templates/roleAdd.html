@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text="${exitMsg}"></span>
+<span th:text="${successMsg}"></span>
+<form action="#" th:object="${role}" th:action="@{/roleAdd}" th:method="POST">
+
+    <table>
+
+        <tr>
+            <td>RoleName:</td>
+            <td><input type="text" th:field="*{roleName}"/></td>
+            <!--<td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></td>-->
+        </tr>
+
+    </table>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
