@@ -26,10 +26,12 @@ public class RoleController {
     }
 
     @PostMapping(value = "/add-role")
-    public String roleSave(@Valid Role role, BindingResult result,Model model){
+    public String roleSave(@Valid Role obj, BindingResult result,Model model){
 
-        this.roleRepo.save(role);
-        model.addAttribute("role", new Role());
+        if (obj != null){
+            this.roleRepo.save(obj);
+            model.addAttribute("obj", new Role());
+        }
 
         return "add-role";
 
