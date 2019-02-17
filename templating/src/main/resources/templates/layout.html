@@ -16,26 +16,19 @@
 </head>
 <body>
 
-    <div id="wrapper">
-
-        <div th:replace="~{fragments/sidebar.html :: sidebar}"></div>
+<div id="wrapper">
+    <div th:replace="~{fragments/sidebar.html :: sidebar}"></div>
+    <div class="container">
+        <div th:replace="~{fragments/navbar.html :: navbar}"></div>
         <div th:replace="~{fragments/maincontent.html :: main_content}">
-            <div th:replace="~{fragments/navbar.html :: navbar}"></div>
-            <div th:replace="~{fragments/footer.html :: footer}"></div>
-        </div>
-        <div class="content">
 
         </div>
-
-
-
-
-        <!--<div layout:fragment="custom-content">-->
-            <!--hdfhdvfvxchj-->
-        <!--</div>-->
-
-
+        <div layout:fragment="cus_con">
+            G M Mortoza Ahmed
+        </div>
+        <div th:replace="~{fragments/footer.html :: footer}"></div>
     </div>
+</div>
 
 
 <!-- Bootstrap core JavaScript-->
