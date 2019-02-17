@@ -25,7 +25,7 @@ public class RoleController {
         return "add-role";
     }
 
-    @PostMapping(value = "/add-role")
+    @PostMapping(value = "/add-role.html")
     public String roleSave(@Valid Role obj, BindingResult result,Model model){
 
         if (obj != null){

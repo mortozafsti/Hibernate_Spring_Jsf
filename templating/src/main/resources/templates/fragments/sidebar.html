@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="sidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar" th:fragment="sidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -22,7 +23,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/dashboard.html" th:href="@{/dashboard.html}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -46,7 +47,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="/add-role" th:href="@{/add-role}">Add Role</a>
+                <a class="collapse-item" href="/add-role.html" th:href="@{/add-role.html}">Add Role</a>
                 <a class="collapse-item" href="cards.html">Cards</a>
             </div>
         </div>
