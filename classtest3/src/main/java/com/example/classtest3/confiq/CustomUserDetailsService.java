@@ -1,8 +1,7 @@
-package com.example.classtest2.config;
+package com.example.classtest3.confiq;
 
-
-import com.example.classtest2.entity.User;
-import com.example.classtest2.repo.UserRepo;
+import com.example.classtest3.entity.User;
+import com.example.classtest3.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,9 +19,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
-        Optional<User> optionalUser = userRepo.findByusernameOrEmail(usernameOrEmail, usernameOrEmail);
+        Optional<User> optionalUser = userRepo.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail);
 
-        optionalUser.orElseThrow(() -> new UsernameNotFoundException("Username Not Found"));
+        optionalUser.orElseThrow(() -> new UsernameNotFoundException("UserName Not Found"));
 
         return optionalUser.map(CustomUserDetails::new).get();
 

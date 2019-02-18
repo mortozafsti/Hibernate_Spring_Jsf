@@ -1,4 +1,4 @@
-package com.example.classtest2.config;
+package com.example.classtest3.confiq;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,18 +11,13 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
-@EnableJpaRepositories(basePackageClasses = com.example.classtest2.repo.UserRepo.class)
+@EnableJpaRepositories(basePackageClasses = com.example.classtest3.repo.UserRepo.class)
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -31,13 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return  new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.userDetailsService(customUserDetailsService)
+        auth
+                .userDetailsService(customUserDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -48,41 +43,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
 
-        httpSecurity
-                .authorizeRequests()
-                .antMatchers("/public/**","/","/login", "/user-save","/role-save").permitAll()
-                .antMatchers("/sa/**").hasRole("SUPERADMIN")
+        http.authorizeRequests()
+                .antMatchers("/public/**","/login","/","/role-save","/user-save")
+                .permitAll()
+                .antMatchers("/sa/").hasRole("SUPERADMIN")
                 .antMatchers("/adm/**").hasRole("ADMIN")
                 .antMatchers("/u/**").hasRole("USER")
                 .antMatchers("/se/**").hasAnyRole("ADMIN","USER","SUPERADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().
-                loginPage("/login").
-                permitAll().
-                and().
-                logout().
-                invalidateHttpSession(true)
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
 
-    }
 
-//    @Bean
-//    @Override
-//    protected UserDetailsService userDetailsService() {
-//
-//        UserDetails userDetails = User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(userDetails);
-//    }
+    }
 }

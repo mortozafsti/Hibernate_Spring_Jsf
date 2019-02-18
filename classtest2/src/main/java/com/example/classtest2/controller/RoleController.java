@@ -14,8 +14,8 @@ public class RoleController {
 
     @GetMapping(value = "/role-save")
     public String saveRole(){
-        Role role = new Role();
 
+        Role role = new Role();
         role.setRoleName("SUPERADMIN");
         roleRepo.save(role);
 
