@@ -18,20 +18,19 @@ public class UserController {
 
 
     @GetMapping(value = "/user-save")
-    public void saveUser(){
+    public String saveUser(){
 
         Set<Role> roles = new HashSet<>();
-        roles.add(new Role("SUPERADMIN"));
-        roles.add(new Role("USER"));
+        roles.add(new Role(1l));
         User user = new User("Mortoza", "sadmin", "12345", "mortozafsti@gmail.com", true, roles);
         userRepo.save(user);
 
         Set<Role> roles2 = new HashSet<>();
-        roles2.add(new Role("ADMIN"));
+        roles2.add(new Role(2l));
         User user2 = new User("Milton", "admin", "1234", "milton@gmail.com", true, roles2);
         userRepo.save(user2);
 
-        System.out.println("User Successfully Saved");
+       return "success";
 
     }
 }
