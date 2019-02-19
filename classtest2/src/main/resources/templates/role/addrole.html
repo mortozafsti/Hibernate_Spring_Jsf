@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
@@ -7,8 +8,8 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/role/addrole}" method="post">
-    <div><label> Role Name : <input type="text" name="roleName"/> </label></div>
+<form th:object="${role}" th:action="@{/role/addrole}" method="post">
+    <div><label> Role Name : <input type="text" th:field="*{roleName}"/> </label></div>
     <div><input type="submit" value="SaveRole"/></div>
 </form>
 </body>

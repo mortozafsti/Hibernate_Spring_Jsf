@@ -26,16 +26,18 @@ public class RoleController {
     }
 
     @GetMapping(value = "/addrole")
-    public String addRole(){
+    public String addRole(Role role){
         return "role/addrole";
     }
     @PostMapping(value = "/addrole")
     public String saveRole(@Valid Role role, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "role/addrole";
+        }else {
+            this.roleRepo.save(role);
+            model.addAttribute("role", new Role());
         }
-        this.roleRepo.save(role);
-        model.addAttribute("role", new Role());
+
         return "role/addrole";
     }
 

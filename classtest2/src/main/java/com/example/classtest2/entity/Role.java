@@ -19,6 +19,7 @@ public class Role {
         this.id=id;
     }
 
+
     public Role(String roleName) {
         this.roleName = roleName;
     }
@@ -51,5 +52,13 @@ public class Role {
     @Override
     public int hashCode() {
         return Objects.hash(id, roleName);
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                '}';
     }
 }

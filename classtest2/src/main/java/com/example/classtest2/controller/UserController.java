@@ -33,22 +33,25 @@ public class UserController {
     @GetMapping(value = "/listuser")
     public String index(Model model){
         model.addAttribute("userlist",this.userRepo.findAll());
-
         return "user/listuser";
     }
 
     @GetMapping(value = "/adduser")
-    public String addRole(Model model){
+    public String addRole(User user, Model model){
         model.addAttribute("addlisthome", this.roleRepo.findAll());
         return "user/adduser";
     }
 
     @PostMapping(value = "/adduser")
-    public String saveRole(@Valid User user, Model model){
-
+    public String saveRole(@Valid User user,BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            model.addAttribute("addlisthome", this.roleRepo.findAll());
+            return "user/adduser";
+        }
+        User user1 = new User();
+        passwordEncoder.encode(user1.getPassword());
         this.userRepo.save(user);
         model.addAttribute("user", new User());
-
         model.addAttribute("addlisthome", this.roleRepo.findAll());
 
         return "user/adduser";
