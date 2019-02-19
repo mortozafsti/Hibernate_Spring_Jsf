@@ -48,8 +48,9 @@ public class UserController {
             model.addAttribute("addlisthome", this.roleRepo.findAll());
             return "user/adduser";
         }
-        User user1 = new User();
-        passwordEncoder.encode(user1.getPassword());
+//        User user1 = new User();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        passwordEncoder.encode(user.getPassword());
         this.userRepo.save(user);
         model.addAttribute("user", new User());
         model.addAttribute("addlisthome", this.roleRepo.findAll());

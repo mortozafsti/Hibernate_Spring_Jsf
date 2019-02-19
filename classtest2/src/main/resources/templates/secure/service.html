@@ -7,6 +7,9 @@
 </head>
 <body>
 <h3>You Are Logged in <span th:text="${username}"></span></h3>
+
+<h3>WelCome Mr <span th:text="${name}"></span></h3>
+
 <span sec:authorize="hasRole('ROLE_SUPERADMIN')">
     Super Admin Can Only Access Me.............
 </span>
