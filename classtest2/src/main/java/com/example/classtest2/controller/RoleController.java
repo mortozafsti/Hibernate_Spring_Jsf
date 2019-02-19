@@ -19,6 +19,12 @@ public class RoleController {
     @Autowired
     private RoleRepo roleRepo;
 
+    @GetMapping(value = "/listrole")
+    public String index(Model model){
+        model.addAttribute("rolelist",this.roleRepo.findAll());
+        return "role/listrole";
+    }
+
     @GetMapping(value = "/addrole")
     public String addRole(){
         return "role/addrole";
