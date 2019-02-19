@@ -27,6 +27,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private LoggingAccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
     CustomUserDetailsService customUserDetailsService;
 
     @Bean
@@ -53,23 +56,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("/public/**","/","/login", "/user-save","/role-save").permitAll()
-                .antMatchers("/sa/**").hasRole("SUPERADMIN")
+                .antMatchers("/sa/**","/role/**").hasRole("SUPERADMIN")
                 .antMatchers("/adm/**").hasRole("ADMIN")
                 .antMatchers("/u/**").hasRole("USER")
                 .antMatchers("/se/**").hasAnyRole("ADMIN","USER","SUPERADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().
-                loginPage("/login").
-                permitAll().
-                and().
-                logout().
-                invalidateHttpSession(true)
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
 
     }
 

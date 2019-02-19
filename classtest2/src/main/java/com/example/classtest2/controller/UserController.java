@@ -36,7 +36,7 @@ public class UserController {
 
         Set<Role> roles3 = new HashSet<>();
         roles3.add(new Role(3l));
-        User user3 = new User("Rakib", "admin",passwordEncoder.encode("123456"), "rakib@gmail.com", true, roles3);
+        User user3 = new User("Rakib", "user",passwordEncoder.encode("123456"), "rakib@gmail.com", true, roles3);
         userRepo.save(user3);
 
        return "success";
