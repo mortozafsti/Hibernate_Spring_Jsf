@@ -20,17 +20,15 @@ public class RoleController {
     private RoleRepo roleRepo;
 
     @GetMapping(value = "/add-role")
-    public String addRole(Model model){
-        model.addAttribute("obj", new Role());
+    public String addRole(Role role,Model model){
         return "add-role";
     }
 
-    @PostMapping(value = "/add-role.html")
-    public String roleSave(@Valid Role obj, BindingResult result,Model model){
-
-        if (obj != null){
-            this.roleRepo.save(obj);
-            model.addAttribute("obj", new Role());
+    @PostMapping(value = "/add-role")
+    public String roleSave(@Valid Role role, BindingResult result,Model model){
+        if (role != null){
+            this.roleRepo.save(role);
+            model.addAttribute("role", new Role());
         }
 
         return "add-role";
