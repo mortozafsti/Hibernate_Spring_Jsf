@@ -14,8 +14,9 @@ public class HomeController {
     }
 
     @GetMapping(value = "/add-role")
-    public String displayRole(Role role, Model model) {
+    public String displayRole(Role role) {
         return "add-role";
     }
+
 
 }
