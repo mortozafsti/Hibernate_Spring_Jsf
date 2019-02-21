@@ -2,6 +2,7 @@ package com.example.classtest2.controller;
 
 import com.example.classtest2.entity.Role;
 import com.example.classtest2.entity.User;
+import com.example.classtest2.repo.RoleRepo;
 import com.example.classtest2.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,9 @@ public class HomeController {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private RoleRepo roleRepo;
+
 
     @GetMapping(value = "/index")
     public String displayHomr(Role role) {
@@ -27,7 +31,8 @@ public class HomeController {
         return "role/addrole";
     }
     @GetMapping(value = "/rolelist")
-    public String addRolelist(Role role,Model model){
+    public String addRolelist(Model model){
+//        model.addAttribute("rolelist",this.roleRepo.findAll());
         return "role/listrole";
     }
 
