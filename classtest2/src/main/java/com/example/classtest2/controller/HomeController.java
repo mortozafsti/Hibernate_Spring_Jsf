@@ -1,5 +1,6 @@
 package com.example.classtest2.controller;
 
+import com.example.classtest2.entity.Role;
 import com.example.classtest2.entity.User;
 import com.example.classtest2.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,20 @@ public class HomeController {
     @Autowired
     private UserRepo userRepo;
 
+
+    @GetMapping(value = "/index")
+    public String displayHomr(Role role) {
+        return "index";
+    }
+
+    @GetMapping(value = "/addrole")
+    public String addRole(Role role){
+        return "role/addrole";
+    }
+    @GetMapping(value = "/rolelist")
+    public String addRolelist(Role role,Model model){
+        return "role/listrole";
+    }
 
     @GetMapping(value = "/adm")
     public String AdminView(){

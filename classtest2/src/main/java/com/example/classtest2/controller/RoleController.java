@@ -19,24 +19,24 @@ public class RoleController {
     @Autowired
     private RoleRepo roleRepo;
 
-    @GetMapping(value = "/listrole")
+    @GetMapping(value = "/rolelist")
     public String index(Model model){
         model.addAttribute("rolelist",this.roleRepo.findAll());
         return "role/listrole";
     }
 
-    @GetMapping(value = "/addrole")
-    public String addRole(Role role){
+    @GetMapping(value = "/addrolee")
+    public String addRole(Role role,Model model){
         return "role/addrole";
     }
-    @PostMapping(value = "/addrole")
+    @PostMapping(value = "/addrolee")
     public String saveRole(@Valid Role role, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "role/addrole";
-        }else {
-            this.roleRepo.save(role);
-            model.addAttribute("role", new Role());
         }
+           this.roleRepo.save(role);
+            model.addAttribute("role", new Role());
+
 
         return "role/addrole";
     }
