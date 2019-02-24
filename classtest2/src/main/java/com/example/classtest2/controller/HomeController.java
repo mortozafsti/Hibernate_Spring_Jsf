@@ -32,7 +32,6 @@ public class HomeController {
     }
     @GetMapping(value = "/rolelist")
     public String addRolelist(Model model){
-//        model.addAttribute("rolelist",this.roleRepo.findAll());
         return "role/listrole";
     }
 
