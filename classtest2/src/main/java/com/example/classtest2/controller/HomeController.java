@@ -30,6 +30,7 @@ public class HomeController {
     public String addRole(Role role){
         return "role/addrole";
     }
+
     @GetMapping(value = "/rolelist")
     public String addRolelist(Model model){
         return "role/listrole";
