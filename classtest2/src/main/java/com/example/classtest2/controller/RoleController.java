@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,19 +27,55 @@ public class RoleController {
     }
 
     @GetMapping(value = "/addrolee")
-    public String addRole(Role role,Model model){
-        return "role/addrole";
-    }
-    @PostMapping(value = "/addrolee")
-    public String saveRole(@Valid Role role, BindingResult bindingResult, Model model){
+    public String roleSave(@Valid Role role, BindingResult bindingResult,Model model){
         if (bindingResult.hasErrors()){
             return "role/addrole";
+        }else {
+            if (role != null){
+                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                if (role1 != null){
+                    model.addAttribute("exitMsg","RoleName is Already Exist");
+                }else {
+                    this.roleRepo.save(role);
+                    model.addAttribute("role", new Role());
+                    model.addAttribute("syccessMsg","A Success");
+                }
+            }
+
         }
-           this.roleRepo.save(role);
-            model.addAttribute("role", new Role());
-
-
         return "role/addrole";
+    }
+    @GetMapping(value = "/roleedit/{id}")
+    public String editViewr(@PathVariable("id") Long id, Model model){
+        model.addAttribute("role",this.roleRepo.getOne(id));
+        return "role/roleedit";
+    }
+
+    @PostMapping(value = "/roleedit/{id}")
+    public String roleEdit(@Valid Role role, BindingResult bindingResult,Model model,@PathVariable("id") Long id){
+        if (bindingResult.hasErrors()){
+            return "role/roleedit";
+        }else {
+            if (role != null){
+                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                if (role1 != null){
+                    model.addAttribute("exitMsg","RoleName is Already Exist");
+                }else {
+                    this.roleRepo.save(role);
+                    model.addAttribute("role", new Role());
+                    model.addAttribute("syccessMsg","A Updated");
+                }
+            }
+
+        }
+        return "role/roleedit";
+    }
+    @GetMapping(value = "/delr/{id}")
+    public String deleterole(Model model, @PathVariable("id") Long id){
+        if (id != null){
+            this.roleRepo.deleteById(id);
+        }
+        return "redirect:/role/listrole";
     }
 
 //    @GetMapping(value = "/role-save")

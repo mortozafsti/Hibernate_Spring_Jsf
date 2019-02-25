@@ -37,21 +37,39 @@
     </style>
 </head>
 <body>
-    <div class="main_content" layout:fragment="cus_con">
-        <table id="customers">
-            <tr>
-                <th>Role_Id</th>
-                <th>Role_Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="rol : ${rolelist}">
-                <td th:text="${rol.id}"></td>
-                <td th:text="${rol.roleName}"></td>
-                <td><a th:href="@{'/role/roleedit/' + ${rol.id}}">Edit</a></td>
-                <td><a th:href="@{'/role/delr/' + ${rol.id}}">Delete</a></td>
-            </tr>
-        </table>
-    </div>
+<div class="main_content" layout:fragment="cus_con">
+<table id="customers">
+    <tr>
+        <th>M_ID</th>
+        <th>M_Name</th>
+        <th>m_Code</th>
+        <th>M_Gender</th>
+        <th>M_Mobile</th>
+        <th>M_Address</th>
+        <th>M_NID</th>
+        <th>M_Admit_Fee</th>
+        <th>Regi_Date</th>
+        <th>Ngo_ID</th>
+        <th>Nominee_ID</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="m: ${memberlist}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.m_name}"></td>
+        <td th:text="${m.m_code}"></td>
+        <td th:text="${m.m_gender}"></td>
+        <td th:text="${m.m_mobile}"></td>
+        <td th:text="${m.m_address}"></td>
+        <td th:text="${m.m_nid}"></td>
+        <td th:text="${m.m_admit_fee}"></td>
+        <td th:text="${m.regi_date}"></td>
+        <td th:text="${m.ngo.id}"></td>
+        <td th:text="${m.nominee.id}"></td>
+        <td><a th:href="@{'/member/memberedit/'+${m.id}}">Edit</a></td>
+        <td><a th:href="@{'/member/delm/'+${m.id}}">Del</a></td>
+
+    </tr>
+</table>
+</div>
 </body>
 </html>

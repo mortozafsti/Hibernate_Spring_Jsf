@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+    <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+        <div class="login-brand">
+            Ngo System
+        </div>
+        <div class="card card-primary">
+            <div class="card-header"><h4>Add Nominee</h4></div>
+            <div class="card-body">
+                <form method="post" th:object="${nominee}" th:action="@{/nominee/addnominee}" action="#" class="mmm">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="nominee_id">Nominee Id</label>
+                            <input id="nominee_id" type="text" th:field="*{id}" class="form-control" name="nominee_id"
+                                   autofocus>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_name">Nominee Name</label>
+                            <input id="nominee_name" type="text" th:field="*{n_name}" ng-model="n_name" class="form-control"
+                                   name="nominee_name">
+                            <span ng-show="nomineeAdd.n_name.$error.required">
+                            Nominee name is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_age">Nominee Age</label>
+                            <input id="nominee_age" type="text"value="" th:field="*{age}" ng-model="age" class="form-control" name="nominee_age">
+                            <span ng-show="nomineeAdd.age.$error.required">
+                            Nominee Age is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_address">Nominee Address</label>
+                            <input id="nominee_address" type="text" th:field="*{n_address}" ng-model="n_address" class="form-control"
+                                   name="nominee_address">
+                            <span ng-show="nomineeAdd.n_address.$error.required">
+                            Nominee Address is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_mobile">Nominee Mobile</label>
+                            <input id="nominee_mobile" type="text" th:field="*{n_mobile}" ng-model="n_mobile" class="form-control"
+                                   name="nominee_mobile">
+                            <span ng-show="nomineeAdd.n_mobile.$error.required">
+                            Nominee Mobile is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_dob">Nominee Date of Birth</label>
+                            <input id="nominee_dob" type="text" th:field="*{n_dob}" ng-model="n_dob" class="form-control" name="nominee_dob">
+                            <span ng-show="nomineeAdd.n_dob.$error.required">
+                            Nominee Date Of Birth is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_nid">Nominee NID</label>
+                            <input id="nominee_nid" type="text" th:field="*{n_nid}" ng-model="n_nid" class="form-control" name="nominee_nid">
+                            <span ng-show="nomineeAdd.n_nid.$error.required">
+                            Nominee NID is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_gender">Nominee Gender</label>
+                            <input id="nominee_gender" type="text" th:field="*{n_gender}" ng-model="n_gender" class="form-control"
+                                   name="nominee_gender">
+                            <span ng-show="nomineeAdd.n_gender.$error.required">
+                            Nominee Gender is Required
+                        </span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nominee_relation">Nominee Relation</label>
+                            <input id="nominee_relation" type="text" th:field="*{n_relation}" ng-model="n_relation" class="form-control"
+                                   name="nominee_relation">
+                            <span ng-show="nomineeAdd.n_relation.$error.required">
+                            Nominee Relation is Required
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Add Nominee
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

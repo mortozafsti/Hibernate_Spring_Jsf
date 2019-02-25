@@ -34,7 +34,7 @@ public class Student {
     @NotBlank(message = "Enter Your Gender")
     private String gender;
 
-    @NotBlank(message = "Enter Your Course")
+    @NotBlank(message = "Enter Your Course ")
     private String c_course;
 
     @NotBlank(message = "Enter Your Round")

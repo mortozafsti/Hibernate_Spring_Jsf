@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+    <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+        <div class="login-brand">
+            Ngo System
+        </div>
+        <div>
+            <div class="card card-primary">
+                <div class="card-header"><h5>Add Role</h5></div>
+                <div class="card-body">
+                    <form th:object="${role}" action="#" th:action="@{/role/roleedit/} + ${id}" th:method="POST">
+                        <input type="hidden" th:value="*{id}" th:action="${role.id}"/>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="role_name">Role Name</label>
+                                <input id="role_name" type="text" class="form-control" th:field="*{roleName}"
+                                       placeholder="Enter Role Name"/>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">
+                                Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

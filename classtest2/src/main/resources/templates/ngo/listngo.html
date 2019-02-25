@@ -37,21 +37,33 @@
     </style>
 </head>
 <body>
-    <div class="main_content" layout:fragment="cus_con">
-        <table id="customers">
-            <tr>
-                <th>Role_Id</th>
-                <th>Role_Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="rol : ${rolelist}">
-                <td th:text="${rol.id}"></td>
-                <td th:text="${rol.roleName}"></td>
-                <td><a th:href="@{'/role/roleedit/' + ${rol.id}}">Edit</a></td>
-                <td><a th:href="@{'/role/delr/' + ${rol.id}}">Delete</a></td>
-            </tr>
-        </table>
-    </div>
+<div class="main_content" layout:fragment="cus_con">
+<table id="customers">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Owner_Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Service</th>
+        <th>Regi_Date</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="n : ${ngolist}">
+        <td th:text="${n.id}"></td>
+        <td th:text="${n.name}"></td>
+        <td th:text="${n.ownersName}"></td>
+        <td th:text="${n.email}"></td>
+        <td th:text="${n.mobile}"></td>
+        <td th:text="${n.address}"></td>
+        <td th:text="${n.service}"></td>
+        <td th:text="${n.regiDate}"></td>
+        <td><a th:href="@{'/ngo/ngoedit/'+${n.id}}">Edit</a></td>
+        <td><a th:href="@{'/ngo/deln/'+${n.id}}">Del</a></td>
+
+    </tr>
+</table>
+</div>
 </body>
 </html>

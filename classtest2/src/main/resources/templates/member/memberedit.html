@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+<div class="row">
+    <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+        <div class="login-brand" th:class="mmm">
+            Ngo System
+        </div>
+        <div class="card card-primary">
+            <div class="card-header mmm"><h4>Add Member</h4></div>
+            <div class="card-body">
+                <form method="post" th:object="${member}" th:action="@{/member/memberedit/} + ${id}" class="mm">
+                    <input type="hidden" th:value="*{id}" th:action="${member.id}"/>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="member_name">Member Name</label>
+                            <input id="member_name" type="text" class="form-control" th:field="*{m_name}" ng-model="m_name"
+                                   name="member_name">
+                            <span ng-show="memberAdd.m_name.$error.required">Member Name is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_code">Member Code</label>
+                            <input id="member_code" type="text" class="form-control" th:field="*{m_code}" ng-model="m_code"
+                                   name="member_code">
+                            <span ng-show="memberAdd.m_code.$error.required">Member Code is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_gender">Member Gender</label>
+                            <input id="member_gender" type="text" class="form-control" th:field="*{m_gender}" ng-model="m_gender"
+                                   name="member_gender">
+                            <span ng-show="memberAdd.m_gender.$error.required">Member Gender is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_mobile">Member Mobile</label>
+                            <input id="member_mobile" type="text" class="form-control" th:field="*{m_mobile}" ng-model="m_mobile"
+                                   name="member_mobile">
+                            <span ng-show="memberAdd.m_mobile.$error.required">Member Mobile is Required For 11 Digit</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_address">Member Address</label>
+                            <input id="member_address" type="text" class="form-control" th:field="*{m_address}" ng-model="m_address"
+                                   name="member_address">
+                            <span ng-show="memberAdd.m_address.$error.required">Member Address is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_nid">Member NID</label>
+                            <input id="member_nid" type="text" class="form-control" th:field="*{m_nid}" ng-model="m_nid"
+                                   name="member_nid">
+                            <span ng-show="memberAdd.m_nid.$error.required">Member NID is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_fee">Member Admit Fee</label>
+                            <input id="member_fee" type="text" class="form-control" th:field="*{m_admit_fee}" ng-model="m_admit_fee"
+                                   name="member_fee">
+                            <span ng-show="memberAdd.m_admit_fee.$error.required">Member Admit_Fee is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="regi_date">Registration Date</label>
+                            <input id="regi_date" type="text" class="form-control" th:field="*{regi_date}" ng-model="regi_date"
+                                   name="regi_date">
+                            <span ng-show="memberAdd.regi_date.$error.required">Member Registration Date is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_ngo_id">Ngo Id</label>
+                            <input id="member_ngo_id" type="text" class="form-control" th:field="*{ngo}" ng-model="ngo"
+                                   name="member_ngo_id">
+                            <span ng-show="memberAdd.ngo.$error.required">Member Ngo ID is Required</span>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="member_no_id">Nominee Id</label>
+                            <input id="member_no_id" type="text" class="form-control" th:field="*{nominee}" ng-model="nominee"
+                                   name="member_no_id">
+                            <span ng-show="memberAdd.nominee.$error.required">Member Nominee Id is Required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-6">
+                            <button type="submit" class="btn btn-primary btn-blockquote">
+                                Update Member
+                            </button>
+                            <button type="reset" class="btn btn-success btn-blockquote">
+                                Reset Member
+                            </button>
+                        </div>
+                        <!--<div class="form-group col-6">-->
+                        <!--<button type="reset" class="btn btn-success btn-blockquote">-->
+                        <!--Reset Member-->
+                        <!--</button>-->
+                        <!--</div>-->
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
