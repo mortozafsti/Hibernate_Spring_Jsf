@@ -170,4 +170,21 @@ public class Member {
     public int hashCode() {
         return Objects.hash(id, m_name, m_code, m_gender, m_mobile, m_address, m_nid, m_admit_fee, regi_date, ngo, nominee);
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", m_name='" + m_name + '\'' +
+                ", m_code='" + m_code + '\'' +
+                ", m_gender='" + m_gender + '\'' +
+                ", m_mobile='" + m_mobile + '\'' +
+                ", m_address='" + m_address + '\'' +
+                ", m_nid='" + m_nid + '\'' +
+                ", m_admit_fee='" + m_admit_fee + '\'' +
+                ", regi_date=" + regi_date +
+                ", ngo=" + ngo +
+                ", nominee=" + nominee +
+                '}';
+    }
 }

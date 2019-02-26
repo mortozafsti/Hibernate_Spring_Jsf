@@ -20,7 +20,8 @@
             <div class="card-header mmm"><h4>Add Member</h4></div>
             <div class="card-body">
                 <form method="post" th:object="${member}" th:action="@{/member/memberedit/} + ${id}" class="mm">
-                    <input type="hidden" th:value="*{id}" th:action="${member.id}"/>
+                    <input type="hidden" th:value="${member.id}" th:field="*{id}"/>
+                    <input type="hidden" th:value="${member.regi_date}" th:field="*{regi_date}"/>
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="member_name">Member Name</label>

@@ -58,20 +58,24 @@ public class MemberContrller {
 
     @PostMapping(value = "/memberedit/{id}")
     public String memberEdit(@Valid Member member, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
+
         if (bindingResult.hasErrors()){
             return "member/memberedit";
         } else {
+            System.out.println(member
+            );
                     this.memberRepo.save(member);
                     model.addAttribute("member", new Member());
                     model.addAttribute("syccessMsg","A Updated");
                 }
         return "member/memberedit";
     }
+
     @GetMapping(value = "/delm/{id}")
     public String deletemember(Model model, @PathVariable("id") Long id){
         if (id != null){
             this.memberRepo.deleteById(id);
         }
-        return "redirect:/member/listmember";
+        return "redirect:/member/member";
     }
 }
