@@ -25,6 +25,8 @@ public class MemberContrller {
     @Autowired
     private NgoRepo ngoRepo;
 
+
+    
     @Autowired
     private NomineeRepo nomineeRepo;
 
