@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+<table id="customers">
+
+    <tr>
+        <th>L_Id</th>
+        <th>Loan_Branch</th>
+        <th>Loan_Date</th>
+        <th>Loan_Amount</th>
+        <th>Total_Loan_Kisti</th>
+        <th>Tl_Loan_Payable_Kisti</th>
+        <th>Member_Id</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="lon: ${loanlist}">
+        <td th:text="${lon.id}"></td>
+        <td th:text="${lon.l_brance}"></td>
+        <td th:text="${lon.l_date}"></td>
+        <td th:text="${lon.l_amount}"></td>
+        <td th:text="${lon.l_kisti}"></td>
+        <td th:text="${lon.l_payable_kisti}"></td>
+        <td th:text="${lon.member.id}"></td>
+        <td><a th:href="@{'/editl/'+${lon.id}}">Edit</a></td>
+        <td><a th:href="@{'/dell/'+${lon.id}}">Del</a></td>
+
+    </tr>
+</table>
+</div>
+</body>
+</html>

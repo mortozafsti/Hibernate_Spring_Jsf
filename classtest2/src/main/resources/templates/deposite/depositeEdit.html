@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -30,6 +32,7 @@
     </style>
 </head>
 <body>
+<div class="main_content" layout:fragment="cus_con">
 <div class="row">
     <div class="col-lg-8 col-md-12 col-12 col-sm-12">
         <div class="login-brand" th:class="mmm">
@@ -37,9 +40,9 @@
         </div>
         <div class="card card-primary">
             <div class="card-header mmm"><h4>Add Deposite</h4></div>
-            <button class=" btn btn-info mmm"><a th:href="@{/deposite}">Home Page</a></button>
             <div class="card-body">
-                <form action="#" th:object="${deposite}" th:action="@{/depositeAdd}" th:method="POST" class="mm">
+                <form th:object="${deposite}" th:action="@{/deposite/editd} + ${id}" th:method="POST" class="mm">
+                    <input type="hidden" th:value="${deposite.id}" th:field="${id}"/>
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="depo_Branch">Deposite_Branch</label>
@@ -62,7 +65,7 @@
                         <div class="form-group col-12">
                             <label for="member_ids">Member Id</label>
                             <input id="member_ids" type="text" class="form-control" th:field="*{member}" ng-model="member"
-                                   name="member_ids ">
+                                   name="member_ids">
                             <span ng-show="depositeAdd.member.$error.required">Member Id is Required For Deposit</span>
                         </div>
 
@@ -87,6 +90,7 @@
         </div>
     </div>
 
+</div>
 </div>
 </body>
 </html>
