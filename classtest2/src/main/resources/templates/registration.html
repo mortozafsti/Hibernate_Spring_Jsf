@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <div class="main_content" layout:fragment="cus_con">
+            <form th:object="${user}" th:action="@{/register}" th:method="POST">
+                <table>
+                    <tr>
+                        <td><label>Roles:</label></td>
+                        <td>
+                            <select th:field="*{role}" multiple>
+                                <option th:each="rola : ${addlisthome}" th:value="${rola.id}">
+                                    <span th:text="${rola.roleName}"></span>
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Name:</label></td>
+                        <td><input type="text" th:field="*{name}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>User_Name:</label></td>
+                        <td><input type="text" th:field="*{username}" /></td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td><label>Password:</label></td>-->
+                        <!--<td><input type="password" th:field="*{password}" /></td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input type="email" th:field="*{email}" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Status:</label></td>
+                        <td><input type="text" th:field="*{status}" /></td>
+                    </tr>
+                </table>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+</body>
+</html>

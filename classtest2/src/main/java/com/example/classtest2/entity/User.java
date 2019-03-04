@@ -3,6 +3,7 @@ package com.example.classtest2.entity;
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "user")
@@ -14,9 +15,18 @@ public class User {
 
     private String name;
     private String username;
+
+//   @Column(nullable = tr @Transientue)
+//
     private String password;
     private String email;
     private boolean status;
+
+//    @Column(name = "enabled")
+//    private boolean enabled;
+//
+//    @Column(name = "confirmation_token")
+//    private String conformationToken;
 
 
     public User(User user) {
@@ -26,6 +36,8 @@ public class User {
         this.email = user.email;
         this.status = user.status;
         this.role = user.role;
+//        this.enabled = user.enabled;
+//        this.conformationToken = user.conformationToken;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -47,6 +59,8 @@ public class User {
         this.status = status;
         this.role = role;
     }
+
+
 
     public Long getId() {
         return id;
@@ -103,6 +117,22 @@ public class User {
     public void setRole(Set<Role> role) {
         this.role = role;
     }
+
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
+//
+//    public void setEnabled(boolean enabled) {
+//        this.enabled = enabled;
+//    }
+//
+//    public String getConformationToken() {
+//        return conformationToken;
+//    }
+//
+//    public void setConformationToken(String conformationToken) {
+//        this.conformationToken = conformationToken;
+//    }
 
     @Override
     public boolean equals(Object o) {
