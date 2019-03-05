@@ -40,9 +40,8 @@
         </div>
         <div class="card card-primary">
             <div class="card-header mmm"><h4>Add Loan</h4></div>
-            <button class=" btn btn-info mmm"><a th:href="@{/loan}">Home Page</a></button>
             <div class="card-body" id="model" data-toggle="loanform">
-                <form action="#" th:object="${loan}" th:action="@{/loan/editl/} + ${id}" th:method="POST" class="mm">
+                <form action="#" th:object="${loan}" th:action="@{/loan/editloan/} + ${id}" th:method="POST" class="mm">
                     <input type="hidden" th:value="${loan.id}" th:field="${id}"/>
                     <div class="row">
                         <div class="form-group col-12">

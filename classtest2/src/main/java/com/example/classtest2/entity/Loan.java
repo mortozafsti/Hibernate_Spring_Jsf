@@ -28,7 +28,7 @@ public class Loan {
     private String l_payable_kisti;
 
     @ManyToOne
-    @JoinColumn(name = "m_id", nullable = true)
+    @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
     public Loan() {

@@ -24,7 +24,7 @@ public class LoanController {
     @Autowired
     private MemberRepo memberRepo;
 
-    @GetMapping(value = "/loan")
+    @GetMapping(value = "/loanlists")
     public String loanindex(Model model){
         model.addAttribute("loanlist",this.loanRepo.findAll());
         return "loan/listloan";
@@ -49,23 +49,22 @@ public class LoanController {
     }
 
 
-    @GetMapping(value = "/editl/{id}")
+    @GetMapping(value = "/editloan/{id}")
     private String editViewl(@PathVariable("id") Long id, Model model){
         model.addAttribute("loan",this.loanRepo.getOne(id));
-        return "loan/loanEdit";
+        return "loan/loanedit";
     }
 
-    @PostMapping(value = "/editl/{id}")
+    @PostMapping(value = "/editloan/{id}")
     private String loanEdit(@Valid Loan loan, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
         if (bindingResult.hasErrors()){
-            return "loan/loanEdit";
+            return "loan/loanedit";
         }
-
         this.loanRepo.save(loan);
         model.addAttribute("loan", new Loan());
         model.addAttribute("SuccMsg","SuccessFully Updated");
 
-        return "loan/loanEdit";
+        return "loan/loanedit";
     }
 
     @PostMapping(value = "/dell/{id}")
@@ -73,6 +72,6 @@ public class LoanController {
         if (id != null){
             this.loanRepo.deleteById(id);
         }
-        return "redirect:/loan/loan";
+        return "redirect:/loan/loanlists";
     }
 }
