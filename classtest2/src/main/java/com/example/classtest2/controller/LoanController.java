@@ -37,6 +37,8 @@ public class LoanController {
         return "loan/listloan";
     }
 
+
+
     @GetMapping(value = "/loanAdd")
     public String loanAdd(Loan loan){
         return "loan/Addloan";
@@ -63,14 +65,11 @@ public class LoanController {
 //                loanSummary.setNo_collected_amount(summary.get().getNo_collected_amount() + loan.getL_payable_kisti());
                 this.loanSummaryRepo.save(loanSummary);
             }
-
-
             model.addAttribute("loan", new Loan());
             model.addAttribute("SuccMsg","Successfully Given the Loan");
         }
         return "loan/Addloan";
     }
-
 
     @GetMapping(value = "/editloan/{id}")
     private String editViewl(@PathVariable("id") Long id, Model model){
