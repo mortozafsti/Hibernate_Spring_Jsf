@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/deposite/")
@@ -31,7 +32,8 @@ public class DepositeController {
     }
 
     @GetMapping(value = "/depositeAdd")
-    public String depositeAdd(Deposite deposite){
+    public String depositeAdd(Deposite deposite,Model model){
+        model.addAttribute("deposite", new Deposite());
         return "deposite/Adddeposite";
     }
 

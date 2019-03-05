@@ -28,7 +28,7 @@ public class LoanSummary {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date l_date;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 

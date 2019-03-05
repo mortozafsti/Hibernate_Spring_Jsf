@@ -19,7 +19,7 @@ public class Loan {
     private Date l_date;
 
     @Column(name = "l_amount", nullable = false)
-    private String l_amount;
+    private Long l_amount;
 
     @Column(name = "l_kisti", nullable = false)
     private String l_kisti;
@@ -34,7 +34,7 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String l_brance, Date l_date, String l_amount, String l_kisti, String l_payable_kisti, Member member) {
+    public Loan(String l_brance, Date l_date, Long l_amount, String l_kisti, String l_payable_kisti, Member member) {
         this.l_brance = l_brance;
         this.l_date = l_date;
         this.l_amount = l_amount;
@@ -67,11 +67,11 @@ public class Loan {
         this.l_date = l_date;
     }
 
-    public String getL_amount() {
+    public Long getL_amount() {
         return l_amount;
     }
 
-    public void setL_amount(String l_amount) {
+    public void setL_amount(Long l_amount) {
         this.l_amount = l_amount;
     }
 

@@ -15,11 +15,11 @@ public class Deposite {
     private Long id;
 
     @Column(name = "deposit_brance", unique = true, nullable = false)
-    private String deposit_brance;
+    private String depositNbrance;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date deposit_date;
+    private Date depositDate;
 
     @Column(name = "deposit_amount", nullable = false)
     private Long amount;
@@ -31,9 +31,9 @@ public class Deposite {
     public Deposite() {
     }
 
-    public Deposite(String deposit_brance, Date deposit_date, Long amount, Member member) {
-        this.deposit_brance = deposit_brance;
-        this.deposit_date = deposit_date;
+    public Deposite(String depositNbrance, Date depositDate, Long amount, Member member) {
+        this.depositNbrance = depositNbrance;
+        this.depositDate = depositDate;
         this.amount = amount;
         this.member = member;
     }
@@ -46,20 +46,20 @@ public class Deposite {
         this.id = id;
     }
 
-    public String getDeposit_brance() {
-        return deposit_brance;
+    public String getDepositNbrance() {
+        return depositNbrance;
     }
 
-    public void setDeposit_brance(String deposit_brance) {
-        this.deposit_brance = deposit_brance;
+    public void setDepositNbrance(String depositNbrance) {
+        this.depositNbrance = depositNbrance;
     }
 
-    public Date getDeposit_date() {
-        return deposit_date;
+    public Date getDepositDate() {
+        return depositDate;
     }
 
-    public void setDeposit_date(Date deposit_date) {
-        this.deposit_date = deposit_date;
+    public void setDepositDate(Date depositDate) {
+        this.depositDate = depositDate;
     }
 
     public Long getAmount() {
@@ -84,14 +84,14 @@ public class Deposite {
         if (o == null || getClass() != o.getClass()) return false;
         Deposite deposite = (Deposite) o;
         return Objects.equals(id, deposite.id) &&
-                Objects.equals(deposit_brance, deposite.deposit_brance) &&
-                Objects.equals(deposit_date, deposite.deposit_date) &&
+                Objects.equals(depositNbrance, deposite.depositNbrance) &&
+                Objects.equals(depositDate, deposite.depositDate) &&
                 Objects.equals(amount, deposite.amount) &&
                 Objects.equals(member, deposite.member);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, deposit_brance, deposit_date, amount, member);
+        return Objects.hash(id, depositNbrance, depositDate, amount, member);
     }
 }

@@ -38,20 +38,22 @@
         <div class="login-brand" th:class="mmm">
             Ngo System
         </div>
+        <span th:text="${SuccMsg}"></span>
         <div class="card card-primary">
             <div class="card-header mmm"><h4>Add Deposite</h4></div>
             <div class="card-body">
+                <span th:text="${SuccMsg}"></span>
                 <form action="#" th:object="${deposite}" th:action="@{/deposite/depositeAdd}" th:method="POST" class="mm">
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="depo_Branch">Deposite_Branch</label>
-                            <input id="depo_Branch" type="text" class="form-control" th:field="*{deposit_brance}" ng-model="deposit_brance"
+                            <input id="depo_Branch" type="text" class="form-control" th:field="*{depositNbrance}" ng-model="deposit_brance"
                                    name="depo_Branch">
                             <!--<span ng-show="depositeAdd.deposit_brance.$error.required">Deposite Branch is Required</span>-->
                         </div>
                         <div class="form-group col-12">
                             <label for="depo_date">Deposite_Date</label>
-                            <input id="depo_date" type="text" class="form-control" th:field="*{deposit_date}" ng-model="deposit_date"
+                            <input id="depo_date" type="date" class="form-control" th:field="*{depositDate}" ng-model="deposit_date"
                                    name="depo_date">
                             <!--<span ng-show="depositeAdd.deposit_date.$error.required">Deposite Date is Required</span>-->
                         </div>
@@ -73,7 +75,7 @@
 
                         <div class="form-group col-6">
                             <button type="submit" class="btn btn-primary btn-blockquote">
-                                Add Member
+                                Add Deposite
                             </button>
                         </div>
                         <!--<div class="form-group col-6">-->
