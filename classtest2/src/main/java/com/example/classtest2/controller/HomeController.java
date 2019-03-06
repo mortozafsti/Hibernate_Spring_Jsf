@@ -26,10 +26,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/addrole")
-    public String addRole(Role role){
-        return "role/addrole";
-    }
 
     @GetMapping(value = "/rolelist")
     public String addRolelist(Model model){

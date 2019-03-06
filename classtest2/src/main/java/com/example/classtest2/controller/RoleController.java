@@ -19,7 +19,7 @@ public class RoleController {
 
     @Autowired
     private RoleRepo roleRepo;
-
+//
     @GetMapping(value = "/rolelist")
     public String index(Model model){
         model.addAttribute("rolelist",this.roleRepo.findAll());
@@ -27,6 +27,11 @@ public class RoleController {
     }
 
     @GetMapping(value = "/addrolee")
+    public String addRole(Role role){
+        return "role/addrole";
+    }
+
+    @PostMapping(value = "/addrolee")
     public String roleSave(@Valid Role role, BindingResult bindingResult,Model model){
         if (bindingResult.hasErrors()){
             return "role/addrole";
@@ -75,10 +80,11 @@ public class RoleController {
         if (id != null){
             this.roleRepo.deleteById(id);
         }
-        return "redirect:/role/listrole";
+        return "redirect:/role/rolelist";
     }
 
-//    @GetMapping(value = "/role-save")
+
+//    @GetMapping(value = "role-save")
 //    public String saveRole(){
 //
 //        Role role = new Role();
@@ -94,5 +100,6 @@ public class RoleController {
 //        roleRepo.save(role2);
 //
 //       return "success";
+//
 //    }
 }

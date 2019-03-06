@@ -49,8 +49,8 @@
     </tr>
     <tr th:each="d: ${depositelst}">
         <td th:text="${d.id}"></td>
-        <td th:text="${d.deposit_brance}"></td>
-        <td th:text="${d.deposit_date}"></td>
+        <td th:text="${d.depositNbrance}"></td>
+        <td th:text="${d.depositDate}"></td>
         <td th:text="${d.amount}"></td>
         <td th:text="${d.member.id}"></td>
         <td><a th:href="@{'/editd/'+${d.id}}">Edit</a></td>

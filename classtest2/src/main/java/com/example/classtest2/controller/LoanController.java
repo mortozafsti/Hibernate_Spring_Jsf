@@ -50,9 +50,10 @@ public class LoanController {
             return "loan/Addloan";
         }else {
 
-            this.loanRepo.save(loan);
+
 
             Optional<LoanSummary> summary=loanSummaryRepo.findByMember(loan.getMember()) ;
+
             LoanSummary loanSummary=new LoanSummary();
             loanSummary.setL_branch(loan.getL_brance());
             loanSummary.setL_amount(loan.getL_amount());
@@ -65,6 +66,7 @@ public class LoanController {
 //                loanSummary.setNo_collected_amount(summary.get().getNo_collected_amount() + loan.getL_payable_kisti());
                 this.loanSummaryRepo.save(loanSummary);
             }
+            this.loanRepo.save(loan);
             model.addAttribute("loan", new Loan());
             model.addAttribute("SuccMsg","Successfully Given the Loan");
         }
