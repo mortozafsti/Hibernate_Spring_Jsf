@@ -12,6 +12,9 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "l_code", nullable = false)
+    private String loanCode;
+
     @Column(name = "l_brance", nullable = false)
     private String l_brance;
 
@@ -22,10 +25,10 @@ public class Loan {
     private Long l_amount;
 
     @Column(name = "l_kisti", nullable = false)
-    private String l_kisti;
+    private Long l_kisti;
 
     @Column(name = "l_payable_kisti", nullable = false)
-    private String l_payable_kisti;
+    private Long l_payable_kisti;
 
     @ManyToOne
     @JoinColumn(name = "m_id", nullable = false)
@@ -34,7 +37,8 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String l_brance, Date l_date, Long l_amount, String l_kisti, String l_payable_kisti, Member member) {
+    public Loan(String loanCode, String l_brance, Date l_date, Long l_amount, Long l_kisti, Long l_payable_kisti, Member member) {
+        this.loanCode = loanCode;
         this.l_brance = l_brance;
         this.l_date = l_date;
         this.l_amount = l_amount;
@@ -49,6 +53,14 @@ public class Loan {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLoanCode() {
+        return loanCode;
+    }
+
+    public void setLoanCode(String loanCode) {
+        this.loanCode = loanCode;
     }
 
     public String getL_brance() {
@@ -75,19 +87,19 @@ public class Loan {
         this.l_amount = l_amount;
     }
 
-    public String getL_kisti() {
+    public Long getL_kisti() {
         return l_kisti;
     }
 
-    public void setL_kisti(String l_kisti) {
+    public void setL_kisti(Long l_kisti) {
         this.l_kisti = l_kisti;
     }
 
-    public String getL_payable_kisti() {
+    public Long getL_payable_kisti() {
         return l_payable_kisti;
     }
 
-    public void setL_payable_kisti(String l_payable_kisti) {
+    public void setL_payable_kisti(Long l_payable_kisti) {
         this.l_payable_kisti = l_payable_kisti;
     }
 
@@ -105,6 +117,7 @@ public class Loan {
         if (o == null || getClass() != o.getClass()) return false;
         Loan loan = (Loan) o;
         return Objects.equals(id, loan.id) &&
+                Objects.equals(loanCode, loan.loanCode) &&
                 Objects.equals(l_brance, loan.l_brance) &&
                 Objects.equals(l_date, loan.l_date) &&
                 Objects.equals(l_amount, loan.l_amount) &&
@@ -115,6 +128,6 @@ public class Loan {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, l_brance, l_date, l_amount, l_kisti, l_payable_kisti, member);
+        return Objects.hash(id, loanCode, l_brance, l_date, l_amount, l_kisti, l_payable_kisti, member);
     }
 }

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/loan/")
@@ -26,7 +28,6 @@ public class LoanController {
 
     @Autowired
     private LoanSummaryRepo loanSummaryRepo;
-
 
     @Autowired
     private MemberRepo memberRepo;
@@ -46,30 +47,46 @@ public class LoanController {
 
     @PostMapping(value = "/loanAdd")
     public String loanSave(@Valid Loan loan, BindingResult bindingResult, Model model){
+
+
         if (bindingResult.hasErrors()){
             return "loan/Addloan";
         }else {
 
-
-
-            Optional<LoanSummary> summary=loanSummaryRepo.findByMember(loan.getMember()) ;
-
-            LoanSummary loanSummary=new LoanSummary();
-            loanSummary.setL_branch(loan.getL_brance());
-            loanSummary.setL_amount(loan.getL_amount());
-            loanSummary.setL_date(loan.getL_date());
-            if(summary == null ){
-                this.loanSummaryRepo.save(loanSummary);
-            }else{
-                loanSummary.setId(summary.get().getId());
-                loanSummary.setL_amount(summary.get().getL_amount() + loan.getL_amount());
-//                loanSummary.setNo_collected_amount(summary.get().getNo_collected_amount() + loan.getL_payable_kisti());
-                this.loanSummaryRepo.save(loanSummary);
-            }
             this.loanRepo.save(loan);
             model.addAttribute("loan", new Loan());
             model.addAttribute("SuccMsg","Successfully Given the Loan");
-        }
+
+            LoanSummary summary;
+
+            try {
+                summary=loanSummaryRepo.findByLoanCode(loan.getLoanCode()) ;
+                summary.setL_amount(summary.getL_amount() + loan.getL_amount());
+                summary.setNo_collected_amount(summary.getNo_collected_amount() + loan.getL_payable_kisti());
+                summary.setNo_total_amount(summary.getL_amount() + loan.getL_amount());
+                this.loanSummaryRepo.save(summary);
+
+            }catch (NullPointerException ne){
+                LoanSummary loanSummary1=new LoanSummary();
+                loanSummary1.setL_amount(loan.getL_amount());
+                loanSummary1.setNo_collected_amount(0L);
+                loanSummary1.setL_branch(loan.getL_brance());
+                loanSummary1.setL_date(new Date());
+                loanSummary1.setNo_due_Kisti(0L);
+                loanSummary1.setNo_total_Kisti(loan.getL_kisti());
+                loanSummary1.setMember(loan.getMember());
+                loanSummary1.setLoanCode(loan.getLoanCode());
+                loanSummary1.setNo_due_amount(loan.getL_amount());
+                loanSummary1.setNo_total_amount(loan.getL_amount());
+
+                this.loanSummaryRepo.save(loanSummary1);
+                System.out.println("summary saved");
+            }
+
+            }
+
+
+
         return "loan/Addloan";
     }
 

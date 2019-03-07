@@ -44,6 +44,12 @@
                 <form action="#" th:object="${loan}" th:action="@{/loan/loanAdd}" th:method="POST" class="mm">
                     <div class="row">
                         <div class="form-group col-12">
+                            <label for="loan_branch">Loan_Code</label>
+                            <input id="loan_code" type="text" class="form-control" th:field="*{loanCode}" ng-model="l_brance"
+                                   name="loan_branch">
+                            <span ng-show="loanAdd.l_brance.$error.required">Loan Branch is Required</span>
+                        </div>
+                        <div class="form-group col-12">
                             <label for="loan_branch">Loan_Branch</label>
                             <input id="loan_branch" type="text" class="form-control" th:field="*{l_brance}" ng-model="l_brance"
                                    name="loan_branch">

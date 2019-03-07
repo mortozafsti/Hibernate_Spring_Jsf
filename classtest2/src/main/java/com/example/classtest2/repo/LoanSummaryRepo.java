@@ -9,5 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface LoanSummaryRepo extends JpaRepository<LoanSummary, Long> {
-Optional<LoanSummary> findByMember(Member member);
+
+    LoanSummary findByMember(Member member);
+    LoanSummary findByLoanCode(String loanCode);
+
 }

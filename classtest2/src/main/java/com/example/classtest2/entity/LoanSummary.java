@@ -15,6 +15,9 @@ public class LoanSummary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "lcode", nullable = false)
+    private String loanCode;
+
     private String l_branch;
     private Long l_amount;
     private Long no_total_amount;
@@ -32,10 +35,15 @@ public class LoanSummary {
     @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
+    @ManyToOne
+    @JoinColumn(name = "l_id", nullable = false)
+    private Loan loan;
+
     public LoanSummary() {
     }
 
-    public LoanSummary(String l_branch, Long l_amount, Long no_total_amount, Long no_collected_amount, Long no_due_amount, Long no_total_Kisti, Long no_collected_Kisti, Long no_due_Kisti, Date l_date, Member member) {
+    public LoanSummary(String loanCode, String l_branch, Long l_amount, Long no_total_amount, Long no_collected_amount, Long no_due_amount, Long no_total_Kisti, Long no_collected_Kisti, Long no_due_Kisti, Date l_date, Member member, Loan loan) {
+        this.loanCode = loanCode;
         this.l_branch = l_branch;
         this.l_amount = l_amount;
         this.no_total_amount = no_total_amount;
@@ -46,6 +54,7 @@ public class LoanSummary {
         this.no_due_Kisti = no_due_Kisti;
         this.l_date = l_date;
         this.member = member;
+        this.loan = loan;
     }
 
     public Long getId() {
@@ -54,6 +63,14 @@ public class LoanSummary {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLoanCode() {
+        return loanCode;
+    }
+
+    public void setLoanCode(String loanCode) {
+        this.loanCode = loanCode;
     }
 
     public String getL_branch() {
@@ -136,12 +153,21 @@ public class LoanSummary {
         this.member = member;
     }
 
+    public Loan getLoan() {
+        return loan;
+    }
+
+    public void setLoan(Loan loan) {
+        this.loan = loan;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LoanSummary that = (LoanSummary) o;
         return Objects.equals(id, that.id) &&
+                Objects.equals(loanCode, that.loanCode) &&
                 Objects.equals(l_branch, that.l_branch) &&
                 Objects.equals(l_amount, that.l_amount) &&
                 Objects.equals(no_total_amount, that.no_total_amount) &&
@@ -151,11 +177,12 @@ public class LoanSummary {
                 Objects.equals(no_collected_Kisti, that.no_collected_Kisti) &&
                 Objects.equals(no_due_Kisti, that.no_due_Kisti) &&
                 Objects.equals(l_date, that.l_date) &&
-                Objects.equals(member, that.member);
+                Objects.equals(member, that.member) &&
+                Objects.equals(loan, that.loan);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, l_branch, l_amount, no_total_amount, no_collected_amount, no_due_amount, no_total_Kisti, no_collected_Kisti, no_due_Kisti, l_date, member);
+        return Objects.hash(id, loanCode, l_branch, l_amount, no_total_amount, no_collected_amount, no_due_amount, no_total_Kisti, no_collected_Kisti, no_due_Kisti, l_date, member, loan);
     }
 }

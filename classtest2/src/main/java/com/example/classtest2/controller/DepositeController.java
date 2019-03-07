@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
-@RequestMapping(value = "/deposite/")
+@RequestMapping(value = "/deposite")
 public class DepositeController {
 
     @Autowired
@@ -52,22 +52,22 @@ public class DepositeController {
 
 
     @GetMapping(value = "/editd/{id}")
-    private String editViewd(@PathVariable("id") Long id, Model model){
+    private String editViewd( Model model,@PathVariable("id") Long id){
         model.addAttribute("deposite",this.depositeRepo.getOne(id));
-        return "deposite/depositeEdit";
+        return "deposite/depositeedit";
     }
 
     @PostMapping(value = "/editd/{id}")
     private String depositeEdit(@Valid Deposite deposite, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
         if (bindingResult.hasErrors()){
-            return "deposite/depositeEdit";
+            return "deposite/depositeedit";
         }
 
         this.depositeRepo.save(deposite);
         model.addAttribute("deposite", new Deposite());
         model.addAttribute("editMsg","Successfully Deleted");
 
-        return "deposite/depositeEdit";
+        return "deposite/depositeedit";
     }
 
     @PostMapping(value = "/deld/{id}")
