@@ -68,6 +68,7 @@ public class LoanController {
 
             }catch (NullPointerException ne){
                 LoanSummary loanSummary1=new LoanSummary();
+
                 loanSummary1.setL_amount(loan.getL_amount());
                 loanSummary1.setNo_collected_amount(0L);
                 loanSummary1.setL_branch(loan.getL_brance());
