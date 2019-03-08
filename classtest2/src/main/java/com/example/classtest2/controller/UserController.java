@@ -48,6 +48,8 @@ public class UserController {
         return "user/listuser";
     }
 
+
+
     @GetMapping(value = "/adduser")
     public String addRole(User user, Model model){
         model.addAttribute("addlisthome", this.roleRepo.findAll());
