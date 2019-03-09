@@ -54,10 +54,11 @@ public class LoanController {
         }else {
 
             this.loanRepo.save(loan);
-            model.addAttribute("loan", new Loan());
+
             model.addAttribute("SuccMsg","Successfully Given the Loan");
 
             LoanSummary summary;
+
 
             try {
                 summary=loanSummaryRepo.findByLoanCode(loan.getLoanCode()) ;
@@ -65,7 +66,7 @@ public class LoanController {
                 summary.setNo_collected_amount(summary.getNo_collected_amount() + loan.getL_payable_kisti());
                 summary.setNo_total_amount(summary.getL_amount() + loan.getL_amount());
                 this.loanSummaryRepo.save(summary);
-
+                model.addAttribute("loan", new Loan());
             }catch (NullPointerException ne){
                 LoanSummary loanSummary1=new LoanSummary();
 

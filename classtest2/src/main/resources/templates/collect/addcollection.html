@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.js"></script>
+    <script src="js/angular_route.js"></script>
+    <script src="js/ascript.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+        .mm{
+            padding: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border: 1px solid #222222;
+
+        }
+        .mmm{
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="login-brand" th:class="mmm">
+                Ngo System
+            </div>
+            <span th:text="${SuccMsg}"></span>
+            <div class="card card-primary">
+                <div class="card-header mmm"><h4>Add Collection</h4></div>
+                <div class="card-body">
+                    <span th:text="${SuccMsg}"></span>
+
+                    <form action="#" th:object="${collection}" th:action="@{/collection/searchloan}" th:method="GET" class="mm">
+
+                        <input  type="text" class="form-control" name="lc"></br>
+                        <button type="submit" class="btn btn-primary btn-blockquote">
+                           Search
+                        </button>
+                    </form>
+
+                    <form action="#" th:object="${collection}" th:action="@{/collection/collectionAdd}" th:method="POST" class="mm">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label >Loan_Code</label>
+                                <input id="loan_code" type="text" class="form-control" th:field="*{loanCode}" ng-model="loan_code"
+                                     th:value="${collection.getLoanCode()}"  name="loan_code">
+                                <!--<select th:field="*{loan}">-->
+                                    <!--<option th:each="lon : ${loancodelist}" th:value="${lon.id}">-->
+                                        <!--<span th:text="${lon.loanCode}"></span></option>-->
+                                <!--</select>-->
+                                <!--<span ng-show="depositeAdd.deposit_brance.$error.required">Deposite Branch is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="member_name">Member_Name</label>
+                                <input id="member_name" type="text" class="form-control" th:field="*{memberName}"
+                                       th:value="${collection.getMemberName()}" ng-model="member_name"
+                                       name="member_name">
+                                <!--<span ng-show="depositeAdd.deposit_date.$error.required">Deposite Date is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="depo_amount">Total_Kisti</label>
+                                <input id="depo_amount" type="text" class="form-control"
+                                       th:value="${collection.getnOfTotalKisti()}" th:field="*{nOfTotalKisti}" ng-model="amount"
+                                       name="depo_amount">
+                                <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="total_amount">Total_Amount</label>
+                                <input id="total_amount" type="text" class="form-control" th:field="*{nOfTotalAmount}" ng-model="amount"
+                                       name="total_amount">
+                                <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="collect_kisti">Collected_Kisti</label>
+                                <input id="collect_kisti" type="text" class="form-control" th:field="*{nOfCollectedKisti}" ng-model="amount"
+                                      th:value="${collection.getnOfCollectedKisti()}" name="collect_kisti">
+                                <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="loan_ids">Loan Id</label>
+                                <input id="loan_ids" type="text" class="form-control" th:field="*{loan}" ng-model="loan"
+                                       name="loan_ids">
+                                <!--<span ng-show="depositeAdd.member.$error.required">Member Id is Required For Deposit</span>-->
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-6">
+                                <button type="submit" class="btn btn-primary btn-blockquote">
+                                    Add Deposite
+                                </button>
+                            </div>
+                            <!--<div class="form-group col-6">-->
+                            <!--<button type="reset" class="btn btn-success btn-blockquote">-->
+                            <!--Reset Member-->
+                            <!--</button>-->
+                            <!--</div>-->
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

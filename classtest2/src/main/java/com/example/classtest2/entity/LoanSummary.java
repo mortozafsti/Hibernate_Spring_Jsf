@@ -35,14 +35,12 @@ public class LoanSummary {
     @JoinColumn(name = "m_id", nullable = false)
     private Member member;
 
-    @ManyToOne
-    @JoinColumn(name = "l_id", nullable = false)
-    private Loan loan;
+
 
     public LoanSummary() {
     }
 
-    public LoanSummary(String loanCode, String l_branch, Long l_amount, Long no_total_amount, Long no_collected_amount, Long no_due_amount, Long no_total_Kisti, Long no_collected_Kisti, Long no_due_Kisti, Date l_date, Member member, Loan loan) {
+    public LoanSummary(String loanCode, String l_branch, Long l_amount, Long no_total_amount, Long no_collected_amount, Long no_due_amount, Long no_total_Kisti, Long no_collected_Kisti, Long no_due_Kisti, Date l_date, Member member) {
         this.loanCode = loanCode;
         this.l_branch = l_branch;
         this.l_amount = l_amount;
@@ -54,7 +52,6 @@ public class LoanSummary {
         this.no_due_Kisti = no_due_Kisti;
         this.l_date = l_date;
         this.member = member;
-        this.loan = loan;
     }
 
     public Long getId() {
@@ -153,14 +150,6 @@ public class LoanSummary {
         this.member = member;
     }
 
-    public Loan getLoan() {
-        return loan;
-    }
-
-    public void setLoan(Loan loan) {
-        this.loan = loan;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -177,12 +166,11 @@ public class LoanSummary {
                 Objects.equals(no_collected_Kisti, that.no_collected_Kisti) &&
                 Objects.equals(no_due_Kisti, that.no_due_Kisti) &&
                 Objects.equals(l_date, that.l_date) &&
-                Objects.equals(member, that.member) &&
-                Objects.equals(loan, that.loan);
+                Objects.equals(member, that.member);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, loanCode, l_branch, l_amount, no_total_amount, no_collected_amount, no_due_amount, no_total_Kisti, no_collected_Kisti, no_due_Kisti, l_date, member, loan);
+        return Objects.hash(id, loanCode, l_branch, l_amount, no_total_amount, no_collected_amount, no_due_amount, no_total_Kisti, no_collected_Kisti, no_due_Kisti, l_date, member);
     }
 }
