@@ -56,7 +56,7 @@ public class CollectionController {
         collection.setnOfTotalAmount(loan.getL_amount());
         collection.setnOfTotalKisti(loan.getL_kisti());
         collection.setnOfCollectedKisti(loanSummary.getNo_collected_Kisti()+1);
-        collection.setnOfColectedamount(loanSummary.getNo_collected_amount()+500);
+        collection.setnOfColectedamount(collection.getnOfColectedamount());
         model.addAttribute("collection", collection);
         return "redirect:/collection/collectionAdd";
     }
@@ -77,21 +77,21 @@ public class CollectionController {
             try {
                 loanSummary=loanSummaryRepo.findByLoanCode(loan.getLoanCode());
                 loanSummary.setNo_due_Kisti(loanSummary.getNo_total_Kisti() - collection.getnOfCollectedKisti());
-                loanSummary.setNo_due_amount(loanSummary.getNo_total_amount() - collection.getnOfColectedamount());
-                loanSummary.setNo_collected_amount(collection.getnOfColectedamount());
+                loanSummary.setNo_due_amount(loanSummary.getNo_due_amount() - collection.getnOfColectedamount());
+                loanSummary.setNo_collected_amount(loanSummary.getNo_collected_amount()+collection.getnOfColectedamount());
                 loanSummary.setNo_collected_Kisti(collection.getnOfCollectedKisti());
                 this.loanSummaryRepo.save(loanSummary);
 
             }catch (NullPointerException e){
-                LoanSummary loanSummary1 = new LoanSummary();
-                loanSummary1.getNo_due_Kisti();
-                loanSummary1.getNo_collected_amount();
-                loanSummary1.setNo_collected_Kisti(collection.getnOfCollectedKisti());
-                loanSummary1.setNo_collected_amount(collection.getnOfColectedamount());
-
-                this.loanSummaryRepo.save(loanSummary1);
-
-                System.out.println("LoanSummary Saved");
+//                LoanSummary loanSummary1 = new LoanSummary();
+//                loanSummary1.getNo_due_Kisti();
+//                loanSummary1.getNo_collected_amount();
+//                loanSummary1.setNo_collected_Kisti(collection.getnOfCollectedKisti());
+//                loanSummary1.setNo_collected_amount(loanSummary1.getNo_collected_amount()+collection.getnOfColectedamount());
+//                loanSummary1.setNo_due_amount(loanSummary1.getNo_total_amount() - loanSummary1.getNo_collected_amount());
+//                this.loanSummaryRepo.save(loanSummary1);
+//
+//                System.out.println("LoanSummary Saved");
             }
 
         }

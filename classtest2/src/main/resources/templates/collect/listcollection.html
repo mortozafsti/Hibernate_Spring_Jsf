@@ -46,6 +46,7 @@
             <th>Total_Kisti</th>
             <th>Total_Amount</th>
             <th>Collected_Kisti</th>
+            <th>Collected_Amount</th>
             <th colspan="2">Action</th>
         </tr>
         <tr th:each="c: ${collectionlist}">
@@ -55,6 +56,7 @@
             <td th:text="${c.nOfTotalKisti}"></td>
             <td th:text="${c.nOfTotalAmount}"></td>
             <td th:text="${c.nOfCollectedKisti}"></td>
+            <td th:text="${c.nOfColectedamount}"></td>
             <td><a th:href="@{'/editcollection/'+${c.id}}">Edit</a></td>
             <td><a th:href="@{'/delcollection/'+${c.id}}">Del</a></td>
 
