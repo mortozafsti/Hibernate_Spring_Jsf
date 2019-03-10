@@ -91,6 +91,12 @@
                                 <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
                             </div>
                             <div class="form-group col-12">
+                                <label for="collect_amount">Collected_Amount</label>
+                                <input id="collect_amount" type="text" class="form-control" th:field="*{nOfColectedamount}" ng-model="amount"
+                                       th:value="${collection.getnOfColectedamount()}" name="collect_amount">
+                                <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
                                 <label for="loan_ids">Loan Id</label>
                                 <input id="loan_ids" type="text" class="form-control" th:field="*{loan}" ng-model="loan"
                                        name="loan_ids">

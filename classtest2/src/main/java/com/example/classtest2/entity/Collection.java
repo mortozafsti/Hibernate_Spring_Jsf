@@ -16,6 +16,7 @@ public class Collection {
     private Long nOfTotalKisti;
     private Long nOfTotalAmount;
     private Long nOfCollectedKisti;
+    private Long nOfColectedamount;
 
 
     @ManyToOne
@@ -25,12 +26,13 @@ public class Collection {
     public Collection() {
     }
 
-    public Collection(String loanCode, String memberName, Long nOfTotalKisti, Long nOfTotalAmount, Long nOfCollectedKisti, Loan loan) {
+    public Collection(String loanCode, String memberName, Long nOfTotalKisti, Long nOfTotalAmount, Long nOfCollectedKisti, Long nOfColectedamount, Loan loan) {
         this.loanCode = loanCode;
         this.memberName = memberName;
         this.nOfTotalKisti = nOfTotalKisti;
         this.nOfTotalAmount = nOfTotalAmount;
         this.nOfCollectedKisti = nOfCollectedKisti;
+        this.nOfColectedamount = nOfColectedamount;
         this.loan = loan;
     }
 
@@ -82,6 +84,14 @@ public class Collection {
         this.nOfCollectedKisti = nOfCollectedKisti;
     }
 
+    public Long getnOfColectedamount() {
+        return nOfColectedamount;
+    }
+
+    public void setnOfColectedamount(Long nOfColectedamount) {
+        this.nOfColectedamount = nOfColectedamount;
+    }
+
     public Loan getLoan() {
         return loan;
     }
@@ -101,11 +111,12 @@ public class Collection {
                 Objects.equals(nOfTotalKisti, that.nOfTotalKisti) &&
                 Objects.equals(nOfTotalAmount, that.nOfTotalAmount) &&
                 Objects.equals(nOfCollectedKisti, that.nOfCollectedKisti) &&
+                Objects.equals(nOfColectedamount, that.nOfColectedamount) &&
                 Objects.equals(loan, that.loan);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, loanCode, memberName, nOfTotalKisti, nOfTotalAmount, nOfCollectedKisti, loan);
+        return Objects.hash(id, loanCode, memberName, nOfTotalKisti, nOfTotalAmount, nOfCollectedKisti, nOfColectedamount, loan);
     }
 }

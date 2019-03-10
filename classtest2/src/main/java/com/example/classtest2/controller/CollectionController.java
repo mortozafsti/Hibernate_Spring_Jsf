@@ -55,7 +55,8 @@ public class CollectionController {
         collection.setMemberName(loan.getMember().getM_name());
         collection.setnOfTotalAmount(loan.getL_amount());
         collection.setnOfTotalKisti(loan.getL_kisti());
-        collection.setnOfCollectedKisti(loanSummary.getNo_due_Kisti()+1);
+        collection.setnOfCollectedKisti(loanSummary.getNo_collected_Kisti()+1);
+        collection.setnOfColectedamount(loanSummary.getNo_collected_amount()+500);
         model.addAttribute("collection", collection);
         return "redirect:/collection/collectionAdd";
     }
@@ -68,9 +69,30 @@ public class CollectionController {
         } else {
 
             this.collectionRepo.save(collection);
-            model.addAttribute("collection", new Collection());
+//            model.addAttribute("collection", new Collection());
             model.addAttribute("SuccMsg", "Successfully Collected");
 
+
+
+            try {
+                loanSummary=loanSummaryRepo.findByLoanCode(loan.getLoanCode());
+                loanSummary.setNo_due_Kisti(loanSummary.getNo_total_Kisti() - collection.getnOfCollectedKisti());
+                loanSummary.setNo_due_amount(loanSummary.getNo_total_amount() - collection.getnOfColectedamount());
+                loanSummary.setNo_collected_amount(collection.getnOfColectedamount());
+                loanSummary.setNo_collected_Kisti(collection.getnOfCollectedKisti());
+                this.loanSummaryRepo.save(loanSummary);
+
+            }catch (NullPointerException e){
+                LoanSummary loanSummary1 = new LoanSummary();
+                loanSummary1.getNo_due_Kisti();
+                loanSummary1.getNo_collected_amount();
+                loanSummary1.setNo_collected_Kisti(collection.getnOfCollectedKisti());
+                loanSummary1.setNo_collected_amount(collection.getnOfColectedamount());
+
+                this.loanSummaryRepo.save(loanSummary1);
+
+                System.out.println("LoanSummary Saved");
+            }
 
         }
         model.addAttribute("loancodelist", this.loanRepo.findAll());
