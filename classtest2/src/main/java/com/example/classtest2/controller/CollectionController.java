@@ -77,7 +77,6 @@ public class CollectionController {
         return "collect/addcollection";
     }
 
-
     @GetMapping(value = "/editcollection/{id}")
     private String editViewd(Model model, @PathVariable("id") Long id) {
         model.addAttribute("collection", this.collectionRepo.getOne(id));
@@ -106,6 +105,4 @@ public class CollectionController {
     }
 
     ///Search Option
-
-
 }
