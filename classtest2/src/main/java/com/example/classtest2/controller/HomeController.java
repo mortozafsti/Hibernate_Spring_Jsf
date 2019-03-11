@@ -56,10 +56,7 @@ public class HomeController {
     public String user(){
         return "user/u";
     }
-    @GetMapping(value = "/dashboard")
-    public String dasview(){
-        return "dashboard";
-    }
+
 
 
 

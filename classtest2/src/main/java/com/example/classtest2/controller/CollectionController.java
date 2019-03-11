@@ -81,6 +81,7 @@ public class CollectionController {
                 loanSummary.setNo_due_amount(loanSummary.getNo_due_amount() - collection.getnOfColectedamount());
                 loanSummary.setNo_collected_amount(loanSummary.getNo_collected_amount()+collection.getnOfColectedamount());
                 loanSummary.setNo_collected_Kisti(collection.getnOfCollectedKisti());
+
                 this.loanSummaryRepo.save(loanSummary);
 
             }catch (NullPointerException e){

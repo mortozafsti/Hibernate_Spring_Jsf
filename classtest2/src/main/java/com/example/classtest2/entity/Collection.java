@@ -19,6 +19,7 @@ public class Collection {
     private Long nOfColectedamount;
 
 
+
     @ManyToOne
     @JoinColumn(name = "loan_id", nullable = false)
     private Loan loan;
