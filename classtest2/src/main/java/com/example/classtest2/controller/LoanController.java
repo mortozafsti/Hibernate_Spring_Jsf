@@ -33,42 +33,35 @@ public class LoanController {
     private MemberRepo memberRepo;
 
     @GetMapping(value = "/loanlists")
-    public String loanindex(Model model){
-        model.addAttribute("loanlist",this.loanRepo.findAll());
+    public String loanindex(Model model) {
+        model.addAttribute("loanlist", this.loanRepo.findAll());
         return "loan/listloan";
     }
 
 
-
     @GetMapping(value = "/loanAdd")
-    public String loanAdd(Loan loan){
+    public String loanAdd(Loan loan) {
         return "loan/Addloan";
     }
 
     @PostMapping(value = "/loanAdd")
-    public String loanSave(@Valid Loan loan, BindingResult bindingResult, Model model){
-
-
-        if (bindingResult.hasErrors()){
+    public String loanSave(@Valid Loan loan, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "loan/Addloan";
-        }else {
-
+        } else {
             this.loanRepo.save(loan);
-
-            model.addAttribute("SuccMsg","Successfully Given the Loan");
+            model.addAttribute("SuccMsg", "Successfully Given the Loan");
 
             LoanSummary summary;
-
-
             try {
-                summary=loanSummaryRepo.findByLoanCode(loan.getLoanCode()) ;
+                summary = loanSummaryRepo.findByLoanCode(loan.getLoanCode());
                 summary.setL_amount(summary.getL_amount() + loan.getL_amount());
                 summary.setNo_collected_amount(summary.getNo_collected_amount() + loan.getL_payable_kisti());
                 summary.setNo_total_amount(summary.getL_amount() + loan.getL_amount());
                 this.loanSummaryRepo.save(summary);
                 model.addAttribute("loan", new Loan());
-            }catch (NullPointerException ne){
-                LoanSummary loanSummary1=new LoanSummary();
+            } catch (NullPointerException ne) {
+                LoanSummary loanSummary1 = new LoanSummary();
 
                 loanSummary1.setL_amount(loan.getL_amount());
                 loanSummary1.setNo_collected_amount(0L);
@@ -84,35 +77,31 @@ public class LoanController {
                 this.loanSummaryRepo.save(loanSummary1);
                 System.out.println("summary saved");
             }
-
-            }
-
-
-
+        }
         return "loan/Addloan";
     }
 
     @GetMapping(value = "/editloan/{id}")
-    private String editViewl(@PathVariable("id") Long id, Model model){
-        model.addAttribute("loan",this.loanRepo.getOne(id));
+    private String editViewl(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("loan", this.loanRepo.getOne(id));
         return "loan/loanedit";
     }
 
     @PostMapping(value = "/editloan/{id}")
-    private String loanEdit(@Valid Loan loan, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
-        if (bindingResult.hasErrors()){
+    private String loanEdit(@Valid Loan loan, BindingResult bindingResult, Model model, @PathVariable("id") Long id) {
+        if (bindingResult.hasErrors()) {
             return "loan/loanedit";
         }
         this.loanRepo.save(loan);
         model.addAttribute("loan", new Loan());
-        model.addAttribute("SuccMsg","SuccessFully Updated");
+        model.addAttribute("SuccMsg", "SuccessFully Updated");
 
         return "loan/loanedit";
     }
 
     @PostMapping(value = "/dell/{id}")
-    private String deleteLoan(Model model, @PathVariable("id") Long id){
-        if (id != null){
+    private String deleteLoan(Model model, @PathVariable("id") Long id) {
+        if (id != null) {
             this.loanRepo.deleteById(id);
         }
         return "redirect:/loan/loanlists";

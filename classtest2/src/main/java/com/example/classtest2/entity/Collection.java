@@ -1,6 +1,7 @@
 package com.example.classtest2.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -13,10 +14,11 @@ public class Collection {
 
     private String loanCode;
     private String memberName;
-    private Long nOfTotalKisti;
-    private Long nOfTotalAmount;
-    private Long nOfCollectedKisti;
-    private Long nOfColectedamount;
+    private double nOfTotalKisti;
+    private double nOfTotalAmount;
+    private double nOfCollectedKisti;
+    private double nOfColectedamount;
+    private Date cDate;
 
 
 
@@ -27,13 +29,14 @@ public class Collection {
     public Collection() {
     }
 
-    public Collection(String loanCode, String memberName, Long nOfTotalKisti, Long nOfTotalAmount, Long nOfCollectedKisti, Long nOfColectedamount, Loan loan) {
+    public Collection(String loanCode, String memberName, double nOfTotalKisti, double nOfTotalAmount, double nOfCollectedKisti, double nOfColectedamount, Date cDate, Loan loan) {
         this.loanCode = loanCode;
         this.memberName = memberName;
         this.nOfTotalKisti = nOfTotalKisti;
         this.nOfTotalAmount = nOfTotalAmount;
         this.nOfCollectedKisti = nOfCollectedKisti;
         this.nOfColectedamount = nOfColectedamount;
+        this.cDate = cDate;
         this.loan = loan;
     }
 
@@ -61,36 +64,44 @@ public class Collection {
         this.memberName = memberName;
     }
 
-    public Long getnOfTotalKisti() {
+    public double getnOfTotalKisti() {
         return nOfTotalKisti;
     }
 
-    public void setnOfTotalKisti(Long nOfTotalKisti) {
+    public void setnOfTotalKisti(double nOfTotalKisti) {
         this.nOfTotalKisti = nOfTotalKisti;
     }
 
-    public Long getnOfTotalAmount() {
+    public double getnOfTotalAmount() {
         return nOfTotalAmount;
     }
 
-    public void setnOfTotalAmount(Long nOfTotalAmount) {
+    public void setnOfTotalAmount(double nOfTotalAmount) {
         this.nOfTotalAmount = nOfTotalAmount;
     }
 
-    public Long getnOfCollectedKisti() {
+    public double getnOfCollectedKisti() {
         return nOfCollectedKisti;
     }
 
-    public void setnOfCollectedKisti(Long nOfCollectedKisti) {
+    public void setnOfCollectedKisti(double nOfCollectedKisti) {
         this.nOfCollectedKisti = nOfCollectedKisti;
     }
 
-    public Long getnOfColectedamount() {
+    public double getnOfColectedamount() {
         return nOfColectedamount;
     }
 
-    public void setnOfColectedamount(Long nOfColectedamount) {
+    public void setnOfColectedamount(double nOfColectedamount) {
         this.nOfColectedamount = nOfColectedamount;
+    }
+
+    public Date getcDate() {
+        return cDate;
+    }
+
+    public void setcDate(Date cDate) {
+        this.cDate = cDate;
     }
 
     public Loan getLoan() {
@@ -106,18 +117,19 @@ public class Collection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Collection that = (Collection) o;
-        return Objects.equals(id, that.id) &&
+        return Double.compare(that.nOfTotalKisti, nOfTotalKisti) == 0 &&
+                Double.compare(that.nOfTotalAmount, nOfTotalAmount) == 0 &&
+                Double.compare(that.nOfCollectedKisti, nOfCollectedKisti) == 0 &&
+                Double.compare(that.nOfColectedamount, nOfColectedamount) == 0 &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(loanCode, that.loanCode) &&
                 Objects.equals(memberName, that.memberName) &&
-                Objects.equals(nOfTotalKisti, that.nOfTotalKisti) &&
-                Objects.equals(nOfTotalAmount, that.nOfTotalAmount) &&
-                Objects.equals(nOfCollectedKisti, that.nOfCollectedKisti) &&
-                Objects.equals(nOfColectedamount, that.nOfColectedamount) &&
+                Objects.equals(cDate, that.cDate) &&
                 Objects.equals(loan, that.loan);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, loanCode, memberName, nOfTotalKisti, nOfTotalAmount, nOfCollectedKisti, nOfColectedamount, loan);
+        return Objects.hash(id, loanCode, memberName, nOfTotalKisti, nOfTotalAmount, nOfCollectedKisti, nOfColectedamount, cDate, loan);
     }
 }

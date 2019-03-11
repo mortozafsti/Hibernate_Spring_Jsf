@@ -51,7 +51,6 @@ public class CollectionController {
         this.loanSummary=this.loanSummaryRepo.findByLoanCode(loanCode);
         collection = new Collection();
         collection.setLoanCode(loan.getLoanCode());
-        collection.setLoanCode(loan.getLoanCode());
         collection.setMemberName(loan.getMember().getM_name());
         collection.setnOfTotalAmount(loan.getL_amount());
         collection.setnOfTotalKisti(loan.getL_kisti());
@@ -63,7 +62,7 @@ public class CollectionController {
     }
 
     @PostMapping(value = "/collectionAdd")
-    public String depositeSave(@Valid Collection collection, BindingResult bindingResult, Model model) {
+    public String collectionSave(@Valid Collection collection, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("loancodelist", this.loanRepo.findAll());
             return "collect/addcollection";
@@ -72,8 +71,6 @@ public class CollectionController {
             this.collectionRepo.save(collection);
 //            model.addAttribute("collection", new Collection());
             model.addAttribute("SuccMsg", "Successfully Collected");
-
-
 
             try {
                 loanSummary=loanSummaryRepo.findByLoanCode(loan.getLoanCode());
@@ -102,13 +99,13 @@ public class CollectionController {
     }
 
     @GetMapping(value = "/editcollection/{id}")
-    private String editViewd(Model model, @PathVariable("id") Long id) {
+    private String editViewd(Model model, @PathVariable("id") Double id) {
         model.addAttribute("collection", this.collectionRepo.getOne(id));
         return "collect/editcollection";
     }
 
     @PostMapping(value = "/editcollection/{id}")
-    private String collectionEdit(@Valid Collection collection, BindingResult bindingResult, Model model, @PathVariable("id") Long id) {
+    private String collectionEdit(@Valid Collection collection, BindingResult bindingResult, Model model, @PathVariable("id") Double id) {
         if (bindingResult.hasErrors()) {
             return "collect/editcollection";
         }
@@ -121,7 +118,7 @@ public class CollectionController {
     }
 
     @PostMapping(value = "/delcollection/{id}")
-    private String deleteCollect(Model model, @PathVariable("id") Long id) {
+    private String deleteCollect(Model model, @PathVariable("id") Double id) {
         if (id != null) {
             this.collectionRepo.deleteById(id);
         }

@@ -22,8 +22,8 @@ public class DashboardController {
     @GetMapping(value = {"/dashboard","/"})
     public String dasview(Model model){
 //        System.out.println(collectionRepo.findAll().size());
-       Long totalAmount = 0L;
-       Long totalloanAmount = 0L;
+       double totalAmount = 0;
+        double totalloanAmount = 0;
                 for(Collection c : collectionRepo.findAll()){
                     totalAmount += c.getnOfColectedamount();
                 }

@@ -56,7 +56,7 @@
                             <div class="form-group col-12">
                                 <label >Loan_Code</label>
                                 <input id="loan_code" type="text" class="form-control" th:field="*{loanCode}" ng-model="loan_code"
-                                     th:value="${collection.getLoanCode()}"  name="loan_code">
+                                     th:value="${collection.getLoanCode()}" name="loan_code">
                                 <!--<select th:field="*{loan}">-->
                                     <!--<option th:each="lon : ${loancodelist}" th:value="${lon.id}">-->
                                         <!--<span th:text="${lon.loanCode}"></span></option>-->
@@ -96,6 +96,12 @@
                                 <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
                             </div>
                             <div class="form-group col-12">
+                                <label for="c_dates">Collection_Date</label>
+                                <input id="c_dates" type="date" class="form-control" th:field="*{cDate}" ng-model="amount"
+                                       th:value="${collection.getcDate()}" name="c_dates">
+                                <!--<span ng-show="depositeAdd.amount.$error.required">Deposite Amount is Required</span>-->
+                            </div>
+                            <div class="form-group col-12">
                                 <label for="loan_ids">Loan Id</label>
                                 <input id="loan_ids" type="text" class="form-control" th:field="*{loan}" ng-model="loan"
                                     th:value="${collection.getLoan()}"   name="loan_ids">
@@ -107,7 +113,7 @@
 
                             <div class="form-group col-6">
                                 <button type="submit" class="btn btn-primary btn-blockquote">
-                                    Add Deposite
+                                    Save Collection
                                 </button>
                             </div>
                             <!--<div class="form-group col-6">-->

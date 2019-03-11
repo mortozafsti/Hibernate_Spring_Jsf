@@ -1,12 +1,11 @@
 package com.example.classtest2.dto;
 
 public class CollectionDto {
+
     private double monthlyCollectedAmount;
-
     private double yearlyCollectedAmount;
-
-    private Long totalAmount;
-    private Long totalloanAmount;
+    private double totalAmount;
+    private double totalloanAmount;
 
     public double getMonthlyCollectedAmount() {
         return monthlyCollectedAmount;
@@ -24,19 +23,19 @@ public class CollectionDto {
         this.yearlyCollectedAmount = yearlyCollectedAmount;
     }
 
-    public Long getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Long totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public Long getTotalloanAmount() {
+    public double getTotalloanAmount() {
         return totalloanAmount;
     }
 
-    public void setTotalloanAmount(Long totalloanAmount) {
+    public void setTotalloanAmount(double totalloanAmount) {
         this.totalloanAmount = totalloanAmount;
     }
 }
