@@ -17,7 +17,7 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)){
             /* The User is Logged in :)  */
-            return "index";
+            return "dashboard";
         }
         return "public/login";
     }
