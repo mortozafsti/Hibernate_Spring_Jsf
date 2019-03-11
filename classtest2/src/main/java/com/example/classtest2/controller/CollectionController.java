@@ -57,6 +57,7 @@ public class CollectionController {
         collection.setnOfTotalKisti(loan.getL_kisti());
         collection.setnOfCollectedKisti(loanSummary.getNo_collected_Kisti()+1);
         collection.setnOfColectedamount(collection.getnOfColectedamount());
+        collection.setLoan(loan);
         model.addAttribute("collection", collection);
         return "redirect:/collection/collectionAdd";
     }

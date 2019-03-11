@@ -38,7 +38,6 @@
             <div class="login-brand" th:class="mmm">
                 Ngo System
             </div>
-            <span th:text="${SuccMsg}"></span>
             <div class="card card-primary">
                 <div class="card-header mmm"><h4>Add Collection</h4></div>
                 <div class="card-body">
@@ -46,7 +45,7 @@
 
                     <form action="#" th:object="${collection}" th:action="@{/collection/searchloan}" th:method="GET" class="mm">
 
-                        <input  type="text" class="form-control" name="lc"></br>
+                        <input  type="text" class="form-control" name="lc" /></br>
                         <button type="submit" class="btn btn-primary btn-blockquote">
                            Search
                         </button>
@@ -99,7 +98,7 @@
                             <div class="form-group col-12">
                                 <label for="loan_ids">Loan Id</label>
                                 <input id="loan_ids" type="text" class="form-control" th:field="*{loan}" ng-model="loan"
-                                       name="loan_ids">
+                                    th:value="${collection.getLoan()}"   name="loan_ids">
                                 <!--<span ng-show="depositeAdd.member.$error.required">Member Id is Required For Deposit</span>-->
                             </div>
 
