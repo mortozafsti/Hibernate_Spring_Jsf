@@ -1,6 +1,9 @@
 package com.example.classtest2.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,11 +17,13 @@ public class Collection {
 
     private String loanCode;
     private String memberName;
-    private double nOfTotalKisti;
+    private int nOfTotalKisti;
     private double nOfTotalAmount;
-    private double nOfCollectedKisti;
+    private int nOfCollectedKisti;
     private double nOfColectedamount;
-    private Date cDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date cDate = new Date();
 
 
 
@@ -29,7 +34,7 @@ public class Collection {
     public Collection() {
     }
 
-    public Collection(String loanCode, String memberName, double nOfTotalKisti, double nOfTotalAmount, double nOfCollectedKisti, double nOfColectedamount, Date cDate, Loan loan) {
+    public Collection(String loanCode, String memberName, int nOfTotalKisti, double nOfTotalAmount, int nOfCollectedKisti, double nOfColectedamount, Date cDate, Loan loan) {
         this.loanCode = loanCode;
         this.memberName = memberName;
         this.nOfTotalKisti = nOfTotalKisti;
@@ -64,11 +69,11 @@ public class Collection {
         this.memberName = memberName;
     }
 
-    public double getnOfTotalKisti() {
+    public int getnOfTotalKisti() {
         return nOfTotalKisti;
     }
 
-    public void setnOfTotalKisti(double nOfTotalKisti) {
+    public void setnOfTotalKisti(int nOfTotalKisti) {
         this.nOfTotalKisti = nOfTotalKisti;
     }
 
@@ -80,11 +85,11 @@ public class Collection {
         this.nOfTotalAmount = nOfTotalAmount;
     }
 
-    public double getnOfCollectedKisti() {
+    public int getnOfCollectedKisti() {
         return nOfCollectedKisti;
     }
 
-    public void setnOfCollectedKisti(double nOfCollectedKisti) {
+    public void setnOfCollectedKisti(int nOfCollectedKisti) {
         this.nOfCollectedKisti = nOfCollectedKisti;
     }
 
@@ -110,26 +115,5 @@ public class Collection {
 
     public void setLoan(Loan loan) {
         this.loan = loan;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Collection that = (Collection) o;
-        return Double.compare(that.nOfTotalKisti, nOfTotalKisti) == 0 &&
-                Double.compare(that.nOfTotalAmount, nOfTotalAmount) == 0 &&
-                Double.compare(that.nOfCollectedKisti, nOfCollectedKisti) == 0 &&
-                Double.compare(that.nOfColectedamount, nOfColectedamount) == 0 &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(loanCode, that.loanCode) &&
-                Objects.equals(memberName, that.memberName) &&
-                Objects.equals(cDate, that.cDate) &&
-                Objects.equals(loan, that.loan);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, loanCode, memberName, nOfTotalKisti, nOfTotalAmount, nOfCollectedKisti, nOfColectedamount, cDate, loan);
     }
 }

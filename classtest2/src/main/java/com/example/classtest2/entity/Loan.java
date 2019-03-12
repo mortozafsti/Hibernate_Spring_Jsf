@@ -22,13 +22,13 @@ public class Loan {
     private Date l_date;
 
     @Column(name = "l_amount", nullable = false)
-    private Long l_amount;
+    private double l_amount;
 
     @Column(name = "l_kisti", nullable = false)
-    private Long l_kisti;
+    private int l_kisti;
 
     @Column(name = "l_payable_kisti", nullable = false)
-    private Long l_payable_kisti;
+    private int l_payable_kisti;
 
     @ManyToOne
     @JoinColumn(name = "m_id", nullable = false)
@@ -37,7 +37,7 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String loanCode, String l_brance, Date l_date, Long l_amount, Long l_kisti, Long l_payable_kisti, Member member) {
+    public Loan(String loanCode, String l_brance, Date l_date, double l_amount, int l_kisti, int l_payable_kisti, Member member) {
         this.loanCode = loanCode;
         this.l_brance = l_brance;
         this.l_date = l_date;
@@ -79,27 +79,27 @@ public class Loan {
         this.l_date = l_date;
     }
 
-    public Long getL_amount() {
+    public double getL_amount() {
         return l_amount;
     }
 
-    public void setL_amount(Long l_amount) {
+    public void setL_amount(double l_amount) {
         this.l_amount = l_amount;
     }
 
-    public Long getL_kisti() {
+    public int getL_kisti() {
         return l_kisti;
     }
 
-    public void setL_kisti(Long l_kisti) {
+    public void setL_kisti(int l_kisti) {
         this.l_kisti = l_kisti;
     }
 
-    public Long getL_payable_kisti() {
+    public int getL_payable_kisti() {
         return l_payable_kisti;
     }
 
-    public void setL_payable_kisti(Long l_payable_kisti) {
+    public void setL_payable_kisti(int l_payable_kisti) {
         this.l_payable_kisti = l_payable_kisti;
     }
 
@@ -116,13 +116,13 @@ public class Loan {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Loan loan = (Loan) o;
-        return Objects.equals(id, loan.id) &&
+        return Double.compare(loan.l_amount, l_amount) == 0 &&
+                l_kisti == loan.l_kisti &&
+                l_payable_kisti == loan.l_payable_kisti &&
+                Objects.equals(id, loan.id) &&
                 Objects.equals(loanCode, loan.loanCode) &&
                 Objects.equals(l_brance, loan.l_brance) &&
                 Objects.equals(l_date, loan.l_date) &&
-                Objects.equals(l_amount, loan.l_amount) &&
-                Objects.equals(l_kisti, loan.l_kisti) &&
-                Objects.equals(l_payable_kisti, loan.l_payable_kisti) &&
                 Objects.equals(member, loan.member);
     }
 
