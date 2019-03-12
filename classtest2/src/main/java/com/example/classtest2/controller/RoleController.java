@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/role/")
@@ -37,7 +38,7 @@ public class RoleController {
             return "role/addrole";
         }else {
             if (role != null){
-                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                Optional<Role> role1 = this.roleRepo.findByRoleName(role.getRoleName());
                 if (role1 != null){
                     model.addAttribute("exitMsg","RoleName is Already Exist");
                 }else {
@@ -62,7 +63,7 @@ public class RoleController {
             return "role/roleedit";
         }else {
             if (role != null){
-                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                Optional<Role> role1 = this.roleRepo.findByRoleName(role.getRoleName());
                 if (role1 != null){
                     model.addAttribute("exitMsg","RoleName is Already Exist");
                 }else {

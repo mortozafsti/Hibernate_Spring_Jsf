@@ -57,18 +57,23 @@ public class UserController {
     }
 
     @PostMapping(value = "/adduser")
-    public String saveRole(@Valid User user,BindingResult bindingResult, Model model){
+    public String saveUser(@Valid User user,BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             model.addAttribute("addlisthome", this.roleRepo.findAll());
             return "user/adduser";
         }
-//        User user1 = new User();
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        passwordEncoder.encode(user.getPassword());
-        this.userRepo.save(user);
-        model.addAttribute("user", new User());
-        model.addAttribute("addlisthome", this.roleRepo.findAll());
-
+        if (userRepo.existsByEmail(user.getEmail())){
+            model.addAttribute("rejectMsg","Already have This Entry");
+        }else{
+            String username = user.getEmail().split("\\@")[0];
+            user.setUsername(username);
+            user.setStatus(true);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setConformationToken(UUID.randomUUID().toString());
+            this.userRepo.save(user);
+            model.addAttribute("user", new User());
+            model.addAttribute("addlisthome", this.roleRepo.findAll());
+        }
         return "user/adduser";
     }
 

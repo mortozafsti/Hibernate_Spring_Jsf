@@ -6,6 +6,10 @@ public class CollectionDto {
     private double yearlyCollectedAmount;
     private double totalAmount;
     private double totalloanAmount;
+    private double totalDueAmount;
+
+
+
 
     public double getMonthlyCollectedAmount() {
         return monthlyCollectedAmount;
@@ -37,5 +41,13 @@ public class CollectionDto {
 
     public void setTotalloanAmount(double totalloanAmount) {
         this.totalloanAmount = totalloanAmount;
+    }
+
+    public double getTotalDueAmount() {
+        return totalDueAmount;
+    }
+
+    public void setTotalDueAmount(double totalDueAmount) {
+        this.totalDueAmount = totalDueAmount;
     }
 }
