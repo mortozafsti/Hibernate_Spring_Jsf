@@ -21,6 +21,7 @@ public class Collection {
     private double nOfTotalAmount;
     private int nOfCollectedKisti;
     private double nOfColectedamount;
+
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date cDate = new Date();
