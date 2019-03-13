@@ -22,7 +22,7 @@ public class Collection {
     private int nOfCollectedKisti;
     private double nOfColectedamount;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date cDate = new Date();
 

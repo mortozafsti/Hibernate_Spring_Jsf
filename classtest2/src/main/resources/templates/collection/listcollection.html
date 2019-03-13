@@ -6,7 +6,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Collection Details</title>
     <style>
         .mm{
             margin-left: 20px;
@@ -42,6 +42,7 @@
         <tr>
             <th>Loan_Id</th>
             <th>Loan_Code</th>
+            <th>C_Date</th>
             <th>Member_Name</th>
             <th>Total_Kisti</th>
             <th>Total_Amount</th>
@@ -52,6 +53,7 @@
         <tr th:each="c: ${collectionlist}">
             <td th:text="${c.id}"></td>
             <td th:text="${c.loanCode}"></td>
+            <td th:text="${c.cDate}"></td>
             <td th:text="${c.memberName}"></td>
             <td th:text="${c.nOfTotalKisti}"></td>
             <td th:text="${c.nOfTotalAmount}"></td>

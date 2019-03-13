@@ -6,7 +6,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Loan Details</title>
+    <title>LoanSummaryDetails</title>
     <style>
         .mm{
             margin-left: 20px;
@@ -46,22 +46,28 @@
         <th>Loan_Branch</th>
         <th>Loan_Date</th>
         <th>Loan_Amount</th>
-        <th>Total_Loan_Kisti</th>
-        <th>Tl_Loan_Payable_Kisti</th>
+        <th>Total_Kisti</th>
+        <th>Due_Kisti</th>
+        <th>Collected_Kisti</th>
+        <th>Collected_Amount</th>
+        <th>Due_Amount</th>
         <th>Member_Id</th>
-        <th colspan="2">Action</th>
+        <!--<th colspan="2">Action</th>-->
     </tr>
-    <tr th:each="lon: ${loanlist}">
-        <td th:text="${lon.id}"></td>
-        <td th:text="${lon.loanCode}"></td>
-        <td th:text="${lon.l_brance}"></td>
-        <td th:text="${lon.l_date}"></td>
-        <td th:text="${lon.l_amount}"></td>
-        <td th:text="${lon.l_kisti}"></td>
-        <td th:text="${lon.l_payable_kisti}"></td>
-        <td th:text="${lon.member.id}"></td>
-        <td><a th:href="@{'/loan/editloan/'+${lon.id}}">Edit</a></td>
-        <td><a th:href="@{'/loan/dell/'+${lon.id}}">Del</a></td>
+    <tr th:each="lons: ${summarylist}">
+        <td th:text="${lons.id}"></td>
+        <td th:text="${lons.loanCode}"></td>
+        <td th:text="${lons.l_branch}"></td>
+        <td th:text="${lons.l_date}"></td>
+        <td th:text="${lons.l_amount}"></td>
+        <td th:text="${lons.no_total_Kisti}"></td>
+        <td th:text="${lons.no_due_Kisti}"></td>
+        <td th:text="${lons.no_collected_Kisti}"></td>
+        <td th:text="${lons.no_collected_amount}"></td>
+        <td th:text="${lons.no_due_amount}"></td>
+        <td th:text="${lons.member.getM_name()}"></td>
+        <!--<td><a th:href="@{'/loan/editloan/'+${lons.id}}">Edit</a></td>-->
+        <!--<td><a th:href="@{'/loan/dell/'+${lons.id}}">Del</a></td>-->
 
     </tr>
 </table>
