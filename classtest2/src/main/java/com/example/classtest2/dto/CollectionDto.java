@@ -7,7 +7,8 @@ public class CollectionDto {
     private double totalAmount;
     private double totalloanAmount;
     private double totalDueAmount;
-
+    private double otherCollection;
+    private double memberWiseDeposite;
 
 
 
@@ -49,5 +50,21 @@ public class CollectionDto {
 
     public void setTotalDueAmount(double totalDueAmount) {
         this.totalDueAmount = totalDueAmount;
+    }
+
+    public double getOtherCollection() {
+        return otherCollection;
+    }
+
+    public void setOtherCollection(double otherCollection) {
+        this.otherCollection = otherCollection;
+    }
+
+    public double getMemberWiseDeposite() {
+        return memberWiseDeposite;
+    }
+
+    public void setMemberWiseDeposite(double memberWiseDeposite) {
+        this.memberWiseDeposite = memberWiseDeposite;
     }
 }

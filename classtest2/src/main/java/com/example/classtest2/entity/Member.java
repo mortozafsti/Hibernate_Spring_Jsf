@@ -31,7 +31,7 @@ public class Member {
     private String m_nid;
 
     @Column(name = "m_admit_fee", nullable = false)
-    private String m_admit_fee;
+    private double m_admit_fee;
 
     @Temporal(TemporalType.DATE)
     private Date regi_date;
@@ -47,7 +47,7 @@ public class Member {
     public Member() {
     }
 
-    public Member(String m_name, String m_code, String m_gender, String m_mobile, String m_address, String m_nid, String m_admit_fee, Date regi_date, Ngo ngo, Nominee nominee) {
+    public Member(String m_name, String m_code, String m_gender, String m_mobile, String m_address, String m_nid, double m_admit_fee, Date regi_date, Ngo ngo, Nominee nominee) {
         this.m_name = m_name;
         this.m_code = m_code;
         this.m_gender = m_gender;
@@ -116,11 +116,11 @@ public class Member {
         this.m_nid = m_nid;
     }
 
-    public String getM_admit_fee() {
+    public double getM_admit_fee() {
         return m_admit_fee;
     }
 
-    public void setM_admit_fee(String m_admit_fee) {
+    public void setM_admit_fee(double m_admit_fee) {
         this.m_admit_fee = m_admit_fee;
     }
 

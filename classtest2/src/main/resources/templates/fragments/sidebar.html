@@ -13,9 +13,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/profile}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-university"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Ngo System<sup></sup></div>
     </a>
 
     <!-- Divider -->
@@ -40,8 +40,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <i class="fas fa-fw fa-user"></i>
+            <span>User & Role</span>
         </a>
 
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -51,24 +51,77 @@
                 <a class="collapse-item" href="/role/rolelist" th:href="@{/role/rolelist}">Role List</a>
                 <a class="collapse-item" href="/user/adduser" th:href="@{/user/adduser}">Add User</a>
                 <a class="collapse-item" href="/user/listuser" th:href="@{/user/listuser}">User List</a>
+
+            </div>
+        </div>
+
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+           aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Ngo</span>
+        </a>
+
+        <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">All Ngo Details:</h6>
                 <a class="collapse-item" href="/ngo/addngo" th:href="@{/ngo/addngo}">Add Ngo</a>
                 <a class="collapse-item" href="/ngo/listngo" th:href="@{/ngo/listngo}">Ngo List</a>
+            </div>
+        </div>
+
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3" aria-expanded="true"
+           aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Nominee & Member</span>
+        </a>
+        <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo3" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Nominee & Member Details:</h6>
                 <a class="collapse-item" href="/nominee/addnominee" th:href="@{/nominee/addnominee}">Add Nominee</a>
                 <a class="collapse-item" href="/nominee/nomineelists" th:href="@{/nominee/nomineelists}">Nominee List</a>
                 <a class="collapse-item" href="/member/memberAdd" th:href="@{/member/memberAdd}">Add Member</a>
                 <a class="collapse-item" href="/member/member" th:href="@{/member/member}">Member List</a>
-
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4" aria-expanded="true"
+           aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-money-bill-wave-alt"></i>
+            <span>Deposite</span>
+        </a>
+        <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo4" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Deposite Details:</h6>
                 <a class="collapse-item" href="/deposite/depositeAdd" th:href="@{/deposite/depositeAdd}">Add Deposite</a>
                 <a class="collapse-item" href="/deposite/deposite" th:href="@{/deposite/deposite}">Deposite List</a>
+            </div>
+        </div>
+    </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true"
+           aria-controls="collapseTwo1">
+            <i class="fas fa-fw fa-credit-card"></i>
+            <span>Loan</span>
+        </a>
+
+        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo1" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Collection Details:</h6>
                 <a class="collapse-item" href="/loan/loanAdd" th:href="@{/loan/loanAdd}">Add Loan</a>
                 <a class="collapse-item" href="/loan/loanlists" th:href="@{/loan/loanlists}">Loan List</a>
-
                 <a class="collapse-item" href="/collection/collectionAdd" th:href="@{/collection/collectionAdd}">Add Collection</a>
                 <a class="collapse-item" href="/collection/collection" th:href="@{/collection/collection}">Collection List</a>
             </div>
         </div>
+
     </li>
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">

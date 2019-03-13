@@ -1,12 +1,8 @@
 package com.example.classtest2.controller;
 
 import com.example.classtest2.dto.CollectionDto;
-import com.example.classtest2.entity.Collection;
-import com.example.classtest2.entity.Loan;
-import com.example.classtest2.entity.LoanSummary;
-import com.example.classtest2.repo.CollectionRepo;
-import com.example.classtest2.repo.LoanRepo;
-import com.example.classtest2.repo.LoanSummaryRepo;
+import com.example.classtest2.entity.*;
+import com.example.classtest2.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +20,20 @@ public class DashboardController {
     @Autowired
     private LoanSummaryRepo loanSummaryRepo;
 
+    @Autowired
+    private MemberRepo memberRepo;
+
+    @Autowired
+    private DepositeRepo depositeRepo;
+
     @GetMapping(value =  "/")
     public String dasview(Model model) {
 //        System.out.println(collectionRepo.findAll().size());
         double totalAmount = 0;
         double totalloanAmount = 0;
         double totalDueAmount = 0;
+        double otherCollection = 0;
+        double memberWiseDeposite = 0;
         for (Collection c : collectionRepo.findAll()) {
             totalAmount += c.getnOfColectedamount();
         }
@@ -39,11 +43,20 @@ public class DashboardController {
         for (LoanSummary ds : loanSummaryRepo.findAll()) {
             totalDueAmount += ds.getNo_due_amount();
         }
+        for (Member mr : memberRepo.findAll()) {
+            otherCollection += mr.getM_admit_fee();
+        }
+        for (Deposite depo : depositeRepo.findAll()) {
+            Deposite deposite = new Deposite();
+            memberWiseDeposite = depo.getAmount();
+        }
 //        System.out.println(totalAmount);
         CollectionDto dto = new CollectionDto();
         dto.setTotalAmount(totalAmount);
         dto.setTotalloanAmount(totalloanAmount);
         dto.setTotalDueAmount(totalDueAmount);
+        dto.setOtherCollection(otherCollection);
+        dto.setMemberWiseDeposite(memberWiseDeposite);
         model.addAttribute("dto", dto);
 
         return "dashboard";

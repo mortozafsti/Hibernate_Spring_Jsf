@@ -22,7 +22,7 @@ public class Deposite {
     private Date depositDate;
 
     @Column(name = "deposit_amount", nullable = false)
-    private Long amount;
+    private double amount;
 
     @ManyToOne
     @JoinColumn(name = "m_id", nullable = false)
@@ -31,7 +31,7 @@ public class Deposite {
     public Deposite() {
     }
 
-    public Deposite(String depositNbrance, Date depositDate, Long amount, Member member) {
+    public Deposite(String depositNbrance, Date depositDate, double amount, Member member) {
         this.depositNbrance = depositNbrance;
         this.depositDate = depositDate;
         this.amount = amount;
@@ -62,11 +62,11 @@ public class Deposite {
         this.depositDate = depositDate;
     }
 
-    public Long getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
