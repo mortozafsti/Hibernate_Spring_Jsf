@@ -2,7 +2,9 @@
 <!--<script src="../../static/js/bootstrap.js"></script>-->
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Login Page</title>
@@ -26,7 +28,7 @@
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
-                <h3>Sign In</h3>
+                <h3>Sign Up</h3>
                 <div class="d-flex justify-content-end social_icon">
                     <span><i class="fab fa-facebook-square"></i></span>
                     <span><i class="fab fa-google-plus-square"></i></span>
@@ -39,21 +41,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="First Name" name="username">
-
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Last Name" name="username">
+                        <input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}">
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Email Address" name="username">
+                        <input type="text" class="form-control" placeholder="Email Address" th:field="*{email}">
 
                     </div>
                     <div class="input-group form-group form-inline">
@@ -61,11 +56,11 @@
                             <span class="input-group-text"><i class="fas fa-genderless"></i></span>
                         </div></br>
                         <label class="radio inline">
-                            <input type="radio" th:field="*{gender}" name="gender" value="m">
+                            <input type="radio" th:field="*{gender}"  name="gender" value="m">
                             <span><strong style="color: white">Male</strong></span>
                         </label>
                         <label class="radio inline">
-                            <input type="radio" th:field="*{gender}" name="gender" value="f">
+                            <input type="radio" th:field="*{gender}"  name="gender" value="f">
                             <span style="color: white">Female</span>
                         </label>
 
@@ -74,19 +69,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
                         </div>
-                        <input type="date" class="form-control" placeholder="Birth Date" name="password">
+                        <input type="date" class="form-control" placeholder="Birth Date" th:field="*{birthDate}">
                     </div>
                     <div class="row align-items-center remember">
                         <input type="checkbox">Remember Me
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn">
+                        <input type="submit" value="Sign Up" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                    Don't have an account?<a th:href="@{/}">Sign Up</a>
+                    Don't have an account?<a th:href="@{/login}">Login</a>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="#">Forgot your password?</a>

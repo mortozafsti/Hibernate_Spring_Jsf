@@ -45,14 +45,14 @@ public class LoginController {
     @Autowired
     private PasswordEncoder passwordEncoder;
     private static String USER_NAME = "mortoza.cse";
-    private static String PASSWORD = "mortozacse";
+    private static String PASSWORD = "mortozacse123";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)){
             /* The User is Logged in :)  */
-            return "dashboard";
+            return "redirect:/";
         }
         return "public/login";
     }
@@ -68,7 +68,8 @@ public class LoginController {
         user.setUsername(username);
         user.setStatus(false);
         Set<Role> roles = new HashSet<>();
-        roles.add(new Role(roleRepo.findByRoleName("USER").get().getId()));
+//        roles.add(new Role(roleRepo.findByRoleName("USER").get().getId()));
+        roles.add(new Role(3l));
         user.setRegiDate(new Date());
         user.setRole(roles);
         user.setConformationToken(UUID.randomUUID().toString());
@@ -86,8 +87,7 @@ public class LoginController {
             //email sending
             // 172.16.185.51
             //String appUrl = request.getScheme() + "://" + request.getServerName()+":"+"8008";
-            String appUrl = request.getScheme() + "://" + request.getRemoteAddr() + ":" + "8008";
-            System.out.println("appUrl: " + appUrl);
+            String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + "8081";
             String from = USER_NAME;
             String pass = PASSWORD;
             String[] to = {user.getEmail()}; // list of recipient email addresses

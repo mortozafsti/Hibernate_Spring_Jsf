@@ -7,43 +7,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .mm{
+            margin-left: 30px;
+
+        }
+    </style>
 </head>
 <body>
         <div class="main_content" layout:fragment="cus_con">
-            <form th:object="${user}" th:action="@{/user/adduser}" th:method="POST">
-                <table>
-                    <tr>
-                        <td><label>Roles:</label></td>
-                        <td>
-                            <select th:field="*{role}" multiple>
-                                <option th:each="rola : ${addlisthome}" th:value="${rola.id}">
-                                    <span th:text="${rola.roleName}"></span>
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Name:</label></td>
-                        <td><input type="text" th:field="*{name}" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>User_Name:</label></td>
-                        <td><input type="text" th:field="*{username}" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Password:</label></td>
-                        <td><input type="password" th:field="*{password}" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Email:</label></td>
-                        <td><input type="email" th:field="*{email}" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Status:</label></td>
-                        <td><input type="text" th:field="*{status}" /></td>
-                    </tr>
-                </table>
-                <button type="submit">Save</button>
+            <form th:object="${user}" th:action="@{/user/adduser}" th:method="POST" class="mm">
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label>Role Name</label>
+                        <select th:field="*{role}" multiple>
+                            <option th:each="rola : ${addlisthome}" th:value="${rola.id}">
+                                <span th:text="${rola.roleName}"></span>
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" class="form-control" th:field="*{name}"
+                               placeholder="Enter Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="user_name">User Name</label>
+                        <input id="user_name" type="text" class="form-control" th:field="*{username}"
+                               placeholder="Enter User Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="role_name">PassWord</label>
+                        <input id="role_name" type="text" class="form-control" th:field="*{password}"
+                               placeholder="Enter Role Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="email">Email</label>
+                        <input id="email" type="text" class="form-control" th:field="*{email}"
+                               placeholder="Enter Your Email"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="status">Status</label>
+                        <input id="status" type="text" class="form-control" th:field="*{status}"
+                               placeholder="Enter Name"/>
+                    </div>
+                </div>
+                <!--<table>-->
+                    <!--<tr>-->
+                        <!--<td><label>Roles:</label></td>-->
+                        <!--<td>-->
+                            <!--<select th:field="*{role}" multiple>-->
+                                <!--<option th:each="rola : ${addlisthome}" th:value="${rola.id}">-->
+                                    <!--<span th:text="${rola.roleName}"></span>-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><label>Name:</label></td>-->
+                        <!--<td><input type="text" th:field="*{name}" /></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><label>User_Name:</label></td>-->
+                        <!--<td><input type="text" th:field="*{username}" /></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><label>Password:</label></td>-->
+                        <!--<td><input type="password" th:field="*{password}" /></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><label>Email:</label></td>-->
+                        <!--<td><input type="email" th:field="*{email}" /></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><label>Status:</label></td>-->
+                        <!--<td><input type="text" th:field="*{status}" /></td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+                <button class="btn btn-primary" type="submit">Save</button>
             </form>
         </div>
 </body>

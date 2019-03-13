@@ -24,7 +24,7 @@ public class DashboardController {
     @Autowired
     private LoanSummaryRepo loanSummaryRepo;
 
-    @GetMapping(value = {"/dashboard", "/"})
+    @GetMapping(value =  "/")
     public String dasview(Model model) {
 //        System.out.println(collectionRepo.findAll().size());
         double totalAmount = 0;
