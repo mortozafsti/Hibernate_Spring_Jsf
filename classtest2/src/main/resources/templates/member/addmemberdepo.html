@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+
+    <form th:action="#" th:object="${memberWiseDeposite}" th:action="@{/member/memberwisedepo}" th:method="POST">
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="add" class="form-control-label">L_Branch</label></div>
+            <div class="col-12 col-md-9">
+                <select id="add" th:field="*{loan}" data-th-placeholder="Chose Loan Branxh" class="dropdown-list">
+                    <option value=""></option>
+                    <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.l_brance}"></span></option>
+                </select>
+            </div>
+        </div>
+        sdghfuhuigh
+    </form>
+
+</div>
+</body>
+</html>
