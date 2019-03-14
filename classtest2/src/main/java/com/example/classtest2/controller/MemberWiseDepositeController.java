@@ -56,7 +56,7 @@ public class MemberWiseDepositeController {
             return "member/addmemberdepo";
         }else {
 
-            memberWiseDeposite.setLoan(memberWiseDeposite.getLoan());
+//            memberWiseDeposite.setLoan(memberWiseDeposite.getLoan());
             this.memberWiseDepositeRepo.save(memberWiseDeposite);
 
             model.addAttribute("loanalist",this.loanRepo.findAll());
@@ -65,6 +65,7 @@ public class MemberWiseDepositeController {
             model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
 
             model.addAttribute("memberWiseDeposite", new MemberWiseDeposite());
+            model.addAttribute("SuccMsg","Deposit Successfully Saved");
         }
         return "member/addmemberdepo";
     }
