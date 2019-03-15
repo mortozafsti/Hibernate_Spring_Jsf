@@ -1,6 +1,7 @@
 package com.example.classtest2.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "memberwisedeposite")
@@ -77,13 +78,19 @@ public class MemberWiseDeposite {
     }
 
     @Override
-    public String toString() {
-        return "MemberWiseDeposite{" +
-                "id=" + id +
-                ", loan=" + loan +
-                ", member=" + member +
-                ", nominee=" + nominee +
-                ", deposite=" + deposite +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MemberWiseDeposite that = (MemberWiseDeposite) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(loan, that.loan) &&
+                Objects.equals(member, that.member) &&
+                Objects.equals(nominee, that.nominee) &&
+                Objects.equals(deposite, that.deposite);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, loan, member, nominee, deposite);
     }
 }

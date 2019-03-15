@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DepositeRepo extends JpaRepository<Deposite,Long> {
 
+
 }
 

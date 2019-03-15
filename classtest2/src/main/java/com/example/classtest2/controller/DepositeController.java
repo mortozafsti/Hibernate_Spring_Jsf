@@ -1,16 +1,16 @@
 package com.example.classtest2.controller;
 
 import com.example.classtest2.entity.Deposite;
+import com.example.classtest2.entity.Loan;
+import com.example.classtest2.entity.Member;
 import com.example.classtest2.repo.DepositeRepo;
+import com.example.classtest2.repo.LoanRepo;
 import com.example.classtest2.repo.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -25,6 +25,7 @@ public class DepositeController {
     @Autowired
     private MemberRepo memberRepo;
 
+
     @GetMapping(value = "/deposite")
     public String depositeindex(Model model){
         model.addAttribute("depositelst",this.depositeRepo.findAll());
@@ -37,6 +38,26 @@ public class DepositeController {
         return "deposite/Adddeposite";
     }
 
+//    private Loan loan = new Loan();
+//    private Member member = new Member();
+//    private Deposite collection = new Deposite();
+//
+//    @GetMapping(value = "/searchloan")
+//    public String loanSearch(Model model, @RequestParam("lc") String loanCode) {
+//        this.loan = this.loanRepo.findByLoanCode(loanCode);
+////        this.member=this.memberRepo.findByM_name(loanCode);
+//        collection = new Deposite();
+//
+////        collection.getMember().getM_name();
+////        collection.setMemberName(loan.getMember().getM_name());
+////        collection.setnOfTotalAmount(loan.getL_amount());
+////        collection.setnOfTotalKisti(loan.getL_kisti());
+////        collection.setnOfCollectedKisti(loanSummary.getNo_collected_Kisti()+1);
+////        collection.setnOfColectedamount(collection.getnOfColectedamount());
+////        collection.getMember();
+//        model.addAttribute("collection", collection);
+//        return "redirect:/collection/collectionAdd";
+//    }
     @PostMapping(value = "/depositeAdd")
     public String depositeSave(@Valid Deposite deposite, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){

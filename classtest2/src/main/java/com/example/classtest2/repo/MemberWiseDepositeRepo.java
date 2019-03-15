@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberWiseDepositeRepo extends JpaRepository<MemberWiseDeposite, Long> {
 
-    MemberWiseDeposite findByLoan_LoanCode(String loanCode);
+//    MemberWiseDeposite findByLoan_LoanCode(String loanCode);
 }

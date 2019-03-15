@@ -16,45 +16,61 @@
 <body>
 <div class="main_content" layout:fragment="cus_con">
 <span th:text="${SuccMsg}"></span>
+    <!--<form action="#" th:object="${memberWiseDeposite}" th:action="@{/member/searchloans}" th:method="GET" class="mm">-->
+
+        <!--<input  type="text" class="form-control" name="lc" /></br>-->
+        <!--<button type="submit" class="btn btn-primary btn-blockquote">-->
+            <!--Search-->
+        <!--</button>-->
+    <!--</form>-->
     <form th:object="${memberWiseDeposite}" th:action="@{/member/memberwisedepo}" th:method="POST" class="mm">
+        <!--<div class="row form-group">-->
+            <!--<div class="col col-md-2"><label for="exampleFormControlInput0">L_Code</label></div>-->
+            <!--<div class="col-12 col-md-7">-->
+                <!--<select class="form-control" id="exampleFormControlInput0" th:field="*{loan}">-->
+                    <!--<option value=""></option>-->
+                    <!--<option th:each="lons :${loanalist}" th:value="${lons.id}"><span th:text="${lon.loanCode}"></span></option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row form-group">
-            <div class="col col-md-2"><label for="add" class="form-control-label">L_Branch</label></div>
-            <div class="col-12 col-md-7">
-                <select id="add" th:field="*{loan}" class="dropdown-list" >
+            <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
+            <div class="col-12 col-md-7 form-group">
+                <select class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
                     <option value=""></option>
                     <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.l_brance}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="add1" class="form-control-label">M_Name</label></div>
+            <div class="col col-md-2"><label for="exampleFormControlInput2">M_Name</label></div>
             <div class="col-12 col-md-7">
-                <select id="add1" th:field="*{member}"  class="dropdown-list">
+                <select class="form-control" id="exampleFormControlInput2" th:field="*{member}">
                     <option value=""></option>
                     <option th:each="mem :${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="add2" class="form-control-label">N_Name</label></div>
+            <div class="col col-md-2"><label for="exampleFormControlInput3">N_Name</label></div>
             <div class="col-12 col-md-7">
-                <select id="add2" th:field="*{nominee}"  class="dropdown-list">
+                <select class="form-control" id="exampleFormControlInput3" th:field="*{nominee}">
                     <option value=""></option>
                     <option th:each="nomi :${nomineelistt}" th:value="${nomi.id}"><span th:text="${nomi.n_name}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="add3" class="form-control-label">D_Amount</label></div>
+            <div class="col col-md-2"><label for="exampleFormControlInput4">D_Amount</label></div>
             <div class="col-12 col-md-7">
-                <select id="add3" th:field="*{deposite}"  class="dropdown-list">
+                <select class="form-control" id="exampleFormControlInput4" th:field="*{deposite}">
                     <option value=""></option>
                     <option th:each="depo :${depositlistt}" th:value="${depo.id}"><span th:text="${depo.amount}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-6">
+            <div class="form-group offset-2 col-6">
                 <button type="submit" class="btn btn-primary">
                    Save
                 </button>

@@ -1,16 +1,12 @@
 package com.example.classtest2.controller;
 
-import com.example.classtest2.entity.Member;
-import com.example.classtest2.entity.MemberWiseDeposite;
+import com.example.classtest2.entity.*;
 import com.example.classtest2.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -50,14 +46,38 @@ public class MemberWiseDepositeController {
         return "member/addmemberdepo";
     }
 
+//    private Loan loan = new Loan();
+//    private Member member = new Member();
+//    private Deposite deposite = new Deposite();
+//    private Nominee nominee = new Nominee();
+//    private MemberWiseDeposite collection = new MemberWiseDeposite();
+//
+//    @GetMapping(value = "/searchloans")
+//    public String loanSearchm(Model model, @RequestParam("lc") String loanCode) {
+//        this.loan = this.loanRepo.findByLoanCode(loanCode);
+//        this.deposite=this.depositeRepo.findByLoanCode(loanCode);
+////        this.member=this.memberRepo.findByM_name(m_name);
+//        this.nominee=this.nomineeRepo.findByLoanCode(loanCode);
+//        collection = new MemberWiseDeposite();
+//        collection.setL_Branch(loan.getL_brance());
+////        collection.setM_Name(member.getM_name());
+//        collection.setN_Name(nominee.getN_name());
+//        collection.setD_Amount(deposite.getAmount());
+////        collection.setnOfCollectedKisti(loanSummary.getNo_collected_Kisti()+1);
+////        collection.setnOfColectedamount(collection.getnOfColectedamount());
+//        collection.setLoan(loan);
+//        model.addAttribute("collection", collection);
+//        return "redirect:/member/memberwisedepo";
+//    }
+
     @PostMapping(value = "/memberwisedepo")
     public String memberwiseSave(@Valid MemberWiseDeposite memberWiseDeposite, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "member/addmemberdepo";
         }else {
 
-//            memberWiseDeposite.setLoan(memberWiseDeposite.getLoan());
-            this.memberWiseDepositeRepo.save(memberWiseDeposite);
+            memberWiseDeposite.setLoan(memberWiseDeposite.getLoan());
+           this.memberWiseDepositeRepo.save(memberWiseDeposite);
 
             model.addAttribute("loanalist",this.loanRepo.findAll());
             model.addAttribute("depositlistt",this.depositeRepo.findAll());
