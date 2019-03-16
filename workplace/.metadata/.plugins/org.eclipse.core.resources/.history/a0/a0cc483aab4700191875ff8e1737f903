@@ -1,0 +1,39 @@
+package com.coderbd.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.coderbd.entity.Student;
+import com.coderbd.repository.StudentRepo;
+
+@Controller
+@RequestMapping(value="/student")
+public class StudentController {
+	
+	@Autowired
+	private StudentRepo repo;
+	
+	@GetMapping("/list")
+	public String listStudent(Model model) {
+		model.addAttribute("studentlist", this.repo.findAll());
+		return "student-list";
+	}
+	
+	
+	@GetMapping("/showForm")
+	public String saveStuView(Model model) {
+		
+		return "student-form";
+	}
+	@PostMapping("/showForm")
+	public String saveStu(Student student, Model model) {
+		this.repo.save(student);
+		model.addAttribute("student", new Student());
+		return "student-form";
+		
+	}	
+}

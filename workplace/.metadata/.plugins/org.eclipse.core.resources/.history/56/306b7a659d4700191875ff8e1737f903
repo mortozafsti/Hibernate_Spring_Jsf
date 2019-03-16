@@ -1,0 +1,6 @@
+package com.coderbd.entity;
+
+@Entity
+public class Student {
+
+}

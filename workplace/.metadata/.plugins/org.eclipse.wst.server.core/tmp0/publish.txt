@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Mar 16 14:26:08 ALMT 2019
+org.eclipse.jst.jee.server\:/binary\:E\:\\workplace\\evidence\\src\\main\\webapp\\WEB-INF\\lib\\spring-web-5.1.0.RELEASE.jar=E\:\\Evedince9\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\evidence\\WEB-INF\\lib\\spring-web-5.1.0.RELEASE.jar
+org.eclipse.jst.jee.server\:evidence=E\:\\Evedince9\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\evidence
