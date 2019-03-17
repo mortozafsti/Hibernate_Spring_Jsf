@@ -20,6 +20,9 @@
 
 			<input type="button" value="Add Customer"
 				onclick="window.location.href='showForm'; return false;"
+				class="btn btn-primary" /> 
+				<input type="button" value="Login"
+				onclick="window.location.href='http://localhost:8009/evidence/login'; return false;"
 				class="btn btn-primary" /> <br />
 			<br />
 			<div class="panel panel-info">
