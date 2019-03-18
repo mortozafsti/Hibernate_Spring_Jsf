@@ -57,7 +57,10 @@ public class HomeController {
         return "user/u";
     }
 
-
+    @GetMapping(value = "/location")
+    public String locationView(){
+        return "secure/location";
+    }
 
 
 }

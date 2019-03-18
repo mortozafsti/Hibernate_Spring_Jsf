@@ -2,8 +2,10 @@
 <!--<script src="../../static/js/bootstrap.js"></script>-->
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
 <head>
     <title>Login</title>
     <!--Made with love by Mutiullah Samim -->
@@ -22,6 +24,7 @@
 
 </head>
 <body>
+<div class="main_content" layout:fragment="cus_con">
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
@@ -66,6 +69,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 <!--<head>-->

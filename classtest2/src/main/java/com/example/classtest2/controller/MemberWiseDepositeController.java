@@ -32,7 +32,7 @@ public class MemberWiseDepositeController {
     @GetMapping(value = "/memberwise")
     public String memberWiseD(MemberWiseDeposite  memberWiseDeposite,Model model){
         model.addAttribute("memberwisedepolist",this.memberWiseDepositeRepo.findAll());
-        return "member/list";
+        return "member/listmemberdepo";
     }
 
     @GetMapping(value = "/memberwisedepo")
