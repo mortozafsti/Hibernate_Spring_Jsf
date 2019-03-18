@@ -1,0 +1,5 @@
+INDEX VERSION 1.4+D:\bitbucket\stsCrud\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1228643620.index
+964091066.index
+2827488804.index
+3397486276.index

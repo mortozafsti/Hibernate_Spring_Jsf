@@ -46,7 +46,7 @@
         <th>Nominee_Name</th>
         <th>Loan_Branch</th>
         <th>Deposit_Amoint</th>
-        <th colspan="2">Action</th>
+        <!--<th colspan="2">Action</th>-->
     </tr>
     <tr th:each="mdepo: ${memberwisedepolist}">
         <td th:text="${mdepo.id}"></td>
@@ -70,8 +70,8 @@
                <span th:text="${de.amount}"></span>
            </span>
         </td>
-        <td><a th:href="@{'/loan/editloan/'+${mdepo.id}}">Edit</a></td>
-        <td><a th:href="@{'/loan/dell/'+${mdepo.id}}">Del</a></td>
+        <!--<td><a th:href="@{'/loan/editloan/'+${mdepo.id}}">Edit</a></td>-->
+        <!--<td><a th:href="@{'/loan/dell/'+${mdepo.id}}">Del</a></td>-->
     </tr>
 </table>
 </div>
