@@ -10,6 +10,7 @@
     <style type="text/css">
         .mm{
             margin-left: 30px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -23,6 +24,9 @@
             <!--Search-->
         <!--</button>-->
     <!--</form>-->
+
+    <div class="card-header mmm"><h4>Add Member-Wise Deposite</h4></div>
+
     <form th:object="${memberWiseDeposite}" th:action="@{/member/memberwisedepo}" th:method="POST" class="mm">
         <!--<div class="row form-group">-->
             <!--<div class="col col-md-2"><label for="exampleFormControlInput0">L_Code</label></div>-->
