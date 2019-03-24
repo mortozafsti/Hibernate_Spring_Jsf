@@ -71,6 +71,10 @@ public class DepositeController {
         return "deposite/Adddeposite";
     }
 
+    
+
+
+
 
     @GetMapping(value = "/editd/{id}")
     private String editViewd( Model model,@PathVariable("id") Long id){
