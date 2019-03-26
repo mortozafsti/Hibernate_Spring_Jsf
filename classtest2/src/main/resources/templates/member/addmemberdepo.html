@@ -40,7 +40,7 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
             <div class="col-12 col-md-7 form-group">
-                <select class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
+                <select onchange="memberWiseShow(this.value)" class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
                     <option value=""></option>
                     <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.l_brance}"></span></option>
                 </select>
@@ -49,7 +49,7 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput2">M_Name</label></div>
             <div class="col-12 col-md-7">
-                <select class="form-control" id="exampleFormControlInput2" th:field="*{member}">
+                <select th:id="member-dropdown" class="form-control" id="exampleFormControlInput2" th:field="*{member}">
                     <option value=""></option>
                     <option th:each="mem :${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
                 </select>
@@ -83,5 +83,41 @@
     </form>
 
 </div>
+    <script>
+
+            function memberWiseShow(id) {
+                 var dropdown = document.getElementById('member-dropdown');
+                 dropdown.length = 0;
+
+                 var defaultOption = document.createElement('option');
+                defaultOption.text = 'select A member';
+                dropdown.add(defaultOption);
+                dropdown.selectedIndex = 0;
+
+                var xhttp;
+                if(id == ""){
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                }
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200){
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                        var data = JSON.parse(this.responseText);
+                        var option;
+                        for (var i = 0; i < data.length; i++){
+                            option = document.createElement('option');
+                            option.text = data[i].member;
+                            option.value = data[i].id;
+                            dropdown.add(option);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "/member?id="+id, true);
+                xhttp.send();
+            }
+
+    </script>
 </body>
 </html>
