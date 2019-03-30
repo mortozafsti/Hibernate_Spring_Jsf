@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -45,6 +46,15 @@ public class MemberWiseDepositeController {
 
         return "member/addmemberdepo";
     }
+//    @GetMapping(value = "/memberwisedepo")
+//    public List<Member> memberSingle(Model model,@RequestParam("id") String m_name){
+//
+//        System.out.println("ID: "+m_name);
+//        List<Member> list = this.memberRepo.findAllByMember(new Member());
+//
+//        return list;
+//
+//    }
 
 //    private Loan loan = new Loan();
 //    private Member member = new Member();
