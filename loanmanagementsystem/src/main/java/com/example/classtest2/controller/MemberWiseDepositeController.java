@@ -45,6 +45,11 @@ public class MemberWiseDepositeController {
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
 
         return "member/addmemberdepo";
+
+
+
+
+
     }
 //    @GetMapping(value = "/memberwisedepo")
 //    public List<Member> memberSingle(Model model,@RequestParam("id") String m_name){
@@ -140,4 +145,8 @@ public class MemberWiseDepositeController {
         }
         return "redirect:/member/memberwise";
     }
+
+
+
+
 }
