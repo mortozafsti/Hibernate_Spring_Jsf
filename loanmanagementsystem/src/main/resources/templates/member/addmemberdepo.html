@@ -40,9 +40,9 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
             <div class="col-12 col-md-7 form-group">
-                <select onchange="memberWiseShow(this.value)" class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
+                <select onchange="memberWiseShow(this.value)" class="form-control" id="exampleFormControlInput1"   >
                     <option value=""></option>
-                    <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.l_brance}"></span></option>
+                    <option th:each="lon :${loanalist}" th:value="${lon.l_brance}"><span th:text="${lon.l_brance}"></span></option>
                 </select>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="col-12 col-md-7">
                 <select th:id="member-dropdown" class="form-control" id="exampleFormControlInput2" th:field="*{member}">
                     <option value=""></option>
-                    <option th:each="mem :${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
+                    <option th:each="mem : ${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
                 </select>
             </div>
         </div>
@@ -85,7 +85,7 @@
 </div>
     <script>
 
-            function memberWiseShow(id) {
+            function memberWiseShow(l_brance) {
                  var dropdown = document.getElementById('member-dropdown');
                  dropdown.length = 0;
 
@@ -95,7 +95,7 @@
                 dropdown.selectedIndex = 0;
 
                 var xhttp;
-                if(id == ""){
+                if(l_brance == ""){
                     document.getElementById("txtHint").innerHTML = "";
                     return;
                 }
@@ -113,11 +113,9 @@
                         }
                     }
                 };
-
-                xhttp.open("GET", "/member?id="+id, true);
+                xhttp.open("GET", "/member/memberwisedepo?id="+l_brance, true);
                 xhttp.send();
             }
-
     </script>
 </body>
 </html>

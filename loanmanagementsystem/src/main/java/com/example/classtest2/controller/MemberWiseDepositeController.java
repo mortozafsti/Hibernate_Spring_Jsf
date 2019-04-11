@@ -37,11 +37,11 @@ public class MemberWiseDepositeController {
     }
 
     @GetMapping(value = "/memberwisedepo")
-    public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model){
+    public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model,@RequestParam("branch") String branch){
 
         model.addAttribute("loanalist",this.loanRepo.findAll());
         model.addAttribute("depositlistt",this.depositeRepo.findAll());
-        model.addAttribute("memberlistt",this.memberRepo.findAll());
+        model.addAttribute("memberlistt",this.loanRepo.findAllByl_brance(branch));
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
 
         return "member/addmemberdepo";
