@@ -16,7 +16,7 @@ public class Loan {
     private String loanCode;
 
     @Column(name = "l_brance", nullable = false)
-    private String l_brance;
+    private String lBrance;
 
     @Column(name = "l_date", nullable = false)
     private Date l_date;
@@ -37,9 +37,9 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String loanCode, String l_brance, Date l_date, double l_amount, int l_kisti, int l_payable_kisti, Member member) {
+    public Loan(String loanCode, String lBrance, Date l_date, double l_amount, int l_kisti, int l_payable_kisti, Member member) {
         this.loanCode = loanCode;
-        this.l_brance = l_brance;
+        this.lBrance = lBrance;
         this.l_date = l_date;
         this.l_amount = l_amount;
         this.l_kisti = l_kisti;
@@ -63,12 +63,12 @@ public class Loan {
         this.loanCode = loanCode;
     }
 
-    public String getL_brance() {
-        return l_brance;
+    public String getlBrance() {
+        return lBrance;
     }
 
-    public void setL_brance(String l_brance) {
-        this.l_brance = l_brance;
+    public void setlBrance(String lBrance) {
+        this.lBrance = lBrance;
     }
 
     public Date getL_date() {
@@ -121,13 +121,13 @@ public class Loan {
                 l_payable_kisti == loan.l_payable_kisti &&
                 Objects.equals(id, loan.id) &&
                 Objects.equals(loanCode, loan.loanCode) &&
-                Objects.equals(l_brance, loan.l_brance) &&
+                Objects.equals(lBrance, loan.lBrance) &&
                 Objects.equals(l_date, loan.l_date) &&
                 Objects.equals(member, loan.member);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, loanCode, l_brance, l_date, l_amount, l_kisti, l_payable_kisti, member);
+        return Objects.hash(id, loanCode, lBrance, l_date, l_amount, l_kisti, l_payable_kisti, member);
     }
 }

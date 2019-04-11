@@ -65,7 +65,7 @@ public class LoanController {
 
                 loanSummary1.setL_amount(loan.getL_amount());
                 loanSummary1.setNo_collected_amount(0);
-                loanSummary1.setL_branch(loan.getL_brance());
+                loanSummary1.setL_branch(loan.getlBrance());
                 loanSummary1.setL_date(new Date());
                 loanSummary1.setNo_due_Kisti(0);
                 loanSummary1.setNo_total_Kisti(loan.getL_kisti());

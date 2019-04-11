@@ -41,7 +41,7 @@ public class MemberWiseDepositeController {
 
         model.addAttribute("loanalist",this.loanRepo.findAll());
         model.addAttribute("depositlistt",this.depositeRepo.findAll());
-        model.addAttribute("memberlistt",this.loanRepo.findAllByl_brance(branch));
+        model.addAttribute("memberlistt",this.loanRepo.findAllByLBrance(branch));
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
 
         return "member/addmemberdepo";
