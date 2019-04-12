@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Ngo Details</title>
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+<table id="customers">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Owner_Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Service</th>
+        <th>Regi_Date</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="n : ${ngolist}">
+        <td th:text="${n.id}"></td>
+        <td th:text="${n.name}"></td>
+        <td th:text="${n.ownersName}"></td>
+        <td th:text="${n.email}"></td>
+        <td th:text="${n.mobile}"></td>
+        <td th:text="${n.address}"></td>
+        <td th:text="${n.service}"></td>
+        <td th:text="${n.regiDate}"></td>
+        <td><a th:href="@{'/ngo/ngoedit/'+${n.id}}">Edit</a></td>
+        <td><a th:href="@{'/ngo/deln/'+${n.id}}">Del</a></td>
+
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!--<link href="/static/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="../../static/js/bootstrap.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>SignUp | Page</title>
+    <!--Made with love by Mutiullah Samim -->
+    <link href="/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/bootstrap-theme.css"/>
+    <script src="/js/bootstrap.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link  href="css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3>Sign Up</h3>
+                <div class="d-flex justify-content-end social_icon">
+                    <span><i class="fab fa-facebook-square"></i></span>
+                    <span><i class="fab fa-google-plus-square"></i></span>
+                    <span><i class="fab fa-twitter-square"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <form th:object="${user}" th:action="@{/sign-up}" th:method="POST">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}">
+
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Email Address" th:field="*{email}">
+
+                    </div>
+                    <div class="input-group form-group form-inline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-genderless"></i></span>
+                        </div></br>
+                        <label class="radio inline">
+                            <input type="radio" th:field="*{gender}"  name="gender" value="m">
+                            <span><strong style="color: white">Male</strong></span>
+                        </label>
+                        <label class="radio inline">
+                            <input type="radio" th:field="*{gender}"  name="gender" value="f">
+                            <span style="color: white">Female</span>
+                        </label>
+
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                        </div>
+                        <input type="date" class="form-control" placeholder="Birth Date" th:field="*{birthDate}">
+                    </div>
+                    <div class="row align-items-center remember">
+                        <input type="checkbox">Remember Me
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Sign Up" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account?<a th:href="@{/login}">Login</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#">Forgot your password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Login</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h3>Login Here.......</h3>-->
+<!--<div th:if="${param.error}">-->
+<!--Invalid userName Or Password-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--You have been Loged Out.-->
+<!--</div>-->
+<!--<form th:action="@{/login}" method="post">-->
+<!--<div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--<div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--<div><input type="submit" value="Sign In"/></div>-->
+<!--</form>-->
+<!--</body>-->
+</html>

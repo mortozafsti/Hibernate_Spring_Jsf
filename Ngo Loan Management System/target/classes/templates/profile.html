@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        .mm{
+            margin-left: 40px;
+
+        }
+    </style>
+</head>
+<body>
+        <div class="main_content" layout:fragment="cus_con">
+            <div class="col-lg-6 text-lg-center">
+                <h3><i class="fa fa-user"><h1>Profile Summary Of <span th:text="${name}"></span></h1></i></h3>
+            </div>
+            <form th:object="${user}" th:action="@{/profile/} + ${id}" th:method="POST" class="mm">
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label class="col-2">Role Name</label>
+                            <span class="col-4" th:each="rola : ${user.role}" th:value="${rola.id}">
+                                <span th:text="${rola.roleName}"></span>
+                            </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label class="col-2" for="name">Name</label>
+                        <span class="col-4" id="name"  th:text="*{name}"
+                              placeholder="Enter Name"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label class="col-2" for="uname">UserName</label>
+                        <span class="col-4" id="uname"  th:text="*{username}"
+                              placeholder="Enter Name"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label  class="col-2" for="user">Email</label>
+                        <span class="col-4" id="user"  th:text="*{email}"
+                              placeholder="Enter Name"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label  class="col-2" for="status">Status</label>
+                        <span class="col-4" id="status"  th:text="*{status}"
+                              placeholder="Enter Name"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Nominee Details</title>
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+    <table id="customers">
+        <tr>
+            <th>N_ID</th>
+            <th>N_Name</th>
+            <th>N_Address</th>
+            <th>N_Mobile</th>
+            <th>N_Age</th>
+            <th>N_DoB</th>
+            <th>N_NID</th>
+            <th>N_Gender</th>
+            <th>N_Relation</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr th:each="nl : ${nomineelist}">
+            <td th:text="${nl.id}"></td>
+            <td th:text="${nl.n_name}"></td>
+            <td th:text="${nl.n_address}"></td>
+            <td th:text="${nl.n_mobile}"></td>
+            <td th:text="${nl.age}"></td>
+            <td th:text="${nl.n_dob}"></td>
+            <td th:text="${nl.n_nid}"></td>
+            <td th:text="${nl.n_gender}"></td>
+            <td th:text="${nl.n_relation}"></td>
+            <td><a th:href="@{'/nominee/nomineedit/'+${nl.id}}">Edit</a></td>
+            <td><a th:href="@{'/nominee/delnominee/'+${nl.id}}">Del</a></td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

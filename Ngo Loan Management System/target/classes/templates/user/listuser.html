@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>User | Details</title>
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_content" layout:fragment="cus_con">
+        <table id="customers">
+            <tr>
+                <th>User_Id</th>
+                <th>Name</th>
+                <th>User_Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Role_Name</th>
+                <th colspan="2">Action</th>
+            </tr>
+            <tr th:each="u : ${userlist}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.username}"></td>
+                <td th:text="${u.email}"></td>
+                <td th:text="${u.status}"></td>
+                <td>
+                <span th:each="rr :${u.role}">
+                    <span th:text="${rr.roleName}"></span>
+                </span>
+                </td>
+                <td><a th:href="@{'/role/edit/' + ${u.id}}">Edit</a></td>
+                <td><a th:href="@{'/role/edit/' + ${u.id}}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

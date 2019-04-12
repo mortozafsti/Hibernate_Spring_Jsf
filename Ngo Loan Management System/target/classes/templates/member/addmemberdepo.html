@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .mm{
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="main_content" layout:fragment="cus_con">
+<span th:text="${SuccMsg}"></span>
+    <!--<form action="#" th:object="${memberWiseDeposite}" th:action="@{/member/searchloans}" th:method="GET" class="mm">-->
+
+        <!--<input  type="text" class="form-control" name="lc" /></br>-->
+        <!--<button type="submit" class="btn btn-primary btn-blockquote">-->
+            <!--Search-->
+        <!--</button>-->
+    <!--</form>-->
+
+    <div class="card-header mmm"><h4>Add Member-Wise Deposite</h4></div>
+
+    <form th:object="${memberWiseDeposite}" th:action="@{/member/memberwisedepo}" th:method="POST" class="mm">
+        <!--<div class="row form-group">-->
+            <!--<div class="col col-md-2"><label for="exampleFormControlInput0">L_Code</label></div>-->
+            <!--<div class="col-12 col-md-7">-->
+                <!--<select class="form-control" id="exampleFormControlInput0" th:field="*{loan}">-->
+                    <!--<option value=""></option>-->
+                    <!--<option th:each="lons :${loanalist}" th:value="${lons.id}"><span th:text="${lon.loanCode}"></span></option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row form-group">
+            <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
+            <div class="col-12 col-md-7 form-group">
+                <select onchange="memberWiseShow(this.value)" class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
+                    <option value=""></option>
+                    <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.l_brance}"></span></option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"><label for="exampleFormControlInput2">M_Name</label></div>
+            <div class="col-12 col-md-7">
+                <select th:id="member-dropdown" class="form-control" id="exampleFormControlInput2" th:field="*{member}">
+                    <option value=""></option>
+                    <option th:each="mem :${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"><label for="exampleFormControlInput3">N_Name</label></div>
+            <div class="col-12 col-md-7">
+                <select class="form-control" id="exampleFormControlInput3" th:field="*{nominee}">
+                    <option value=""></option>
+                    <option th:each="nomi :${nomineelistt}" th:value="${nomi.id}"><span th:text="${nomi.n_name}"></span></option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"><label for="exampleFormControlInput4">D_Amount</label></div>
+            <div class="col-12 col-md-7">
+                <select class="form-control" id="exampleFormControlInput4" th:field="*{deposite}">
+                    <option value=""></option>
+                    <option th:each="depo :${depositlistt}" th:value="${depo.id}"><span th:text="${depo.amount}"></span></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group offset-2 col-6">
+                <button type="submit" class="btn btn-primary">
+                   Save
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+    <script>
+
+            function memberWiseShow(id) {
+                 var dropdown = document.getElementById('member-dropdown');
+                 dropdown.length = 0;
+
+                 var defaultOption = document.createElement('option');
+                defaultOption.text = 'select A member';
+                dropdown.add(defaultOption);
+                dropdown.selectedIndex = 0;
+
+                var xhttp;
+                if(id == ""){
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                }
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200){
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                        var data = JSON.parse(this.responseText);
+                        var option;
+                        for (var i = 0; i < data.length; i++){
+                            option = document.createElement('option');
+                            option.text = data[i].member;
+                            option.value = data[i].id;
+                            dropdown.add(option);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "/member?id="+id, true);
+                xhttp.send();
+            }
+
+    </script>
+</body>
+</html>
