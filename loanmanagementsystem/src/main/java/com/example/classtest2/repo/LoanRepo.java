@@ -12,7 +12,7 @@ public interface LoanRepo extends JpaRepository<Loan, Long> {
 
     Loan findByLoanCode(String loanCode);
 
- List<Loan> findAllByLBrance(String lbrance);
+ List<Loan> findAllByLBrance(String lBrance);
 
 
 
