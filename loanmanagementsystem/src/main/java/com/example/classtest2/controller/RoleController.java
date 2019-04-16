@@ -38,7 +38,7 @@ public class RoleController {
             return "role/addrole";
         }else {
             if (role != null){
-                Optional<Role> role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
                 if (role1 != null){
                     model.addAttribute("exitMsg","RoleName is Already Exist");
                 }else {
@@ -63,7 +63,7 @@ public class RoleController {
             return "role/roleedit";
         }else {
             if (role != null){
-                Optional<Role> role1 = this.roleRepo.findByRoleName(role.getRoleName());
+                Role role1 = this.roleRepo.findByRoleName(role.getRoleName());
                 if (role1 != null){
                     model.addAttribute("exitMsg","RoleName is Already Exist");
                 }else {

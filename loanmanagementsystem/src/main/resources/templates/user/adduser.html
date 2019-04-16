@@ -17,6 +17,10 @@
 <body>
         <div class="main_content" layout:fragment="cus_con">
             <form th:object="${user}" th:action="@{/user/adduser}" th:method="POST" class="mm">
+
+                <span th:text="${succ}"></span>
+                <span th:text="${exitMsg}"></span>
+
                 <div class="row">
                     <div class="form-group col-8">
                         <label>Role Name</label>
@@ -33,6 +37,13 @@
                         <label for="name">Name</label>
                         <input id="name" type="text" class="form-control" th:field="*{name}"
                                placeholder="Enter Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label for="first_name">First Name</label>
+                        <input id="first_name" type="text" class="form-control" th:field="*{firstName}"
+                               placeholder="Enter First Name"/>
                     </div>
                 </div>
                 <div class="row">
@@ -58,11 +69,18 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-8">
-                        <label for="status">Status</label>
-                        <input id="status" type="text" class="form-control" th:field="*{status}"
-                               placeholder="Enter Name"/>
+                        <label for="bdate">Email</label>
+                        <input id="bdate" type="date" class="form-control" th:field="*{birthDate}"
+                              />
                     </div>
                 </div>
+                <!--<div class="row">-->
+                    <!--<div class="form-group col-8">-->
+                        <!--<label for="status">Status</label>-->
+                        <!--<input id="status" type="text" class="form-control" th:field="*{status}"-->
+                               <!--placeholder="Enter Name"/>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!--<table>-->
                     <!--<tr>-->
                         <!--<td><label>Roles:</label></td>-->
