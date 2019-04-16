@@ -35,6 +35,9 @@ public class Member {
     @Column(name = "m_admit_fee", nullable = false)
     private double m_admit_fee;
 
+
+
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date regi_date;
