@@ -18,14 +18,14 @@
         <div class="card card-primary">
             <div class="card-header"><h4>Add Nominee</h4></div>
             <div class="card-body">
-                <form method="post" th:object="${nominee}" th:action="@{/nominee/nomineedit/} + ${id}" action="#" class="mmm">
-                    <input type="hidden" th:value="*{id}" th:action="${nominee.id}"/>
+                <form method="post" th:object="${nominee}" th:action="@{/nominee/nedit/} + ${id}" action="#" class="mmm">
+
+                    <span th:text="${syccessNomi}"></span>
+
+                    <!--<input type="hidden" th:value="${nominee.id}" th:field="*{id}"/>-->
+
                     <div class="row">
-                        <div class="form-group col-12">
-                            <label for="nominee_id">Nominee Id</label>
-                            <input id="nominee_id" type="text" th:field="*{id}" class="form-control" name="nominee_id"
-                                   autofocus>
-                        </div>
+
                         <div class="form-group col-12">
                             <label for="nominee_name">Nominee Name</label>
                             <input id="nominee_name" type="text" th:field="*{n_name}" ng-model="n_name" class="form-control"
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="nominee_dob">Nominee Date of Birth</label>
-                            <input id="nominee_dob" type="text" th:field="*{n_dob}" ng-model="n_dob" class="form-control" name="nominee_dob">
+                            <input id="nominee_dob" type="date" th:field="*{n_dob}" ng-model="n_dob" class="form-control" name="nominee_dob">
                             <span ng-show="nomineeAdd.n_dob.$error.required">
                             Nominee Date Of Birth is Required
                         </span>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">
-                            Add Nominee
+                            Update Nominee
                         </button>
                     </div>
                 </form>

@@ -71,26 +71,26 @@ public class DepositeController {
         return "deposite/Adddeposite";
     }
 
-    @GetMapping(value = "/editd/{id}")
+    @GetMapping(value = "editd/{id}")
     private String editViewd( Model model,@PathVariable("id") Long id){
         model.addAttribute("deposite",this.depositeRepo.getOne(id));
         return "deposite/depositeedit";
     }
 
-    @PostMapping(value = "/editd/{id}")
-    private String depositeEdit(@Valid Deposite deposite, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
+    @PostMapping(value = "editd/{id}")
+    private String depositeEdit(@Valid Deposite deposite, BindingResult bindingResult,  @PathVariable("id") Long id,Model model){
         if (bindingResult.hasErrors()){
             return "deposite/depositeedit";
         }
 
         this.depositeRepo.save(deposite);
         model.addAttribute("deposite", new Deposite());
-        model.addAttribute("editMsg","Successfully Deleted");
+        model.addAttribute("editMsg","Successfully Updated");
 
         return "deposite/depositeedit";
     }
 
-    @PostMapping(value = "/deld/{id}")
+    @GetMapping(value = "deld/{id}")
     private String deleteDeposite(Model model, @PathVariable("id") Long id){
         if (id != null){
           this.depositeRepo.deleteById(id);

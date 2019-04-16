@@ -19,9 +19,15 @@
         <div class="card card-primary">
             <div class="card-header mmm"><h4>Add Member</h4></div>
             <div class="card-body">
-                <form method="post" th:object="${member}" th:action="@{/member/memberedit/} + ${id}" class="mm">
-                    <input type="hidden" th:value="${member.id}" th:field="*{id}"/>
+                <form method="post" th:object="${member}" th:action="@{/member/medit/} + ${id}" class="mm">
+
+
+                    <span th:text="${syccessMsg}"></span>
+
+                    <!--<input type="hidden" th:value="${member.id}" th:field="*{id}"/>-->
+
                     <input type="hidden" th:value="${member.regi_date}" th:field="*{regi_date}"/>
+
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="member_name">Member Name</label>
@@ -67,7 +73,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="regi_date">Registration Date</label>
-                            <input id="regi_date" type="text" class="form-control" th:field="*{regi_date}" ng-model="regi_date"
+                            <input id="regi_date" type="date" class="form-control" th:field="*{regi_date}" ng-model="regi_date"
                                    name="regi_date">
                             <span ng-show="memberAdd.regi_date.$error.required">Member Registration Date is Required</span>
                         </div>

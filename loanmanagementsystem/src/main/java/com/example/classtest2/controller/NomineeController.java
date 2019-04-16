@@ -44,20 +44,22 @@ public class NomineeController {
 
     }
 
-    @GetMapping(value = "/nomineedit/{id}")
-    public String editViewr(@PathVariable("id") Long id, Model model){
-        model.addAttribute("ngo",this.nomineeRepo.getOne(id));
+    @GetMapping(value = "nedit/{id}")
+    public String editViewr( Model model,@PathVariable("id") Long id){
+        model.addAttribute("nominee",this.nomineeRepo.getOne(id));
         return "nominee/nomineeedit";
     }
 
-    @PostMapping(value = "/nomineedit/{id}")
-    public String roleEdit(@Valid Nominee nominee, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
+    @PostMapping(value = "nedit/{id}")
+    public String nomiEdit(@Valid Nominee nominee, BindingResult bindingResult,  @PathVariable("id") Long id,Model model){
         if (bindingResult.hasErrors()){
             return "nominee/nomineeedit";
         }else {
+
+            nominee.setId(id);
             this.nomineeRepo.save(nominee);
             model.addAttribute("nominee", new Nominee());
-            model.addAttribute("syccessMsg","A Updated");
+            model.addAttribute("syccessNomi","Nominee Updated");
         }
 
         return "nominee/nomineeedit";

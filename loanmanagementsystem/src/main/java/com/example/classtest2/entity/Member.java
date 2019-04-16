@@ -1,5 +1,7 @@
 package com.example.classtest2.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -34,6 +36,7 @@ public class Member {
     private double m_admit_fee;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date regi_date;
 
     @ManyToOne

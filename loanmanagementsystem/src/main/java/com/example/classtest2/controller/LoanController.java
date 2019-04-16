@@ -50,6 +50,7 @@ public class LoanController {
             return "loan/Addloan";
         } else {
             this.loanRepo.save(loan);
+            model.addAttribute("loan", new Loan());
             model.addAttribute("SuccMsg", "Successfully Given the Loan");
 
             LoanSummary summary;
@@ -99,7 +100,7 @@ public class LoanController {
         return "loan/loanedit";
     }
 
-    @PostMapping(value = "/dell/{id}")
+    @GetMapping(value = "/dell/{id}")
     private String deleteLoan(Model model, @PathVariable("id") Long id) {
         if (id != null) {
             this.loanRepo.deleteById(id);

@@ -43,7 +43,7 @@
             <div class="card-header mmm"><h4>Add Deposite</h4></div>
             <div class="card-body">
                 <!--<span th:text="${SuccMsg}"></span>-->
-                <form action="#" th:object="${deposite}" th:action="@{/deposite/editd} + ${id}" th:method="POST" class="mm">
+                <form action="#" th:object="${deposite}" th:action="@{/deposite/editd/} + ${id}" th:method="POST" class="mm">
                     <input type="hidden" th:value="${deposite.id}" th:field="*{id}"/>
                     <div class="row">
                         <div class="form-group col-12">

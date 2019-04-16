@@ -19,12 +19,15 @@
             <div class="card-header"><h4>Add Nominee</h4></div>
             <div class="card-body">
                 <form method="post" th:object="${nominee}" th:action="@{/nominee/addnominee}" action="#" class="mmm">
+
+                    <span th:text="${nomineeMsg}"></span>
+
                     <div class="row">
-                        <div class="form-group col-12">
-                            <label for="nominee_id">Nominee Id</label>
-                            <input id="nominee_id" type="text" th:field="*{id}" class="form-control" name="nominee_id"
-                                   autofocus>
-                        </div>
+                        <!--<div class="form-group col-12">-->
+                            <!--<label for="nominee_id">Nominee Id</label>-->
+                            <!--<input id="nominee_id" type="text" th:field="*{id}" class="form-control" name="nominee_id"-->
+                                   <!--autofocus>-->
+                        <!--</div>-->
                         <div class="form-group col-12">
                             <label for="nominee_name">Nominee Name</label>
                             <input id="nominee_name" type="text" th:field="*{n_name}" ng-model="n_name" class="form-control"
@@ -58,7 +61,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="nominee_dob">Nominee Date of Birth</label>
-                            <input id="nominee_dob" type="text" th:field="*{n_dob}" ng-model="n_dob" class="form-control" name="nominee_dob">
+                            <input id="nominee_dob" type="date" th:field="*{n_dob}" ng-model="n_dob" class="form-control" name="nominee_dob">
                             <span ng-show="nomineeAdd.n_dob.$error.required">
                             Nominee Date Of Birth is Required
                         </span>

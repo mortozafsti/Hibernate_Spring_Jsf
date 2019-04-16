@@ -1,5 +1,7 @@
 package com.example.classtest2.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -25,6 +27,7 @@ public class Nominee {
     private int age;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date n_dob;
 
     @Column(name = "n_nid", nullable = false)

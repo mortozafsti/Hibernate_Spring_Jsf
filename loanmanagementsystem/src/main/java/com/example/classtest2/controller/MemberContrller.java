@@ -29,51 +29,50 @@ public class MemberContrller {
     private NomineeRepo nomineeRepo;
 
     @GetMapping(value = "/member")
-    public String memberIndex(Model model){
-        model.addAttribute("memberlist",this.memberRepo.findAll());
+    public String memberIndex(Model model) {
+        model.addAttribute("memberlist", this.memberRepo.findAll());
         return "member/listmember";
     }
 
     @GetMapping(value = "/memberAdd")
-    public String addmember(Member member){
+    public String addmember(Member member) {
         return "member/addmember";
     }
 
     @PostMapping(value = "/memberAdd")
-    public String memberSave(@Valid Member member, BindingResult bindingResult, Model model){
-        if (bindingResult.hasErrors()){
+    public String memberSave(@Valid Member member, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "member/addmember";
-        }else {
+        } else {
             this.memberRepo.save(member);
             model.addAttribute("member", new Member());
+            model.addAttribute("succ", "Member Successfully Added");
         }
         return "member/addmember";
     }
 
-    @GetMapping(value = "/memberedit/{id}")
-    public String editViewrf(@PathVariable("id") Long id, Model model){
-        model.addAttribute("member",this.memberRepo.getOne(id));
+    @GetMapping(value = "medit/{id}")
+    public String editViewrf(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("member", this.memberRepo.getOne(id));
         return "member/memberedit";
     }
 
-    @PostMapping(value = "/memberedit/{id}")
-    public String memberEdit(@Valid Member member, BindingResult bindingResult, Model model, @PathVariable("id") Long id){
-
-        if (bindingResult.hasErrors()){
+    @PostMapping(value = "medit/{id}")
+    public String memberEdit(@Valid Member member, BindingResult bindingResult, @PathVariable("id") Long id, Model model) {
+        if (bindingResult.hasErrors()) {
             return "member/memberedit";
-        } else {
-            System.out.println(member
-            );
-                    this.memberRepo.save(member);
-                    model.addAttribute("member", new Member());
-                    model.addAttribute("syccessMsg","A Updated");
-                }
+        }
+            member.setId(id);
+            this.memberRepo.save(member);
+            model.addAttribute("member", new Member());
+            model.addAttribute("syccessMsg", "Member Updated");
+
         return "member/memberedit";
     }
 
     @GetMapping(value = "/delm/{id}")
-    public String deletemember(Model model, @PathVariable("id") Long id){
-        if (id != null){
+    public String deletemember(Model model, @PathVariable("id") Long id) {
+        if (id != null) {
             this.memberRepo.deleteById(id);
         }
         return "redirect:/member/member";
