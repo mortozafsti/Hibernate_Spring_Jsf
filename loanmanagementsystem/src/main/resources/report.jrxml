@@ -77,6 +77,7 @@
                 </textElement>
                 <text><![CDATA[Due Amount]]></text>
             </staticText>
+
         </band>
     </columnHeader>
     <detail>
@@ -124,6 +125,7 @@
                 </reportElement>
                 <textFieldExpression><![CDATA[$F{no_due_amount}]]></textFieldExpression>
             </textField>
+
         </band>
     </detail>
     <columnFooter>
