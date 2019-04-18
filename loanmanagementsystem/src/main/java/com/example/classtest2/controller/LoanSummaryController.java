@@ -2,6 +2,7 @@ package com.example.classtest2.controller;
 
 import com.example.classtest2.jasper.MediaTypeUtils;
 import com.example.classtest2.jasper.SummaryService;
+import com.example.classtest2.jasper.SummaryService1;
 import com.example.classtest2.repo.LoanSummaryRepo;
 import com.example.classtest2.repo.UserRepo;
 import net.sf.jasperreports.engine.*;
@@ -38,6 +39,9 @@ public class LoanSummaryController {
 
     @Autowired
     private SummaryService summaryService;
+
+    @Autowired
+    private SummaryService1 summaryService1;
 
     @Autowired
     private UserRepo userRepo;
@@ -163,4 +167,53 @@ public class LoanSummaryController {
 ////                .contentType(MediaType.APPLICATION_PDF)
 ////                .body(new InputStreamResource(inputStream));
 //   }
+
+
+    public void reportPdf1() throws Exception {
+//        String source = "src\\main\\resources\\report.jrxml";
+//        try {
+//            JasperCompileManager.compileReportToFile(source);
+//        } catch (JRException e) {
+//            e.printStackTrace();
+//        }
+        String sourceFileName = "src\\main\\resources\\Summary.jasper";
+        String printFileName = null;
+        String destFileName = "src\\main\\resources\\Summary.pdf";
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(summaryService1.report1());
+        Map parameters = new HashMap();
+        try {
+            printFileName = JasperFillManager.fillReportToFile(sourceFileName,
+                    parameters, dataSource);
+            if (printFileName != null) {
+                JasperExportManager.exportReportToPdfFile(printFileName,
+                        destFileName);
+            }
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @RequestMapping("/summarypdf")
+    public ResponseEntity<InputStreamResource> downloadFile11() throws IOException {
+        try {
+            reportPdf1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String fileName="src\\\\main\\\\resources\\\\Summary.pdf";
+        MediaType mediaType = MediaTypeUtils.getMediaTypeForFileName(this.context, fileName);
+
+        File file = new File(fileName);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+        return ResponseEntity.ok()
+                // Content-Disposition
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + file.getName())
+                // Content-Type
+                .contentType(mediaType)
+                // Contet-Length
+                .contentLength(file.length()) //
+                .body(resource);
+    }
 }
