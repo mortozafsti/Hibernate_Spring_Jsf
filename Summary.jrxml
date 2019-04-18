@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.2.1.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Summary" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0458c925-5483-4cae-a4d9-eaa4dfc90f92">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="bG9hbnN1bW1hcnkgLDE1LDE1LDNkMmMyZGQxLWQzY2UtNDhlZS1iMGI5LTNhYzVkMzAyMGMyMDs=&#xA;"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LoanSummary"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM loansummary]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="l_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="l_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="l_branch" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="l_branch"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="l_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="l_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="lcode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lcode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_collected_kisti" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no_collected_kisti"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_collected_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="no_collected_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_due_kisti" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no_due_kisti"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_due_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="no_due_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_total_kisti" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no_total_kisti"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="no_total_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="no_total_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<field name="m_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="m_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="loansummary"/>
+	</field>
+	<group name="lcode">
+		<groupExpression><![CDATA[$F{lcode}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
