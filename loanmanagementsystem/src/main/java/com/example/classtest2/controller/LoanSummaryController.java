@@ -70,7 +70,7 @@ public class LoanSummaryController {
 
     // Generate Pdf
 
-  //  @RequestMapping(value = "/pdf", method = RequestMethod.GET,
+   //  @RequestMapping(value = "/pdf", method = RequestMethod.GET,
   //          produces = MediaType.APPLICATION_PDF_VALUE)
             public void reportPdf() throws Exception {
             String source = "src\\main\\resources\\report.jrxml";

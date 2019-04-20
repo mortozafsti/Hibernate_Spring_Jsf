@@ -40,9 +40,9 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
             <div class="col-12 col-md-7 form-group">
-                <select onchange="memberWiseShow(this.value)" class="form-control" id="exampleFormControlInput1"   >
+                <select class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
                     <option value=""></option>
-                    <option th:each="lon :${loanalist}" th:value="${lon.lBrance}"><span th:text="${lon.lBrance}"></span></option>
+                    <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.lBrance}"></span></option>
                 </select>
             </div>
         </div>
