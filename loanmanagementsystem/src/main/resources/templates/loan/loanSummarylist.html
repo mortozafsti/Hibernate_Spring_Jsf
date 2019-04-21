@@ -49,7 +49,7 @@
         <th>L_Code</th>
         <th>Loan_Branch</th>
         <th>Loan_Date</th>
-        <th>Loan_Amount</th>
+        <th>T_Loan_Amount</th>
         <th>Total_Kisti</th>
         <th>Due_Kisti</th>
         <th>Collected_Kisti</th>
@@ -70,6 +70,8 @@
         <td th:text="${lons.no_collected_amount}"></td>
         <td th:text="${lons.no_due_amount}"></td>
         <td th:text="${lons.member.getM_name()}"></td>
+
+
         <!--<td><a th:href="@{'/loan/editloan/'+${lons.id}}">Edit</a></td>-->
         <!--<td><a th:href="@{'/loan/dell/'+${lons.id}}">Del</a></td>-->
 
