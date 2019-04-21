@@ -69,11 +69,12 @@ public class LoanController {
                 loanSummary1.setL_branch(loan.getlBrance());
                 loanSummary1.setL_date(new Date());
                 loanSummary1.setNo_due_Kisti(0);
-                loanSummary1.setNo_total_Kisti(loan.getL_kisti());
+                loanSummary1.setNo_total_Kisti(loan.getL_payable_kisti());
                 loanSummary1.setMember(loan.getMember());
                 loanSummary1.setLoanCode(loan.getLoanCode());
                 loanSummary1.setNo_due_amount(loan.getL_amount());
-                loanSummary1.setNo_total_amount(loan.getL_amount());
+                double toatlAm=loan.getL_amount() + (loan.getL_amount() * .05);
+                loanSummary1.setNo_total_amount(toatlAm);
 
                 this.loanSummaryRepo.save(loanSummary1);
                 System.out.println("summary saved");
