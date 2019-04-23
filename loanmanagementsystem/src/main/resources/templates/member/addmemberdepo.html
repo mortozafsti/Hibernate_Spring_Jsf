@@ -40,18 +40,17 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
             <div class="col-12 col-md-7 form-group">
-                <select class="form-control" id="exampleFormControlInput1" th:field="*{loan}"  >
+                <select onchange="memberWiseShow(this.value)" name="lBrance" class="form-control" id="exampleFormControlInput1" >
                     <option value=""></option>
-                    <option th:each="lon :${loanalist}" th:value="${lon.id}"><span th:text="${lon.lBrance}"></span></option>
+                    <option th:each="lon :${loanalist}" th:value="${lon.lBrance}"><span th:text="${lon.lBrance}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="exampleFormControlInput2">M_Name</label></div>
+            <div class="col col-md-2"><label for="member-dropdown">M_Name</label></div>
             <div class="col-12 col-md-7">
-                <select th:id="member-dropdown" class="form-control" id="exampleFormControlInput2" th:field="*{member}">
-                    <option value=""></option>
-                    <option th:each="mem : ${memberlistt}" th:value="${mem.id}"><span th:text="${mem.m_name}"></span></option>
+                <select id="member-dropdown" class="form-control"  th:field="*{member}">
+                    <option value="0">Select a Member</option>
                 </select>
             </div>
         </div>
@@ -85,7 +84,7 @@
 </div>
     <script>
 
-            function memberWiseShow(l_brance) {
+            function memberWiseShow(lBrance) {
                  var dropdown = document.getElementById('member-dropdown');
                  dropdown.length = 0;
 
@@ -107,13 +106,14 @@
                         var option;
                         for (var i = 0; i < data.length; i++){
                             option = document.createElement('option');
-                            option.text = data[i].member;
-                            option.value = data[i].id;
+                            option.text = data[i].lBrance;
+                            option.value = data[i].lBrance;
                             dropdown.add(option);
                         }
                     }
                 };
-                xhttp.open("GET", "/member/memberwisedepo?id="+lBrance, true);
+                console.log("called...........")
+                xhttp.open("GET", "/member/memberbybranch?lBrance="+lBrance, true);
                 xhttp.send();
             }
     </script>

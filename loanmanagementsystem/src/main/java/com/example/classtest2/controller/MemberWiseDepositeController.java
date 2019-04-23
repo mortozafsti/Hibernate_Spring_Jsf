@@ -35,11 +35,26 @@ public class MemberWiseDepositeController {
         model.addAttribute("memberwisedepolist",this.memberWiseDepositeRepo.findAll());
         return "member/listmemberdepo";
     }
+    @ResponseBody
+    @GetMapping(value = "/memberbybranch")
+    public List<Loan> addmemberwiseds(@RequestParam(value = "lBrance",defaultValue = "Dhaka") String lBrance){
+        System.out.println("call..........");
 
+        List<Loan> loanalistBybranch = this.loanRepo.findAllByLBrance(lBrance);
+
+        return loanalistBybranch;
+
+
+
+
+
+    }
     @GetMapping(value = "/memberwisedepo")
-    public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model){
+    public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model,@RequestParam(value = "lBrance",required = false) String lBrance){
 
         model.addAttribute("loanalist",this.loanRepo.findAll());
+        model.addAttribute("loanalistBybranch",this.loanRepo.findAllByLBrance(lBrance));
+        System.out.println("Size::::::: "+this.loanRepo.findAllByLBrance(lBrance).size());
         model.addAttribute("depositlistt",this.depositeRepo.findAll());
         model.addAttribute("memberlistt",this.memberRepo.findAll());
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
@@ -87,14 +102,15 @@ public class MemberWiseDepositeController {
 
     @PostMapping(value = "/memberwisedepo")
     public String memberwiseSave(@Valid MemberWiseDeposite memberWiseDeposite, BindingResult bindingResult, Model model){
+
         if (bindingResult.hasErrors()){
             return "member/addmemberdepo";
         }else {
 
             //memberWiseDeposite.setLoan(memberWiseDeposite.getLoan());
            this.memberWiseDepositeRepo.save(memberWiseDeposite);
-
             model.addAttribute("loanalist",this.loanRepo.findAll());
+
             model.addAttribute("depositlistt",this.depositeRepo.findAll());
             model.addAttribute("memberlistt",this.memberRepo.findAll());
             model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
