@@ -44,6 +44,9 @@ public class LoanController {
         return "loan/Addloan";
     }
 
+
+    LoanSummary summary;
+
     @PostMapping(value = "/loanAdd")
     public String loanSave(@Valid Loan loan, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -53,7 +56,7 @@ public class LoanController {
             model.addAttribute("loan", new Loan());
             model.addAttribute("SuccMsg", "Successfully Given the Loan");
 
-            LoanSummary summary;
+
             try {
                 summary = loanSummaryRepo.findByLoanCode(loan.getLoanCode());
                 summary.setL_amount(summary.getL_amount() + loan.getL_amount());
@@ -72,7 +75,8 @@ public class LoanController {
                 loanSummary1.setNo_total_Kisti(loan.getL_payable_kisti());
                 loanSummary1.setMember(loan.getMember());
                 loanSummary1.setLoanCode(loan.getLoanCode());
-                loanSummary1.setNo_due_amount(loan.getL_amount());
+                double toatlAm1=loan.getL_amount() + (loan.getL_amount() * .05);
+                loanSummary1.setNo_due_amount(toatlAm1);
                 double toatlAm=loan.getL_amount() + (loan.getL_amount() * .05);
                 loanSummary1.setNo_total_amount(toatlAm);
 

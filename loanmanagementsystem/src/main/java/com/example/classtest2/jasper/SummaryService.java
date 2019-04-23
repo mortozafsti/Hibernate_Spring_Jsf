@@ -7,4 +7,5 @@ import java.util.Map;
 public interface SummaryService {
 
     public List<Map<String,Object>> report();
+
 }

@@ -75,7 +75,7 @@ public class CollectionController {
             try {
                 loanSummary=loanSummaryRepo.findByLoanCode(loan.getLoanCode());
                 loanSummary.setNo_due_Kisti(loan.getL_payable_kisti() - collection.getnOfCollectedKisti());
-                loanSummary.setNo_due_amount(loanSummary.getNo_total_amount() - collection.getnOfColectedamount());
+                loanSummary.setNo_due_amount(loanSummary.getNo_due_amount() - collection.getnOfColectedamount());
                 loanSummary.setNo_collected_amount(loanSummary.getNo_collected_amount()+collection.getnOfColectedamount());
                 loanSummary.setNo_collected_Kisti(collection.getnOfCollectedKisti());
 
