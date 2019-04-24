@@ -43,11 +43,7 @@ public class MemberWiseDepositeController {
         List<Loan> loanalistBybranch = this.loanRepo.findAllByLBrance(lBrance);
 
         return loanalistBybranch;
-
-
-
-
-
+        
     }
     @GetMapping(value = "/memberwisedepo")
     public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model,@RequestParam(value = "lBrance",required = false) String lBrance){
@@ -60,9 +56,6 @@ public class MemberWiseDepositeController {
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
 
         return "member/addmemberdepo";
-
-
-
 
 
     }
