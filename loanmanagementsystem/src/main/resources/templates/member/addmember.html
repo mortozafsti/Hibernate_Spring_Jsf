@@ -83,6 +83,12 @@
                                    name="member_no_id">
                             <span ng-show="memberAdd.nominee.$error.required">Member Nominee Id is Required</span>
                         </div>
+                        <div class="form-group col-12">
+                            <label for="branch_no_id">Brancg Id</label>
+                            <input id="branch_no_id" type="text" class="form-control" th:field="*{branch}" ng-model="nominee"
+                                   name="branch_no_id">
+                            <span ng-show="memberAdd.nominee.$error.required">Member Nominee Id is Required</span>
+                        </div>
                     </div>
                     <div class="row">
 

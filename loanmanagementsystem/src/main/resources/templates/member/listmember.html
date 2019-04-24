@@ -51,6 +51,7 @@
         <th>Regi_Date</th>
         <th>Ngo_ID</th>
         <th>Nominee_ID</th>
+        <th>Branch_ID</th>
         <th colspan="2">Action</th>
     </tr>
     <tr th:each="m: ${memberlist}">
@@ -65,6 +66,7 @@
         <td th:text="${m.regi_date}"></td>
         <td th:text="${m.ngo.id}"></td>
         <td th:text="${m.nominee.id}"></td>
+        <td th:text="${m.branch.branchName}"></td>
         <td><a th:href="@{'/member/medit/'+${m.id}}">Edit</a></td>
         <td><a th:href="@{'/member/delm/'+${m.id}}">Del</a></td>
 

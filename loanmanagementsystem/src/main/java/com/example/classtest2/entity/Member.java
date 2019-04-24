@@ -50,10 +50,14 @@ public class Member {
     @JoinColumn(name = "nominee_id", nullable = false)
     private Nominee nominee;
 
+    @ManyToOne
+    @JoinColumn(name = "B_Id", nullable = false)
+    private Branch branch;
+
     public Member() {
     }
 
-    public Member(String m_name, String m_code, String m_gender, String m_mobile, String m_address, String m_nid, double m_admit_fee, Date regi_date, Ngo ngo, Nominee nominee) {
+    public Member(String m_name, String m_code, String m_gender, String m_mobile, String m_address, String m_nid, double m_admit_fee, Date regi_date, Ngo ngo, Nominee nominee, Branch branch) {
         this.m_name = m_name;
         this.m_code = m_code;
         this.m_gender = m_gender;
@@ -64,6 +68,7 @@ public class Member {
         this.regi_date = regi_date;
         this.ngo = ngo;
         this.nominee = nominee;
+        this.branch = branch;
     }
 
     public Long getId() {
@@ -154,43 +159,35 @@ public class Member {
         this.nominee = nominee;
     }
 
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Member member = (Member) o;
-        return Objects.equals(id, member.id) &&
+        return Double.compare(member.m_admit_fee, m_admit_fee) == 0 &&
+                Objects.equals(id, member.id) &&
                 Objects.equals(m_name, member.m_name) &&
                 Objects.equals(m_code, member.m_code) &&
                 Objects.equals(m_gender, member.m_gender) &&
                 Objects.equals(m_mobile, member.m_mobile) &&
                 Objects.equals(m_address, member.m_address) &&
                 Objects.equals(m_nid, member.m_nid) &&
-                Objects.equals(m_admit_fee, member.m_admit_fee) &&
                 Objects.equals(regi_date, member.regi_date) &&
                 Objects.equals(ngo, member.ngo) &&
-                Objects.equals(nominee, member.nominee);
+                Objects.equals(nominee, member.nominee) &&
+                Objects.equals(branch, member.branch);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, m_name, m_code, m_gender, m_mobile, m_address, m_nid, m_admit_fee, regi_date, ngo, nominee);
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", m_name='" + m_name + '\'' +
-                ", m_code='" + m_code + '\'' +
-                ", m_gender='" + m_gender + '\'' +
-                ", m_mobile='" + m_mobile + '\'' +
-                ", m_address='" + m_address + '\'' +
-                ", m_nid='" + m_nid + '\'' +
-                ", m_admit_fee='" + m_admit_fee + '\'' +
-                ", regi_date=" + regi_date +
-                ", ngo=" + ngo +
-                ", nominee=" + nominee +
-                '}';
+        return Objects.hash(id, m_name, m_code, m_gender, m_mobile, m_address, m_nid, m_admit_fee, regi_date, ngo, nominee, branch);
     }
 }
