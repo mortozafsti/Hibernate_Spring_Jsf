@@ -11,17 +11,14 @@ public class Branch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String BranchName;
-    private String BranchAddress;
+    private String branchName;
+    private String branchAddress;
 
     public Branch() {
     }
-
-    public Branch(String branchName, String branchAddress) {
-        BranchName = branchName;
-        BranchAddress = branchAddress;
+    public Branch(Long id) {
+        this.id=id;
     }
-
     public Long getId() {
         return id;
     }
@@ -31,19 +28,19 @@ public class Branch {
     }
 
     public String getBranchName() {
-        return BranchName;
+        return branchName;
     }
 
     public void setBranchName(String branchName) {
-        BranchName = branchName;
+        this.branchName = branchName;
     }
 
     public String getBranchAddress() {
-        return BranchAddress;
+        return branchAddress;
     }
 
     public void setBranchAddress(String branchAddress) {
-        BranchAddress = branchAddress;
+        this.branchAddress = branchAddress;
     }
 
     @Override
@@ -52,12 +49,12 @@ public class Branch {
         if (o == null || getClass() != o.getClass()) return false;
         Branch branch = (Branch) o;
         return Objects.equals(id, branch.id) &&
-                Objects.equals(BranchName, branch.BranchName) &&
-                Objects.equals(BranchAddress, branch.BranchAddress);
+                Objects.equals(branchName, branch.branchName) &&
+                Objects.equals(branchAddress, branch.branchAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, BranchName, BranchAddress);
+        return Objects.hash(id, branchName, branchAddress);
     }
 }

@@ -13,6 +13,110 @@
             margin-top: 10px;
         }
     </style>
+    <script>
+        ///////////////////
+        function depositeByMemberShow(id) {
+            var dropdown = document.getElementById('deposit');
+            dropdown.length = 0;
+
+            var defaultOption = document.createElement('option');
+            defaultOption.text = 'Choose Nominee';
+            defaultOption.value = '0';
+            dropdown.add(defaultOption);
+            dropdown.selectedIndex = 0;
+
+
+
+            var xhttp;
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var data = JSON.parse(this.responseText);
+                    var option;
+                    for (var i = 0; i < data.length; i++) {
+                        option = document.createElement('option');
+                        option.text = data[i].amount;
+                        option.value = data[i].id;
+                        dropdown.add(option);
+                        console.log();
+                    }
+                }
+            };
+            xhttp.open("GET", "/depositeByMember?id="+id, true);
+            xhttp.send();
+        }
+        ///////////////////
+        function memberWiseNomineeShow(id) {
+            var dropdown = document.getElementById('nominee');
+            dropdown.length = 0;
+
+            var defaultOption = document.createElement('option');
+            defaultOption.text = 'Choose Nominee';
+            defaultOption.value = '0';
+            dropdown.add(defaultOption);
+            dropdown.selectedIndex = 0;
+
+
+
+            var xhttp;
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var data = JSON.parse(this.responseText);
+                    var option;
+                    for (var i = 0; i < data.length; i++) {
+                        option = document.createElement('option');
+                        option.text = data[i].nominee.n_name;
+                        option.value = data[i].id;
+                        dropdown.add(option);
+                        console.log();
+                   }
+                }
+            };
+            xhttp.open("GET", "/nomineeByMember?id="+id, true);
+            xhttp.send();
+
+            depositeByMemberShow(id)
+        }
+
+        ///////////////////
+        function memberWiseShow(id) {
+            var dropdown = document.getElementById('member');
+            dropdown.length = 0;
+
+            var defaultOption = document.createElement('option');
+            defaultOption.text = 'Choose Member';
+            defaultOption.value = '0';
+            dropdown.add(defaultOption);
+            dropdown.selectedIndex = 0;
+
+
+
+            var xhttp;
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var data = JSON.parse(this.responseText);
+                    var option;
+                    for (var i = 0; i < data.length; i++) {
+                        option = document.createElement('option');
+                        option.text = data[i].m_name;
+                        option.value = data[i].id;
+                        dropdown.add(option);
+console.log();
+                    }
+                }
+            };
+            xhttp.open("GET", "/memberbybranch?id="+id, true);
+            xhttp.send();
+        }
+    </script>
 </head>
 <body>
 <div class="main_content" layout:fragment="cus_con">
@@ -40,35 +144,33 @@
         <div class="row form-group">
             <div class="col col-md-2"><label for="exampleFormControlInput1">L_Branch</label></div>
             <div class="col-12 col-md-7 form-group">
-                <select onchange="memberWiseShow(this.value)" name="lBrance" class="form-control" id="exampleFormControlInput1" >
+                <select onchange="memberWiseShow(this.value)" name="branch" class="form-control" id="exampleFormControlInput1" >
                     <option value=""></option>
-                    <option th:each="lon :${loanalist}" th:value="${lon.lBrance}"><span th:text="${lon.lBrance}"></span></option>
+                    <option th:each="bra :${branchlistt}" th:value="${bra.id}"><span th:text="${bra.branchName}"></span></option>
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="member-dropdown">M_Name</label></div>
+            <div class="col col-md-2"><label for="member">M_Name</label></div>
             <div class="col-12 col-md-7">
-                <select id="member-dropdown" class="form-control"  th:field="*{member}">
-                    <option value="0">Select a Member</option>
+                <select id="member" class="form-control"  th:field="*{member}" onchange="memberWiseNomineeShow(this.value)">
+
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="exampleFormControlInput3">N_Name</label></div>
+            <div class="col col-md-2"><label for="nominee">N_Name</label></div>
             <div class="col-12 col-md-7">
-                <select class="form-control" id="exampleFormControlInput3" th:field="*{nominee}">
-                    <option value=""></option>
-                    <option th:each="nomi :${nomineelistt}" th:value="${nomi.id}"><span th:text="${nomi.n_name}"></span></option>
+                <select class="form-control" id="nominee" th:field="*{nominee}">
+
                 </select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2"><label for="exampleFormControlInput4">D_Amount</label></div>
+            <div class="col col-md-2"><label for="deposit">D_Amount</label></div>
             <div class="col-12 col-md-7">
-                <select class="form-control" id="exampleFormControlInput4" th:field="*{deposite}">
-                    <option value=""></option>
-                    <option th:each="depo :${depositlistt}" th:value="${depo.id}"><span th:text="${depo.amount}"></span></option>
+                <select class="form-control" id="deposit" th:field="*{deposite}">
+
                 </select>
             </div>
         </div>
@@ -82,40 +184,6 @@
     </form>
 
 </div>
-    <script>
 
-            function memberWiseShow(lBrance) {
-                 var dropdown = document.getElementById('member-dropdown');
-                 dropdown.length = 0;
-
-                 var defaultOption = document.createElement('option');
-                defaultOption.text = 'select A member';
-                dropdown.add(defaultOption);
-                dropdown.selectedIndex = 0;
-
-                var xhttp;
-                if(l_brance == ""){
-                    document.getElementById("txtHint").innerHTML = "";
-                    return;
-                }
-                xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200){
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                        var data = JSON.parse(this.responseText);
-                        var option;
-                        for (var i = 0; i < data.length; i++){
-                            option = document.createElement('option');
-                            option.text = data[i].lBrance;
-                            option.value = data[i].lBrance;
-                            dropdown.add(option);
-                        }
-                    }
-                };
-                console.log("called...........")
-                xhttp.open("GET", "/member/memberbybranch?lBrance="+lBrance, true);
-                xhttp.send();
-            }
-    </script>
 </body>
 </html>

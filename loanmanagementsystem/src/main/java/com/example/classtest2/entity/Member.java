@@ -1,14 +1,16 @@
 package com.example.classtest2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "member")
-public class Member {
+public class Member implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +48,7 @@ public class Member {
     @JoinColumn(name = "ngo_id", nullable = false)
     private Ngo ngo;
 
+
     @ManyToOne
     @JoinColumn(name = "nominee_id", nullable = false)
     private Nominee nominee;
@@ -57,6 +60,9 @@ public class Member {
     public Member() {
     }
 
+    public Member(Long id) {
+        this.id=id;
+    }
     public Member(String m_name, String m_code, String m_gender, String m_mobile, String m_address, String m_nid, double m_admit_fee, Date regi_date, Ngo ngo, Nominee nominee, Branch branch) {
         this.m_name = m_name;
         this.m_code = m_code;

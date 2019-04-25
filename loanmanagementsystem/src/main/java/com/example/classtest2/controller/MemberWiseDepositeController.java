@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,6 +29,9 @@ public class MemberWiseDepositeController {
     private LoanRepo loanRepo;
 
     @Autowired
+    private BranchRepo branchRepo;
+
+    @Autowired
     private MemberWiseDepositeRepo memberWiseDepositeRepo;
 
     @GetMapping(value = "/memberwise")
@@ -35,16 +39,7 @@ public class MemberWiseDepositeController {
         model.addAttribute("memberwisedepolist",this.memberWiseDepositeRepo.findAll());
         return "member/listmemberdepo";
     }
-    @ResponseBody
-    @GetMapping(value = "/memberbybranch")
-    public List<Loan> addmemberwiseds(@RequestParam(value = "lBrance",defaultValue = "Dhaka") String lBrance){
-        System.out.println("call..........");
 
-        List<Loan> loanalistBybranch = this.loanRepo.findAllByLBrance(lBrance);
-
-        return loanalistBybranch;
-        
-    }
     @GetMapping(value = "/memberwisedepo")
     public String addmemberwise(MemberWiseDeposite memberWiseDeposite, Model model,@RequestParam(value = "lBrance",required = false) String lBrance){
 
@@ -54,6 +49,7 @@ public class MemberWiseDepositeController {
         model.addAttribute("depositlistt",this.depositeRepo.findAll());
         model.addAttribute("memberlistt",this.memberRepo.findAll());
         model.addAttribute("nomineelistt",this.nomineeRepo.findAll());
+        model.addAttribute("branchlistt",this.branchRepo.findAll());
 
         return "member/addmemberdepo";
 
