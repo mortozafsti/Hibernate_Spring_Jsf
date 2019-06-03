@@ -28,7 +28,7 @@ public class User {
     )
     private Set<Role> role;
 
-    public User(User user) {
+    public User() {
     }
 
     public User(String firstName, String lastName, String userName, String email, Date regiDate, boolean status, String password, Set<Role> role) {
