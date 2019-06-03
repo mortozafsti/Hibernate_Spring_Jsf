@@ -5,7 +5,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Category</title>
+    <title>Sub Category</title>
     <style>
         .err {
             color: red;
@@ -22,7 +22,7 @@
 <div class="body" layout:fragment="cus_cont">
 
 
-    <h3><i class="fa fa-medkit"></i> Add Category</h3>
+    <h3><i class="fa fa-medkit"></i> Add Sub Category</h3>
 
     <!-- BASIC FORM VALIDATION -->
     <div class="row">
@@ -30,15 +30,20 @@
 
             <div class="form-panel">
 
-                <form th:object="${category}" th:action="@{/category/addcategorye}" th:method="POST">
+                <form th:object="${subcategory}" th:action="@{/scategory/addsubcategorye}" th:method="POST">
                     <div class="form-group has-success">
-                        <label class="col-md-2 control-label">Category Name</label>
+                        <label class="col-md-2 control-label">Sub Category Name</label>
                         <div class="col-md-4">
                             <span th:class="mm" th:text="${syccessMsg}"></span>
                             <span th:class="err" th:text="${exitMsg}"></span>
                             <input type="text" placeholder="Enter Unique Group" id="f-name" class="form-control"
-                                   th:field="*{catName}" required="true">
+                                   th:field="*{subcatName}" required="true">
 
+                        </div>
+                        <label class="col-md-2 control-label">Category Id</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Enter Unique Id" id="f-name1" class="form-control"
+                                   th:field="*{category}" required="true">
                         </div>
                     </div>
 
