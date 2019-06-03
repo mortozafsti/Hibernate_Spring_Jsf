@@ -1,5 +1,7 @@
 package com.example.adminecommerce.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -16,7 +18,11 @@ public class User {
     private String lastName;
     private String userName;
     private String email;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date regiDate;
+
     private boolean status;
     private String password;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/user/")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
@@ -47,9 +47,9 @@ public class UserController {
                 model.addAttribute("exitMsg","UserName is Already Exist");
             }else {
                 this.userRepo.save(user);
-                model.addAttribute("user", new User());
+                model.addAttribute("user",new User());
                 model.addAttribute("addlisthome",this.roleRepo.findAll());
-                model.addAttribute("succ","UserName Successfully Save");
+                model.addAttribute("succ","Users Data Successfully Save");
 
             }
         }

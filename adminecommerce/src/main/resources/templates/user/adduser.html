@@ -33,95 +33,54 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="name">First Name</label>
                         <input id="name" type="text" class="form-control" th:field="*{firstName}"
                                placeholder="Enter Name"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="first_name">Last Name</label>
                         <input id="first_name" type="text" class="form-control" th:field="*{lastName}"
                                placeholder="Enter First Name"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="user_name">User Name</label>
                         <input id="user_name" type="text" class="form-control" th:field="*{userName}"
                                placeholder="Enter User Name"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="email">Email</label>
                         <input id="email" type="text" class="form-control" th:field="*{email}"
                                placeholder="Enter Your Email"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="bdate">Regi Date</label>
                         <input id="bdate" type="date" class="form-control" th:field="*{regiDate}"
                         />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="status">Regi Date</label>
                         <input id="status" type="text" class="form-control" th:field="*{status}"
                         />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-8">
+                    <div class="form-group col-md-4">
                         <label for="role_name">PassWord</label>
                         <input id="role_name" type="text" class="form-control" th:field="*{password}"
                                placeholder="Enter Role Name"/>
                     </div>
                 </div>
-
-
-                <!--<div class="row">-->
-                    <!--<div class="form-group col-8">-->
-                        <!--<label for="status">Status</label>-->
-                        <!--<input id="status" type="text" class="form-control" th:field="*{status}"-->
-                               <!--placeholder="Enter Name"/>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<table>-->
-                    <!--<tr>-->
-                        <!--<td><label>Roles:</label></td>-->
-                        <!--<td>-->
-                            <!--<select th:field="*{role}" multiple>-->
-                                <!--<option th:each="rola : ${addlisthome}" th:value="${rola.id}">-->
-                                    <!--<span th:text="${rola.roleName}"></span>-->
-                                <!--</option>-->
-                            <!--</select>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><label>Name:</label></td>-->
-                        <!--<td><input type="text" th:field="*{name}" /></td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><label>User_Name:</label></td>-->
-                        <!--<td><input type="text" th:field="*{username}" /></td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><label>Password:</label></td>-->
-                        <!--<td><input type="password" th:field="*{password}" /></td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><label>Email:</label></td>-->
-                        <!--<td><input type="email" th:field="*{email}" /></td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><label>Status:</label></td>-->
-                        <!--<td><input type="text" th:field="*{status}" /></td>-->
-                    <!--</tr>-->
-                <!--</table>-->
                 <button class="btn btn-primary" type="submit">Save</button>
             </form>
         </div>
