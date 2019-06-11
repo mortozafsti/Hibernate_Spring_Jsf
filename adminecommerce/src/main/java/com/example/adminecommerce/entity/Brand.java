@@ -12,4 +12,7 @@ public class Brand {
 
     private String brandName;
     private String brandLocation;
+    private String categoryID;
+    private String code;
+
 }
