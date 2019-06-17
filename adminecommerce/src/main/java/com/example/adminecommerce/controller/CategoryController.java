@@ -23,6 +23,7 @@ public class CategoryController {
     @Autowired
     public CategoryRepo categoryRepo;
 
+
     @GetMapping(value = "/listcategory")
     public String index(Category category, Model model){
         model.addAttribute("categorylist",this.categoryRepo.findAll());
