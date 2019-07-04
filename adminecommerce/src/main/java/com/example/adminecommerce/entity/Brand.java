@@ -13,7 +13,6 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String brandName;
     private String brandLocation;
     private String categoryID;
