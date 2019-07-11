@@ -40,15 +40,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
-    public AuthenticationManager authenticationManager() throws Exception{
-        return super.authenticationManager();
+    public AuthenticationManager authenticationManagerBean() throws Exception{
+        return super.authenticationManagerBean();
     }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/","/login","/public/**","/role-save","/user-save").permitAll()
+                .antMatchers("/public/**","/login","/","/role-save","/user-save").permitAll()
                 .antMatchers("/admin/**","/home").hasAnyAuthority("SUPERADMIN", "ADMIN", "USER")
-                .anyRequest().authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

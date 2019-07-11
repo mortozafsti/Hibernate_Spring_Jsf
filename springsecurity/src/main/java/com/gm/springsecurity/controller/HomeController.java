@@ -15,7 +15,7 @@ public class HomeController {
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping(value = "/home")
+    @GetMapping(value = "/homee")
     public String secureView(Model model) {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("name",auth.getName());
